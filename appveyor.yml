@@ -1,0 +1,20 @@
+environment:
+  matrix:
+  - nodejs_version: "Stable"
+  - nodejs_version: "6"
+
+install:
+  - ps: Install-Product node $env:nodejs_version x64
+  - yarn
+
+test_script:
+  - node --version
+  - yarn --version
+  - yarn run lint
+  - yarn run typecheck
+  - yarn run build
+  - yarn run test-once
+
+build: off
+shallow_clone: true
+clone_depth: 1

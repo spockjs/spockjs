@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`leaves unrelated assert statements untouched 1`] = `
+"'use strict';
+
+var _powerAssert = require('power-assert');
+
+var _powerAssert2 = _interopRequireDefault(_powerAssert);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+(0, _powerAssert2.default)(1 === 2);"
+`;
+
+exports[`prints a nice error for an "expected"-labeled expression statement 1`] = `
+[AssertionError [ERR_ASSERTION]:   # unknown:2
+  
+  assert(1 === 2)
+           |     
+           false 
+  
+  [number] 2
+  => 2
+  [number] 1
+  => 1
+  ]
+`;
+
+exports[`still works if babel-plugin-espower is used for other assertions in the file 1`] = `
+[AssertionError [ERR_ASSERTION]:   # unknown:3
+  
+  assert(x > 0)
+         | |   
+         0 false
+  ]
+`;
+
+exports[`still works if babel-plugin-espower is used for other assertions in the file 2`] = `
+[AssertionError [ERR_ASSERTION]:   # unknown:2
+  
+  assert(x >= 0)
+         | |    
+         | false
+         -1     
+  ]
+`;

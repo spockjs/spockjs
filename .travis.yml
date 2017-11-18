@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - "node"
+  - "6"
+
+cache: yarn
+
+script:
+  - yarn run lint
+  - yarn run typecheck
+  - yarn run build
+  - yarn run test-once
+
+before_install: yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
+after_script: greenkeeper-lockfile-upload
+
+after_success:
+  - yarn global add codecov && codecov
