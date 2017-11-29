@@ -11,7 +11,7 @@ const assertionBlockLabels = ['expect', 'then'];
 const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
   const assertify = assertifyStatement(babel.types);
   const espowerVisitor = createEspowerVisitor(babel, {
-    embedAst: false,
+    embedAst: true,
     patterns: ['assert(value)'],
   });
 
@@ -36,9 +36,6 @@ const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
             // Now let espower generate nice power assertions for this labeled statement
             espowerVisitor.visitor.Program(path, state);
           }
-
-          // We're done here, all processing is shallow
-          path.skip();
         }
       },
     },
