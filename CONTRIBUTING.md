@@ -57,4 +57,4 @@ This is also important for automatic generation of changelogs.
 4. `cd dist`
 5. Remove the `private: true` property from the `package.json` file
 6. `npm publish`
-7. `git push && git push --tags`
+7. `git push --follow-tags`
