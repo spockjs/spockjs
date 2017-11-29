@@ -16,7 +16,7 @@ test('prints a nice error for an "expected"-labeled expression statement', () =>
   try {
     new Function('require', code as string)(require);
   } catch (err) {
-    expect(err).toMatchSnapshot();
+    expect(err.message).toMatchSnapshot();
   }
 });
 
@@ -67,11 +67,11 @@ test('still works if babel-plugin-espower is used for other assertions in the fi
   try {
     new Function('require', 'x', code as string)(require, 0);
   } catch (err) {
-    expect(err).toMatchSnapshot();
+    expect(err.message).toMatchSnapshot();
   }
   try {
     new Function('require', 'x', code as string)(require, -1);
   } catch (err) {
-    expect(err).toMatchSnapshot();
+    expect(err.message).toMatchSnapshot();
   }
 });
