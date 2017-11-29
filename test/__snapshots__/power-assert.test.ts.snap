@@ -13,7 +13,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 `;
 
 exports[`prints a nice error for an "expected"-labeled expression statement 1`] = `
-[AssertionError [ERR_ASSERTION]:   # unknown:2
+"  # unknown:2
   
   assert(1 === 2)
            |     
@@ -23,24 +23,24 @@ exports[`prints a nice error for an "expected"-labeled expression statement 1`] 
   => 2
   [number] 1
   => 1
-  ]
+  "
 `;
 
 exports[`still works if babel-plugin-espower is used for other assertions in the file 1`] = `
-[AssertionError [ERR_ASSERTION]:   # unknown:3
+"  # unknown:3
   
   assert(x > 0)
          | |   
          0 false
-  ]
+  "
 `;
 
 exports[`still works if babel-plugin-espower is used for other assertions in the file 2`] = `
-[AssertionError [ERR_ASSERTION]:   # unknown:2
+"  # unknown:2
   
   assert(x >= 0)
          | |    
          | false
          -1     
-  ]
+  "
 `;
