@@ -2,8 +2,11 @@ export interface Config {
   powerAssert: boolean;
 }
 
-const defaultConfig: Config = {
+export const defaultConfig: Config = {
   powerAssert: true,
 };
 
-export default defaultConfig;
+export const extractConfigFromState = (state: any): Config => ({
+  ...defaultConfig,
+  ...state.opts,
+});
