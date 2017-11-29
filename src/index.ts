@@ -4,7 +4,7 @@ import { NodePath } from 'babel-traverse';
 import * as BabelTypes from 'babel-types';
 
 import assertifyStatement from './assertify-statement';
-import defaultConfig, { Config } from './config';
+import { extractConfigFromState } from './config';
 
 const assertionBlockLabels = ['expect', 'then'];
 
@@ -18,7 +18,8 @@ const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
   return {
     visitor: {
       LabeledStatement(path, state) {
-        const config = { ...defaultConfig, ...(state.opts as Config) };
+        const config = extractConfigFromState(state);
+
         if (assertionBlockLabels.includes(path.node.label.name)) {
           const bodyPath = path.get('body') as NodePath<BabelTypes.Statement>;
           switch (bodyPath.type) {
