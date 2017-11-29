@@ -75,3 +75,27 @@ test('still works if babel-plugin-espower is used for other assertions in the fi
     expect(err.message).toMatchSnapshot();
   }
 });
+
+test('supports non-standard JSX syntax', () => {
+  const createElement = jest
+    .fn()
+    .mockImplementationOnce(tagName => ({ prop: tagName }));
+
+  const { code } = transform(
+    `import assert from 'power-assert';
+    expect: (<div></div>).prop === 'expected';`,
+    {
+      plugins: [plugin],
+      presets: ['env', 'react'],
+    },
+  );
+
+  expect.assertions(1);
+  try {
+    new Function('require', 'React', code as string)(require, {
+      createElement,
+    });
+  } catch (err) {
+    expect(err.message).toMatchSnapshot();
+  }
+});

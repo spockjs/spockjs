@@ -44,3 +44,20 @@ exports[`still works if babel-plugin-espower is used for other assertions in the
          -1     
   "
 `;
+
+exports[`supports non-standard JSX syntax 1`] = `
+"  # unknown:2
+  
+  assert(<div></div>.prop === 'expected')
+                     |    |              
+                     |    false          
+                     \\"div\\"               
+  
+  --- [string] 'expected'
+  +++ [string] <div></div>.prop
+  @@ -1,8 +1,3 @@
+  -expected
+  +div
+  
+  "
+`;
