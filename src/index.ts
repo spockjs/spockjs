@@ -1,7 +1,7 @@
-import { PluginObj } from 'babel-core-old';
+import { PluginObj } from '@babel/core';
+import * as BabelTypes from '@babel/types';
 import createEspowerVisitor from 'babel-plugin-espower/create';
 import { NodePath } from 'babel-traverse';
-import * as BabelTypes from 'babel-types';
 
 import assertifyStatement from './assertify-statement';
 import { extractConfigFromState } from './config';
