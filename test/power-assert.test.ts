@@ -12,12 +12,9 @@ test('prints a nice error for an "expected"-labeled expression statement', () =>
     },
   );
 
-  expect.assertions(1);
-  try {
-    new Function('require', code as string)(require);
-  } catch (err) {
-    expect(err.message).toMatchSnapshot();
-  }
+  expect(() =>
+    new Function('require', code as string)(require),
+  ).toThrowErrorMatchingSnapshot();
 });
 
 test('passes a truthy expression', () => {
@@ -57,21 +54,15 @@ test('still works if babel-plugin-espower is used for other assertions in the fi
     },
   );
 
-  expect.assertions(3);
-
   expect(() =>
     new Function('require', 'x', code as string)(require, 1),
   ).not.toThrow();
-  try {
-    new Function('require', 'x', code as string)(require, 0);
-  } catch (err) {
-    expect(err.message).toMatchSnapshot();
-  }
-  try {
-    new Function('require', 'x', code as string)(require, -1);
-  } catch (err) {
-    expect(err.message).toMatchSnapshot();
-  }
+  expect(() =>
+    new Function('require', 'x', code as string)(require, 0),
+  ).toThrowErrorMatchingSnapshot();
+  expect(() =>
+    new Function('require', 'x', code as string)(require, -1),
+  ).toThrowErrorMatchingSnapshot();
 });
 
 test('supports non-standard JSX syntax', () => {
@@ -88,12 +79,9 @@ test('supports non-standard JSX syntax', () => {
     },
   );
 
-  expect.assertions(1);
-  try {
+  expect(() =>
     new Function('require', 'React', code as string)(require, {
       createElement,
-    });
-  } catch (err) {
-    expect(err.message).toMatchSnapshot();
-  }
+    }),
+  ).toThrowErrorMatchingSnapshot();
 });
