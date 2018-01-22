@@ -30,9 +30,7 @@ test('passes a truthy expression', () => {
     },
   );
 
-  expect(() =>
-    new Function('require', code as string).bind(null, require),
-  ).not.toThrow();
+  expect(() => new Function('require', code as string)(require)).not.toThrow();
 });
 
 test('leaves unrelated assert statements untouched', () => {
@@ -62,7 +60,7 @@ test('still works if babel-plugin-espower is used for other assertions in the fi
   expect.assertions(3);
 
   expect(() =>
-    new Function('require', 'x', code as string).bind(null, require, 1),
+    new Function('require', 'x', code as string)(require, 1),
   ).not.toThrow();
   try {
     new Function('require', 'x', code as string)(require, 0);
