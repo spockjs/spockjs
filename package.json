@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "babel-plugin-spock",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Structured JS test cases, inspired by Spock Framework",
   "keywords": [
     "spock",
