@@ -1,5 +1,5 @@
-import { NodePath } from 'babel-traverse';
-import * as BabelTypes from 'babel-types';
+import { NodePath } from '@babel/traverse';
+import * as BabelTypes from '@babel/types';
 
 export default (t: typeof BabelTypes) => (
   statementPath: NodePath<BabelTypes.Statement>,

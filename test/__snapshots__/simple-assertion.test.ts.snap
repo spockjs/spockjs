@@ -4,10 +4,10 @@ exports[`assertifies a "then"-labeled expression statement 1`] = `"then: assert(
 
 exports[`assertifies all expression statements in a labeled block statement 1`] = `
 "expect: {
-      assert(1 === 1);
-      assert(0.5 * 4 < 3);
-      assert(abc.xyz() === 'result');
-      assert(((x, y) => x === y)(42, 42));
+  assert(1 === 1);
+  assert(0.5 * 4 < 3);
+  assert(abc.xyz() === 'result');
+  assert(((x, y) => x === y)(42, 42));
 }"
 `;
 
@@ -23,9 +23,8 @@ exports[`assertifies inside an if / else statement 1`] = `
 
 exports[`does not assertify a "when"-labeled expression statement 1`] = `"when: 1 === 1;"`;
 
-exports[`throws if a statement is not an expression statement 1`] = `"unknown: Expected an expression statement, but got a statement of type FunctionDeclaration"`;
-
-exports[`throws if a statement is not an expression statement 2`] = `
-"> 1 | expect: function f() {}
+exports[`throws if a statement is not an expression statement 1`] = `
+"undefined: Expected an expression statement, but got a statement of type IfStatement
+> 1 | expect: if(true);
     |         ^"
 `;

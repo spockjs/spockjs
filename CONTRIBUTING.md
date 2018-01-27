@@ -3,30 +3,6 @@
 We use [yarn](https://yarnpkg.org) as our package manager. Run `yarn` to install
 the dependencies.
 
-## Note: Current babel version situation
-
-At the moment, we need both babel 6 (peer/dev) and babel 7 beta (dev) installed
-in the project directory.
-
-Babel 6 is used by production code and tests, while babel 7 is used to compile
-the production code and tests. The former cannot be upgraded because
-`babel-plugin-espower` does not yet support babel 7, the latter cannot be
-downgraded because we need `@babel/preset-typescript`, which is 7+ only.
-
-Due to babel's change from regular to scoped packages, this is generally not a
-problem, because the production code and tests can just import the regular
-packages with version 6, while our `.babelrc` uses the scoped packages with
-version 7.
-
-However, `babel-jest` currently requires `babel-core@7.0.0-bridge.0` to be
-installed in order to work with babel 7, so for `babel-core` we use yarn's alias
-feature to install `babel-core@^6.0.0` as `babel-core-old` and use that module
-name for imports in our production code and tests, while the bridge package for
-Jest is installed under its regular name.
-
-This workaround also makes yarn absolutely mandatory for hacking on this package
-at the moment.
-
 ## Scripts
 
 * `yarn all` - run all checks and build

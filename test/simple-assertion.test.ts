@@ -1,4 +1,4 @@
-import { transform } from 'babel-core-old';
+import { transform } from '@babel/core';
 
 import plugin from '../src';
 import { Config } from '../src/config';
@@ -51,14 +51,10 @@ test('assertifies inside an if / else statement', () => {
 });
 
 test('throws if a statement is not an expression statement', () => {
-  expect.assertions(2);
-  try {
-    transform(`expect: function f() {}`, {
+  expect(() =>
+    transform(`expect: if(true);`, {
       plugins: [[plugin, { powerAssert: false } as Config]],
       highlightCode: false,
-    });
-  } catch (err) {
-    expect(err.message).toMatchSnapshot();
-    expect(err.codeFrame).toMatchSnapshot();
-  }
+    }),
+  ).toThrowErrorMatchingSnapshot();
 });

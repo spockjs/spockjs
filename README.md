@@ -52,16 +52,14 @@ Babel (e.g. for
 Once Babel is set up for your test files, simply add `"babel-plugin-spock"` to
 the `plugins` array in your babel configuration and you're good to go.
 
-**Note:** The Babel 7 beta is not yet supported, but may work if you disable
-power assertions (see [Configuration](#Configuration)).
+**Note:** The last version of this plugin that supports Babel 6 is `0.1.0`
 
 ## Usage
 
 ### Assertion blocks
 
-**Note:** At the moment, your test files need to `import assert from
-'power-assert';` for this to work. In the future, the plugin will be able to
-handle this for you automatically.
+**Note:** At the moment, your test files need to `import assert from 'power-assert';`
+for this to work. In the future, the plugin will be able to handle this for you automatically.
 
 Inside of a block labeled with `expect:` or `then:`, all statements will be
 considered assertions and evaluated to check for truth:

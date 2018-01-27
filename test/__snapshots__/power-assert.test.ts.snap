@@ -1,19 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`leaves unrelated assert statements untouched 1`] = `
-"'use strict';
+"const assert = require('power-assert');
 
-var _powerAssert = require('power-assert');
-
-var _powerAssert2 = _interopRequireDefault(_powerAssert);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _powerAssert2.default)(1 === 2);"
+assert(1 === 2);"
 `;
 
 exports[`prints a nice error for an "expected"-labeled expression statement 1`] = `
-"  # unknown:2
+"  # test.js:2
   
   assert(1 === 2)
            |     
@@ -27,7 +21,7 @@ exports[`prints a nice error for an "expected"-labeled expression statement 1`] 
 `;
 
 exports[`still works if babel-plugin-espower is used for other assertions in the file 1`] = `
-"  # unknown:3
+"  # test.js:3
   
   assert(x > 0)
          | |   
@@ -36,7 +30,7 @@ exports[`still works if babel-plugin-espower is used for other assertions in the
 `;
 
 exports[`still works if babel-plugin-espower is used for other assertions in the file 2`] = `
-"  # unknown:2
+"  # test.js:2
   
   assert(x >= 0)
          | |    
@@ -46,7 +40,7 @@ exports[`still works if babel-plugin-espower is used for other assertions in the
 `;
 
 exports[`supports non-standard JSX syntax 1`] = `
-"  # unknown:2
+"  # test.js:2
   
   assert(<div></div>.prop === 'expected')
                      |    |              
