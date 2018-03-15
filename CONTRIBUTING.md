@@ -26,11 +26,11 @@ This is also important for automatic generation of changelogs.
 
 ## Releasing
 
-1. Check that CI ran successfully
-2. Update the `CHANGELOG.md` using
-   [standard-version](https://github.com/conventional-changelog/standard-version)
-3. `yarn clean && yarn all`
-4. `cd dist`
-5. Remove the `private: true` property from the `package.json` file
-6. `npm publish`
-7. `git push --follow-tags`
+1.  Check that CI ran successfully
+2.  Update the `CHANGELOG.md` using
+    [standard-version](https://github.com/conventional-changelog/standard-version)
+3.  `yarn clean && yarn all`
+4.  `cd dist`
+5.  Remove the `private: true` property from the `package.json` file
+6.  `npm publish`
+7.  `git push --follow-tags`
