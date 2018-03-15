@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`leaves unrelated assert statements untouched 1`] = `
-"const assert = require('power-assert');
+"\\"use strict\\";
+
+const assert = require('power-assert');
 
 assert(1 === 2);"
 `;
