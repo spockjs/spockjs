@@ -1,14 +1,19 @@
 import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 
-export default (t: typeof BabelTypes) => (
+import { InternalConfig } from './config';
+import generateAssertIdentifier from './generate-assert-identifier';
+
+export default (t: typeof BabelTypes, config: InternalConfig) => (
   statementPath: NodePath<BabelTypes.Statement>,
 ) => {
   const statement = statementPath.node;
   if (t.isExpressionStatement(statement)) {
     const origExpr = statement.expression;
 
-    const assertIdentifier = t.identifier('assert');
+    const assertIdentifier = generateAssertIdentifier(t, config)(
+      statementPath.scope,
+    );
     assertIdentifier.loc = {
       start: origExpr.loc.start,
       end: origExpr.loc.start,

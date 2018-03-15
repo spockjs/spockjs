@@ -5,21 +5,21 @@ import { Config } from '../src/config';
 
 test('assertifies an "expect"-labeled expression statement', () => {
   const { code } = transform(`expect: 1 === 1;`, {
-    plugins: [[plugin, { powerAssert: false } as Config]],
+    plugins: [[plugin, { powerAssert: false, autoImport: false } as Config]],
   });
   expect(code).toMatchSnapshot();
 });
 
 test('assertifies a "then"-labeled expression statement', () => {
   const { code } = transform(`then: 1 === 1;`, {
-    plugins: [[plugin, { powerAssert: false } as Config]],
+    plugins: [[plugin, { powerAssert: false, autoImport: false } as Config]],
   });
   expect(code).toMatchSnapshot();
 });
 
 test('does not assertify a "when"-labeled expression statement', () => {
   const { code } = transform(`when: 1 === 1;`, {
-    plugins: [[plugin, { powerAssert: false } as Config]],
+    plugins: [[plugin, { powerAssert: false, autoImport: false } as Config]],
   });
   expect(code).toMatchSnapshot();
 });
@@ -32,7 +32,9 @@ test('assertifies all expression statements in a labeled block statement', () =>
       abc.xyz() === 'result';
       ((x, y) => x === y)(42, 42);
     }`,
-    { plugins: [[plugin, { powerAssert: false } as Config]] },
+    {
+      plugins: [[plugin, { powerAssert: false, autoImport: false } as Config]],
+    },
   );
   expect(code).toMatchSnapshot();
 });
@@ -45,7 +47,9 @@ test('assertifies inside an if / else statement', () => {
     else {
       expect: 1 >= 2;
     }`,
-    { plugins: [[plugin, { powerAssert: false } as Config]] },
+    {
+      plugins: [[plugin, { powerAssert: false, autoImport: false } as Config]],
+    },
   );
   expect(code).toMatchSnapshot();
 });
@@ -53,7 +57,7 @@ test('assertifies inside an if / else statement', () => {
 test('throws if a statement is not an expression statement', () => {
   expect(() =>
     transform(`expect: if(true);`, {
-      plugins: [[plugin, { powerAssert: false } as Config]],
+      plugins: [[plugin, { powerAssert: false, autoImport: false } as Config]],
       highlightCode: false,
     }),
   ).toThrowErrorMatchingSnapshot();

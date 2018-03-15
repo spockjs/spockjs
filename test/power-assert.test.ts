@@ -1,13 +1,14 @@
 import { transform } from '@babel/core';
 
 import plugin from '../src';
+import { Config } from '../src/config';
 
 test('prints a nice error for an "expected"-labeled expression statement', () => {
   const { code } = transform(
     `const assert = require('power-assert');
     expect: 1 === 2;`,
     {
-      plugins: [plugin],
+      plugins: [[plugin, { autoImport: false } as Config]],
       filename: 'test.js',
     },
   );
@@ -22,7 +23,7 @@ test('passes a truthy expression', () => {
     `const assert = require('power-assert');
     expect: 2 === 2;`,
     {
-      plugins: [plugin],
+      plugins: [[plugin, { autoImport: false } as Config]],
       filename: 'test.js',
     },
   );
@@ -35,7 +36,7 @@ test('leaves unrelated assert statements untouched', () => {
     `const assert = require('power-assert');
     assert(1 === 2);`,
     {
-      plugins: [plugin],
+      plugins: [[plugin, { autoImport: false } as Config]],
       filename: 'test.js',
     },
   );
@@ -49,7 +50,7 @@ test('still works if babel-plugin-espower is used for other assertions in the fi
     assert(x >= 0);
     expect: x > 0;`,
     {
-      plugins: [plugin, 'espower'],
+      plugins: [[plugin, { autoImport: false } as Config], 'espower'],
       filename: 'test.js',
     },
   );
@@ -74,7 +75,7 @@ test('supports non-standard JSX syntax', () => {
     `const assert = require('power-assert');
     expect: (<div></div>).prop === 'expected';`,
     {
-      plugins: [plugin],
+      plugins: [[plugin, { autoImport: false } as Config]],
       presets: ['@babel/preset-react'],
       filename: 'test.js',
     },
