@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not attempt to use a shadowed existing default import 1`] = `
+"import _assert from \\"power-assert\\";
+import fancyAssert from 'power-assert';
+{
+  let fancyAssert;
+
+  expect: _assert(1 === 1);
+}"
+`;
+
+exports[`does not attempt to use an existing named import 1`] = `
+"import _assert from \\"power-assert\\";
+import { fancyAssert } from 'power-assert';
+
+expect: _assert(1 === 1);"
+`;
+
+exports[`does not break preset-env module transform and generates code runnable in node 1`] = `"false == true"`;
+
+exports[`does not clash with an existing "_assert" import 1`] = `
+"import _assert2 from \\"power-assert\\";
+import _assert from 'fancy-assert';
+
+expect: _assert2(1 === 1);"
+`;
+
+exports[`imports from a custom source 1`] = `
+"import _assert from \\"fancy-assert\\";
+
+expect: _assert(1 === 1);"
+`;
+
+exports[`imports from power-assert by default 1`] = `
+"import _assert from \\"power-assert\\";
+
+expect: _assert(1 === 1);"
+`;
+
+exports[`reuses the same import for multiple assertions 1`] = `
+"import _assert from \\"power-assert\\";
+
+expect: _assert(1 === 1);
+
+expect: _assert(2 === 2);"
+`;
+
+exports[`uses an existing default import 1`] = `
+"import fancyAssert from 'power-assert';
+
+expect: fancyAssert(1 === 1);"
+`;

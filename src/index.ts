@@ -9,7 +9,6 @@ import { extractConfigFromState } from './config';
 const assertionBlockLabels = ['expect', 'then'];
 
 const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
-  const assertify = assertifyStatement(babel.types);
   const espowerVisitor = createEspowerVisitor(babel, {
     embedAst: true,
     patterns: ['assert(value)'],
@@ -19,6 +18,7 @@ const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
     visitor: {
       LabeledStatement(path, state) {
         const config = extractConfigFromState(state);
+        const assertify = assertifyStatement(babel.types, config);
 
         if (assertionBlockLabels.includes(path.node.label.name)) {
           const bodyPath = path.get('body') as NodePath<BabelTypes.Statement>;
