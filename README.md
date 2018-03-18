@@ -133,7 +133,7 @@ your tests. To work around this, most linters will give you multiple options:
 ## Configuration
 
 You can configure this plugin using Babel's regular
-[plugin configuration mechanism](https://babeljs.io/docs/plugins/#plugin-preset-options).
+[plugin configuration mechanism](https://babeljs.io/docs/plugins/#pluginpreset-options).
 The following options are available:
 
 **`powerAssert`**
