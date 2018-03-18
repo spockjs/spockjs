@@ -58,9 +58,6 @@ the `plugins` array in your babel configuration and you're good to go.
 
 ### Assertion blocks
 
-**Note:** At the moment, your test files need to `import assert from 'power-assert';`
-for this to work. In the future, the plugin will be able to handle this for you automatically.
-
 Inside of a block labeled with `expect:` or `then:`, all statements will be
 considered assertions and evaluated to check for truth:
 
@@ -146,4 +143,20 @@ you are experiencing other issues with your assertions.
 This feature is powered by the awesome project
 [power-assert](https://github.com/power-assert-js/power-assert).
 
+type: `boolean`  
 default: `true`
+
+**`autoImport`**
+
+The plugin transforms your assertion blocks to calls to an assert function.
+Be default (`true`), this function is automatically imported from `power-assert`.
+You can set this option to a string containing the name of a module
+that exports an assert function as its default export
+to use that module for assertions instead.
+
+You can also set this option to `false` to disable automatic imports.
+You will then have to provide a function named `assert` yourself
+in your test files wherever you use assertion blocks.
+
+type: `boolean | string`  
+default: `true` (`'power-assert'`)
