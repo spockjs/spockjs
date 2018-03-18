@@ -1,19 +1,22 @@
 import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
+import createEspowerVisitor from 'babel-plugin-espower/create';
 
 import { InternalConfig } from './config';
 import generateAssertIdentifier from './generate-assert-identifier';
 
-export default (t: typeof BabelTypes, config: InternalConfig) => (
-  statementPath: NodePath<BabelTypes.Statement>,
-) => {
-  const statement = statementPath.node;
+export default (
+  babel: { types: typeof BabelTypes },
+  state: any,
+  config: InternalConfig,
+) => (statementPath: NodePath<BabelTypes.Statement>) => {
+  const { types: t } = babel;
+  const { scope, node: statement } = statementPath;
+
   if (t.isExpressionStatement(statement)) {
     const origExpr = statement.expression;
 
-    const assertIdentifier = generateAssertIdentifier(t, config)(
-      statementPath.scope,
-    );
+    const assertIdentifier = generateAssertIdentifier(t, config)(scope);
     assertIdentifier.loc = {
       start: origExpr.loc.start,
       end: origExpr.loc.start,
@@ -22,6 +25,19 @@ export default (t: typeof BabelTypes, config: InternalConfig) => (
     const newExpr = t.callExpression(assertIdentifier, [origExpr]);
     newExpr.loc = origExpr.loc;
     statement.expression = newExpr;
+
+    // register added import with scope so it is found for the next assertion
+    // for some reason, this needs to happen after we have referenced the import
+    // with our call expression, otherwise the import will be removed
+    (scope as any).crawl();
+
+    if (config.powerAssert) {
+      // Now let espower generate nice power assertions for this assertion
+      createEspowerVisitor(babel, {
+        embedAst: true,
+        patterns: [`${assertIdentifier.name}(value)`],
+      }).visitor.Program(statementPath, state);
+    }
   } else {
     throw statementPath.buildCodeFrameError(
       `Expected an expression statement, but got a statement of type ${

@@ -87,3 +87,15 @@ test('supports non-standard JSX syntax', () => {
     }),
   ).toThrowErrorMatchingSnapshot();
 });
+
+test('works when using autoImport', () => {
+  const { code } = transform(`expect: 1 === 2;`, {
+    plugins: [plugin],
+    presets: ['@babel/preset-env'],
+    filename: 'test.js',
+  });
+
+  expect(() =>
+    new Function('require', code as string)(require),
+  ).toThrowErrorMatchingSnapshot();
+});

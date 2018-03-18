@@ -57,3 +57,17 @@ exports[`supports non-standard JSX syntax 1`] = `
   
   "
 `;
+
+exports[`works when using autoImport 1`] = `
+"  # test.js:1
+  
+  _assert(1 === 2)
+            |     
+            false 
+  
+  [number] 2
+  => 2
+  [number] 1
+  => 1
+  "
+`;
