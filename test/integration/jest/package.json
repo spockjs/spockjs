@@ -1,0 +1,10 @@
+{
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "jest.js"
+  },
+  "babel": {
+    "presets": [["@babel/preset-env", { "targets": { "node": 6 } }]],
+    "plugins": ["../../../src/index.ts"]
+  }
+}

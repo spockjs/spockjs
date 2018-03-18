@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`produces correct output 1`] = `
+",,FAIL PATH_HIDDEN/jest.js
+    successful test
+    failing test
+
+    failing test
+
+    assert.equal(received, expected) or assert(received) 
+    
+    Expected value to be (operator: ==):
+      true
+    Received:
+      false
+      
+      _assert(x === double(2))
+              | |   |         
+              | |   4         
+              3 false         
+      
+      [number] double(2)
+      => 4
+      [number] x
+      => 3
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 passed, 2 total
+Snapshots:   0 total
+TIME HIDDEN
+Ran all test suites.
+"
+`;
