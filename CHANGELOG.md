@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+
+## [0.3.1](https://github.com/jeysal/babel-plugin-spock/compare/v0.3.0...v0.3.1) (2018-03-18)
+
+### Bug Fixes
+
+* **power-assert:** make power assertions work when using autoImport ([f2fbf43](https://github.com/jeysal/babel-plugin-spock/commit/f2fbf43))
+
 <a name="0.3.0"></a>
 
 # [0.3.0](https://github.com/jeysal/babel-plugin-spock/compare/v0.2.0...v0.3.0) (2018-03-18)
