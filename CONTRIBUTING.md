@@ -30,8 +30,9 @@ This is also important for automatic generation of changelogs.
 2.  Update the `CHANGELOG.md` using
     [standard-version](https://github.com/conventional-changelog/standard-version)
 3.  `yarn fix` to reformat the changelog with prettier
-4.  `yarn clean && yarn all`
-5.  `cd dist`
-6.  Remove the `private: true` property from the `package.json` file
-7.  `npm publish`
-8.  `git push --follow-tags`
+4.  Amend the commit to include the formatted changelog and force update the generated tag
+5.  `yarn clean && yarn all`
+6.  `cd dist`
+7.  Remove the `private: true` property from the `package.json` file
+8.  `npm publish`
+9.  `git push --follow-tags`
