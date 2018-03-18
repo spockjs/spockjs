@@ -24,7 +24,9 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf coverage dist",
-    "all": "run-p lint typecheck test-once build",
+    "prefix": "prettier --write {src,test}/**/*.ts *.md",
+    "fix": "tslint --fix --project .",
+    "prelint": "prettier -l *.md",
     "lint": "tslint --project .",
     "typecheck": "tsc",
     "test-once": "jest --no-cache --coverage --config jest.config.js",
@@ -34,8 +36,7 @@
     "build": "babel src -d dist --extensions .ts",
     "postbuild": "run-p copymeta",
     "copymeta": "cp package.json LICENSE README.* dist",
-    "prefix": "prettier --write {src,test}/**/*.ts *.md",
-    "fix": "tslint --fix --project ."
+    "all": "run-p lint typecheck test-once build"
   },
   "prettier": {
     "singleQuote": true,
