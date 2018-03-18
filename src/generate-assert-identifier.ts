@@ -43,8 +43,7 @@ const addImport = (scope: Scope, t: typeof BabelTypes, source: string) => {
       t.stringLiteral(source),
     ),
   );
-  // recrawl scope so the added import is found for the next assertion
-  (scope as any).crawl();
+
   return id;
 };
 
