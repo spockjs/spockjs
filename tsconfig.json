@@ -4,6 +4,7 @@
     "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
+    "esModuleInterop": true,
     "lib": ["es2017"],
     "baseUrl": ".",
     "paths": {
