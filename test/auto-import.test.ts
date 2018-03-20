@@ -19,6 +19,18 @@ test('does not clash with an existing "_assert" import', () => {
   expect(code).toMatchSnapshot();
 });
 
+test('does not clash with an existing "_assert" identifier in another scope after adding an import', () => {
+  const { code } = transform(
+    `expect: 1 === 1;
+    {
+      let _assert;
+      expect: 2 === 2;
+    }`,
+    { plugins: [[plugin, { powerAssert: false } as Config]] },
+  );
+  expect(code).toMatchSnapshot();
+});
+
 test('imports from a custom source', () => {
   const { code } = transform(`expect: 1 === 1;`, {
     plugins: [
