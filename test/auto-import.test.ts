@@ -81,6 +81,19 @@ test('reuses the same import for multiple assertions', () => {
   expect(code).toMatchSnapshot();
 });
 
+test('reuses the same import for multiple assertions in nested scopes', () => {
+  const { code } = transform(
+    `(() => {
+      expect: 1 === 1;
+      expect: 2 === 2;
+    })()`,
+    {
+      plugins: [[plugin, { powerAssert: false } as Config]],
+    },
+  );
+  expect(code).toMatchSnapshot();
+});
+
 test('does not break preset-env module transform and generates code runnable in node', () => {
   const { code } = transform(`expect: 1 === 2;`, {
     plugins: [[plugin, { powerAssert: false } as Config]],

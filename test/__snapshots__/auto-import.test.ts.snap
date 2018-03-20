@@ -58,6 +58,16 @@ expect: _assert(1 === 1);
 expect: _assert(2 === 2);"
 `;
 
+exports[`reuses the same import for multiple assertions in nested scopes 1`] = `
+"import _assert from \\"power-assert\\";
+
+(() => {
+  expect: _assert(1 === 1);
+
+  expect: _assert(2 === 2);
+})();"
+`;
+
 exports[`uses an existing default import 1`] = `
 "import fancyAssert from 'power-assert';
 
