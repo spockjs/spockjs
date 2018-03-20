@@ -19,6 +19,18 @@ expect: _assert(1 === 1);"
 
 exports[`does not break preset-env module transform and generates code runnable in node 1`] = `"false == true"`;
 
+exports[`does not clash with an existing "_assert" identifier in another scope after adding an import 1`] = `
+"import _assert2 from \\"power-assert\\";
+
+expect: _assert2(1 === 1);
+
+{
+  let _assert;
+
+  expect: _assert2(2 === 2);
+}"
+`;
+
 exports[`does not clash with an existing "_assert" import 1`] = `
 "import _assert2 from \\"power-assert\\";
 import _assert from 'fancy-assert';
