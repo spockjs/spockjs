@@ -29,7 +29,7 @@ export default (
     // register added import with scope so it is found for the next assertion
     // for some reason, this needs to happen after we have referenced the import
     // with our call expression, otherwise the import will be removed
-    (scope as any).crawl();
+    (scope.getProgramParent() as any).crawl();
 
     if (config.powerAssert) {
       // Now let espower generate nice power assertions for this assertion
