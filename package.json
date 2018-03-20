@@ -35,7 +35,7 @@
     "test": "run-p --race test-watch servecov",
     "build": "babel src -d dist --extensions .ts",
     "postbuild": "run-p copymeta",
-    "copymeta": "cp package.json LICENSE README.* dist",
+    "copymeta": "copyfiles package.json LICENSE README.* dist",
     "all": "run-p lint typecheck test-once build"
   },
   "prettier": {
