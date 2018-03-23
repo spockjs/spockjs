@@ -46,7 +46,7 @@
     "babel-plugin-espower": "3.0.0-beta.1"
   },
   "peerDependencies": {
-    "babel-core": "^7.0.0-beta",
+    "@babel/core": "^7.0.0-beta",
     "power-assert": "^1.4.4"
   },
   "devDependencies": {
