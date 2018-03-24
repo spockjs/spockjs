@@ -1,0 +1,14 @@
+{
+  "babel": {
+    "presets": [["@babel/preset-env", { "targets": { "node": 6 } }]]
+  },
+  "ava": {
+    "files": ["ava.js"],
+    "failWithoutAssertions": false,
+    "babel": {
+      "testOptions": {
+        "plugins": ["../../../src/index.ts"]
+      }
+    }
+  }
+}

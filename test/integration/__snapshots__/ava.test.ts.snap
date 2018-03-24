@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`produces correct output 1`] = `
+"
+    successful test
+    failing test Error thrown in test
+
+  1 test failed
+
+  failing test
+
+
+  Error thrown in test:
+
+  AssertionError [ERR_ASSERTION] (AssertionError) {
+    actual: false,
+    code: 'ERR_ASSERTION',
+    expected: true,
+    generatedMessage: true,
+    operator: '==',
+    powerAssertContext: {
+      args: [
+        Object { … },
+      ],
+      source: {
+        ast: Object { … },
+        content: '_assert(x === double(2))',
+        filepath: 'ava.js',
+        line: 12,
+        tokens: Array [ … ],
+        visitorKeys: Object { … },
+      },
+    },
+    message: \`  # ava.js:12␊
+      ␊
+      _assert(x === double(2))␊
+              | |   |         ␊
+              | |   4         ␊
+              3 false         ␊
+      ␊
+      [number] double(2)␊
+      => 4␊
+      [number] x␊
+      => 3␊
+      \`,
+  }
+
+"
+`;
