@@ -27,8 +27,13 @@ test('produces correct output', () => {
 
   expect(status).toBe(1);
 
-  const result = JSON.parse(stdout.toString());
-  expect(result.numPassedTests).toBe(1);
-  expect(result.numFailedTests).toBe(1);
-  expect(result.testResults[0].message).toMatchSnapshot();
+  const {
+    numPassedTests,
+    numFailedTests,
+    testResults: [{ message }],
+  } = JSON.parse(stdout.toString());
+
+  expect(numPassedTests).toBe(1);
+  expect(numFailedTests).toBe(1);
+  expect(message).toMatchSnapshot();
 });
