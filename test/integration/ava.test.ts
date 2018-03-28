@@ -17,7 +17,7 @@ test('produces correct output', () => {
     { cwd },
   );
 
-  expect(status).toBe(1);
+  expect: status === 1;
   expect(
     stderr.toString().replace(/✔|√|✖|×/g, ' '), // remove OS-dependent symbols
   ).toMatchSnapshot();

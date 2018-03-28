@@ -5,6 +5,7 @@
     "strict": true,
     "noUnusedLocals": true,
     "esModuleInterop": true,
+    "allowUnusedLabels": true,
     "lib": ["es2017"],
     "baseUrl": ".",
     "paths": {

@@ -25,10 +25,17 @@ test('produces correct output', () => {
     { cwd },
   );
 
-  expect(status).toBe(1);
+  expect: status === 1;
 
-  const result = JSON.parse(stdout.toString());
-  expect(result.numPassedTests).toBe(1);
-  expect(result.numFailedTests).toBe(1);
-  expect(result.testResults[0].message).toMatchSnapshot();
+  const {
+    numPassedTests,
+    numFailedTests,
+    testResults: [{ message }],
+  } = JSON.parse(stdout.toString());
+
+  expect: {
+    numPassedTests === 1;
+    numFailedTests === 1;
+  }
+  expect(message).toMatchSnapshot();
 });
