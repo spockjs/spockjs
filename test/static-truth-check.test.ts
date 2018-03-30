@@ -1,7 +1,7 @@
 import { transform } from '@babel/core';
 
 import plugin from '../src';
-import { Config } from '../src/config';
+import { Config, minimalConfig } from '../src/config';
 
 test('throws if an expression can be inferred to always be truthy', () => {
   expect(() =>
@@ -11,14 +11,7 @@ test('throws if an expression can be inferred to always be truthy', () => {
       expect: x === 1;`,
       {
         plugins: [
-          [
-            plugin,
-            {
-              powerAssert: false,
-              autoImport: false,
-              staticTruthCheck: true,
-            } as Config,
-          ],
+          [plugin, { ...minimalConfig, staticTruthCheck: true } as Config],
         ],
         highlightCode: false,
       },
@@ -34,14 +27,7 @@ test('throws if an expression can be inferred to always be falsy', () => {
       expect: x === 1;`,
       {
         plugins: [
-          [
-            plugin,
-            {
-              powerAssert: false,
-              autoImport: false,
-              staticTruthCheck: true,
-            } as Config,
-          ],
+          [plugin, { ...minimalConfig, staticTruthCheck: true } as Config],
         ],
         highlightCode: false,
       },
@@ -57,14 +43,7 @@ test('does not throw if an expression may or may not be truthy', () => {
       expect: sut() === 42;`,
       {
         plugins: [
-          [
-            plugin,
-            {
-              powerAssert: false,
-              autoImport: false,
-              staticTruthCheck: true,
-            } as Config,
-          ],
+          [plugin, { ...minimalConfig, staticTruthCheck: true } as Config],
         ],
       },
     ),

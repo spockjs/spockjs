@@ -17,10 +17,21 @@ export interface Config {
   staticTruthCheck?: boolean;
 }
 
+/**
+ * Config containing the settings used if they are missing in the user-specified config.
+ */
 export const defaultConfig = {
   powerAssert: true,
   autoImport: true,
   staticTruthCheck: false,
+};
+
+/**
+ * Config that disables all but the core set of features.
+ */
+export const minimalConfig = {
+  powerAssert: false,
+  autoImport: false,
 };
 
 // tslint:disable no-parameter-reassignment
