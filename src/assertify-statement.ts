@@ -2,6 +2,7 @@ import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 import createEspowerVisitor from 'babel-plugin-espower/create';
 
+import checkStatically from './check-statically';
 import { InternalConfig } from './config';
 import generateAssertIdentifier from './generate-assert-identifier';
 
@@ -14,6 +15,11 @@ export default (
   const { scope, node: statement } = statementPath;
 
   if (t.isExpressionStatement(statement)) {
+    const expressionPath = statementPath.get('expression') as NodePath<
+      BabelTypes.Expression
+    >;
+    checkStatically(expressionPath, config);
+
     const origExpr = statement.expression;
 
     const assertIdentifier = generateAssertIdentifier(t, config)(scope);
