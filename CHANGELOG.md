@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.0"></a>
+
+# [0.4.0](https://github.com/jeysal/babel-plugin-spock/compare/v0.3.1...v0.4.0) (2018-03-30)
+
+### Bug Fixes
+
+* **auto-import:** avoid unnecessary duplicate imports ([308ffcb](https://github.com/jeysal/babel-plugin-spock/commit/308ffcb))
+* **package:** update babel core dependency name ([8339638](https://github.com/jeysal/babel-plugin-spock/commit/8339638))
+
+### Features
+
+* staticTruthCheck option ([5a2da53](https://github.com/jeysal/babel-plugin-spock/commit/5a2da53))
+
 <a name="0.3.1"></a>
 
 ## [0.3.1](https://github.com/jeysal/babel-plugin-spock/compare/v0.3.0...v0.3.1) (2018-03-18)
