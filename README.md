@@ -160,3 +160,19 @@ in your test files wherever you use assertion blocks.
 
 type: `boolean | string`  
 default: `true` (`'power-assert'`)
+
+**`staticTruthCheck`**
+
+The plugin can try to statically evaluate your assertion expressions at compile-time
+and throw an error if they can be inferred to always be truthy or to always be falsy.
+Such expressions sometimes indicate a test that does not provide any value.
+
+Here's an example of an assertion expression that can be inferred to always be truthy:
+
+```javascript
+const x = 1;
+expect: x === 1;
+```
+
+type: `boolean`  
+default: `false`

@@ -4,6 +4,7 @@
 export interface InternalConfig {
   powerAssert: boolean;
   autoImport: string; // empty => no auto import
+  staticTruthCheck: boolean;
 }
 
 /**
@@ -13,16 +14,18 @@ export interface InternalConfig {
 export interface Config {
   powerAssert?: boolean;
   autoImport?: boolean | string; // false => '', true => 'power-assert'
+  staticTruthCheck?: boolean;
 }
 
 export const defaultConfig = {
   powerAssert: true,
   autoImport: true,
+  staticTruthCheck: false,
 };
 
 // tslint:disable no-parameter-reassignment
 export const extractConfigFromState = ({
-  opts: { powerAssert, autoImport },
+  opts: { powerAssert, autoImport, staticTruthCheck },
 }: {
   opts: Config;
 }): InternalConfig => {
@@ -42,8 +45,14 @@ export const extractConfigFromState = ({
     autoImport = 'power-assert';
   }
 
+  // staticTruthCheck
+  if (staticTruthCheck === undefined) {
+    ({ staticTruthCheck } = defaultConfig);
+  }
+
   return {
     powerAssert,
     autoImport,
+    staticTruthCheck,
   };
 };
