@@ -1,10 +1,10 @@
 module.exports = {
   coverageDirectory: 'coverage',
-  collectCoverageFrom: ['src/**/*.{{j,t}s{,x}}'],
+  collectCoverageFrom: ['src/**/*.ts'],
   testEnvironment: 'node',
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
-  testRegex: '.*\\.(test|spec)\\.(j|t)sx?$',
+  testRegex: '.*\\.(test|spec)\\.ts$',
   transform: {
-    '^.+\\.(j|t)sx?$': 'babel-jest',
+    '^.+\\.ts$': 'babel-jest',
   },
 };

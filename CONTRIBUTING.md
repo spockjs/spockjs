@@ -13,8 +13,9 @@ the dependencies.
   * `yarn test-once` - perform a single [Jest](https://facebook.github.io/jest/)
     test run
   * `yarn build` - assemble the build output in the dist folder
-* `yarn test` - run the tests in watch mode and show the coverage stats in the
-  browser
+* `yarn test` - run the tests in watch mode
+* `yarn serve-cov` - show the live coverage stats in the browser
+  (`yarn test` should be running at the same time)
 * `yarn fix` - fix all auto-fixable issues and format the code
 * `yarn clean` - removes generated distribution files and coverage stats
 
