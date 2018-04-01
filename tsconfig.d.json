@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "lib": ["es2017"],
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./typings/*"]
+    }
+  },
+  "include": ["src/**/*.ts"]
+}
