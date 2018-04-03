@@ -31,11 +31,18 @@ const findExistingImportFromSource = (
   return;
 };
 
-const addImport = (scope: Scope, t: typeof BabelTypes, source: string) => {
+const addImport = (
+  scope: Scope,
+  t: typeof BabelTypes,
+  source: string,
+  name: string,
+) => {
   const program = scope.getProgramParent().path;
 
-  // generate default import from source
-  const id = scope.generateUidIdentifier(ASSERT_IDENTIFIER_NAME);
+  // generate default or specified import from source
+  const id = name
+    ? t.identifier(name)
+    : scope.generateUidIdentifier(ASSERT_IDENTIFIER_NAME);
   (program as any).unshiftContainer(
     'body',
     t.importDeclaration(
@@ -49,7 +56,7 @@ const addImport = (scope: Scope, t: typeof BabelTypes, source: string) => {
 
 export default (
   t: typeof BabelTypes,
-  { autoImport: importSource }: InternalConfig,
+  { autoImport: importSource, assertFunctionName }: InternalConfig,
 ) => (scope: Scope) => {
   if (importSource) {
     const name = findExistingImportFromSource(scope, t, importSource);
@@ -57,8 +64,8 @@ export default (
       return t.identifier(name);
     }
 
-    return addImport(scope, t, importSource);
+    return addImport(scope, t, importSource, assertFunctionName);
   }
 
-  return t.identifier(ASSERT_IDENTIFIER_NAME);
+  return t.identifier(assertFunctionName || ASSERT_IDENTIFIER_NAME);
 };

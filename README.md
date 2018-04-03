@@ -176,3 +176,11 @@ expect: x === 1;
 
 type: `boolean`  
 default: `false`
+
+**`assertFunctionName`**
+
+The plugin will automatically define an assert import or use an existing one.
+You can set this option to enforce a specific name for the generated assert calls.
+
+type: `string`  
+default: empty string (generated identifier)
