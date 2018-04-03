@@ -5,6 +5,7 @@ export interface InternalConfig {
   powerAssert: boolean;
   autoImport: string; // empty => no auto import
   staticTruthCheck: boolean;
+  assertFunctionName: string; // empty => no custom assert function name
 }
 
 /**
@@ -15,6 +16,7 @@ export interface Config {
   powerAssert?: boolean;
   autoImport?: boolean | string; // false => '', true => 'power-assert'
   staticTruthCheck?: boolean;
+  assertFunctionName?: string;
 }
 
 /**
@@ -24,6 +26,7 @@ export const defaultConfig = {
   powerAssert: true,
   autoImport: true,
   staticTruthCheck: false,
+  assertFunctionName: '',
 };
 
 /**
@@ -36,7 +39,7 @@ export const minimalConfig = {
 
 // tslint:disable no-parameter-reassignment
 export const extractConfigFromState = ({
-  opts: { powerAssert, autoImport, staticTruthCheck },
+  opts: { powerAssert, autoImport, staticTruthCheck, assertFunctionName },
 }: {
   opts: Config;
 }): InternalConfig => {
@@ -61,9 +64,15 @@ export const extractConfigFromState = ({
     ({ staticTruthCheck } = defaultConfig);
   }
 
+  // assertFunctionName
+  if (assertFunctionName === undefined) {
+    ({ assertFunctionName } = defaultConfig);
+  }
+
   return {
     powerAssert,
     autoImport,
     staticTruthCheck,
+    assertFunctionName,
   };
 };
