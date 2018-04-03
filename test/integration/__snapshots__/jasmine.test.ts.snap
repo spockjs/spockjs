@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`produces correct output 1`] = `
+"Started
+.F
+
+Failures:
+1) jasmine with spock failing test
+  Message:
+    AssertionError [ERR_ASSERTION]:   # jasmine.js:11
+      
+      _assert(x === double(2))
+              | |   |         
+              | |   4         
+              3 false         
+      
+      [number] double(2)
+      => 4
+      [number] x
+      => 3
+      
+  "
+`;
