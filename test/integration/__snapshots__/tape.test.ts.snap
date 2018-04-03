@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`produces correct output 1`] = `"AssertionError [ERR_ASSERTION]: # tape.js:13 _assert(x === double(2)) | | | | | 4 3 false [number] double(2) => 4 [number] x => 3"`;
