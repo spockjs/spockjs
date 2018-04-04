@@ -24,9 +24,9 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf coverage dist",
-    "prefix": "prettier --write {src,test}/**/*.ts *.md",
+    "prefix": "prettier --write {src,test}/**/*.ts *.{js,md}",
     "fix": "tslint --fix --project .",
-    "prelint": "prettier -l *.md",
+    "prelint": "prettier -l *.{js,md}",
     "lint": "tslint --project .",
     "typecheck": "tsc",
     "test-once": "ts-node --project tsconfig.json node_modules/jest-cli/bin/jest.js --coverage --config jest.config.js --no-cache",
