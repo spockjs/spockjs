@@ -191,3 +191,60 @@ You can set this option to enforce a specific name for the generated assert call
 
 type: `string`  
 default: empty string (generated identifier)
+
+## Escape route
+
+In case you wish to stop using this plugin at some point,
+but of course don't want to rewrite all of your tests manually,
+there is always an escape hatch available.
+We also have an [integration test](test/integration/codemod.test.ts)
+to safeguard this possibility.
+
+### Codemod configuration
+
+Create a `config.json`:
+
+```json
+{
+  "plugins": [
+    [
+      "babel-plugin-spock",
+      {
+        "powerAssert": false,
+        "autoImport": "assert",
+        "assertFunctionName": "assert"
+      }
+    ]
+  ]
+}
+```
+
+#### Explanation
+
+We turn off `powerAssert` because it generates a lot of unreadable code.  
+We set `autoImport` to `assert` instead of the default `powerAssert`
+to also switch back to the native node `assert` module
+as we move away from the plugin.  
+We set the `assertFunctionName` to `assert`
+to avoid auto-generated identifiers in our tests.
+Note that you must ensure your tests
+do not declare an `assert` identifier themselves
+to avoid a potential collision.
+
+### Running the codemod
+
+To transform a test file with Babel and **overwrite it immediately**, execute
+
+```sh
+npx --no-install babel --no-babelrc --config-file ./config.json \
+your-test-file.js --out-file your-test-file.js
+```
+
+`npx --no-install babel` executes your local (package-wide) Babel installation.
+If you do not have `@babel/cli` installed locally,
+you can also `npm install -g @babel/core @babel/cli` it globally.
+The `--no-babelrc` and `--config-file` Babel options ensure that
+we only apply exactly the changes from the plugin.
+
+You can also use Babel to apply the changes to an entire folder of tests:
+`npx [...] tests --out-dir tests`
