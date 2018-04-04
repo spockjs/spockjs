@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`generates code that looks hand-written 1`] = `
+"import assert from \\"assert\\";
+
+expect: assert(1 === 2);
+"
+`;
