@@ -1,7 +1,14 @@
 import { sync as run } from 'cross-spawn';
 import { env } from 'process';
 
-import { nodeModulesPath, resolvePath, tsconfigPath } from './utils';
+import {
+  babelJitEnv,
+  nodeModulesPath,
+  requireBabelJitArgs,
+  requireTypescriptJitArgs,
+  resolvePath,
+  typescriptJitEnv,
+} from './utils';
 
 const mochaCli = resolvePath(nodeModulesPath, 'mocha', 'bin', 'mocha');
 const cwd = resolvePath('mocha');
@@ -11,10 +18,8 @@ test('produces correct output', () => {
     'node',
     [
       mochaCli,
-      '--require',
-      '@babel/register',
-      '--require',
-      'ts-node/register',
+      ...requireBabelJitArgs,
+      ...requireTypescriptJitArgs,
       '--reporter',
       'json',
       'mocha.js',
@@ -23,8 +28,8 @@ test('produces correct output', () => {
       cwd,
       env: {
         ...env,
-        TS_NODE_PROJECT: tsconfigPath,
-        BABEL_DISABLE_CACHE: '1',
+        ...babelJitEnv,
+        ...typescriptJitEnv,
       },
     },
   );

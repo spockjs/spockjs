@@ -3,9 +3,9 @@ import { readFileSync as read, unlinkSync as del } from 'fs';
 
 import {
   nodeModulesPath,
+  requireBabelJitArgs,
   resolvePath,
-  tsconfigPath,
-  tsNodePath,
+  runWithTypescriptJit,
 } from './utils';
 
 const babelCli = resolvePath(nodeModulesPath, '@babel', 'cli', 'bin', 'babel');
@@ -15,11 +15,8 @@ const inFile = resolvePath(cwd, 'codemod.js');
 const outFile = resolvePath(cwd, 'codemod.out.js');
 
 beforeAll(() => {
-  const { status } = run(
-    tsNodePath,
+  const { status } = runWithTypescriptJit(
     [
-      '--project',
-      tsconfigPath,
       babelCli,
       '--no-babelrc',
       '--config-file',
@@ -40,11 +37,9 @@ test('generates code that looks hand-written', () => {
 });
 
 test('generates code that performs the assertion', () => {
-  const { status, stderr } = run(
-    'node',
-    ['--require', '@babel/register', outFile],
-    { cwd },
-  );
+  const { status, stderr } = run('node', [...requireBabelJitArgs, outFile], {
+    cwd,
+  });
 
   expect: status === 1;
   expect(stderr.toString()).toMatch(

@@ -2,7 +2,14 @@ import { sync as run } from 'cross-spawn';
 import { env } from 'process';
 import TapParser from 'tap-parser';
 
-import { nodeModulesPath, resolvePath, tsconfigPath } from './utils';
+import {
+  babelJitEnv,
+  nodeModulesPath,
+  requireBabelJitArgs,
+  requireTypescriptJitArgs,
+  resolvePath,
+  typescriptJitEnv,
+} from './utils';
 
 const tapeCli = resolvePath(nodeModulesPath, 'tape', 'bin', 'tape');
 const cwd = resolvePath('tape');
@@ -10,20 +17,13 @@ const cwd = resolvePath('tape');
 test('produces correct output', done => {
   const { status, stdout } = run(
     'node',
-    [
-      tapeCli,
-      '--require',
-      '@babel/register',
-      '--require',
-      'ts-node/register',
-      'tape.js',
-    ],
+    [tapeCli, ...requireBabelJitArgs, ...requireTypescriptJitArgs, 'tape.js'],
     {
       cwd,
       env: {
         ...env,
-        TS_NODE_PROJECT: tsconfigPath,
-        BABEL_DISABLE_CACHE: '1',
+        ...babelJitEnv,
+        ...typescriptJitEnv,
       },
     },
   );

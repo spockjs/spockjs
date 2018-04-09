@@ -1,3 +1,5 @@
+import { SpawnSyncOptions } from 'child_process';
+import { sync as run } from 'cross-spawn';
 import * as path from 'path';
 
 /*
@@ -15,10 +17,33 @@ import * as path from 'path';
   test files that use assertion blocks etc. change,
   but not when the babel plugin that transforms them changes.
 */
+
+// paths
+
 export const resolvePath = path.resolve.bind(path, __dirname);
 
 const rootPath = resolvePath('..', '..');
-export const tsconfigPath = resolvePath(rootPath, 'tsconfig.json');
+const tsconfigPath = resolvePath(rootPath, 'tsconfig.json');
 
 export const nodeModulesPath = resolvePath(rootPath, 'node_modules');
-export const tsNodePath = resolvePath(nodeModulesPath, '.bin', 'ts-node');
+const tsNodePath = resolvePath(nodeModulesPath, '.bin', 'ts-node');
+
+// babel / typescript helpers
+
+/**
+ * Preferred way to use JIT TypeScript compilation,
+ * available when @babel/register is not required.
+ * No further arguments or environment overrides required.
+ * If JIT Babel compilation is also required,
+ * fall back to the JitArgs/JitEnv this file exports as well.
+ */
+export const runWithTypescriptJit = (
+  args: string[],
+  options?: SpawnSyncOptions,
+) => run(tsNodePath, ['--project', tsconfigPath, ...args], options);
+
+export const requireBabelJitArgs = ['--require', '@babel/register'];
+export const requireTypescriptJitArgs = ['--require', 'ts-node/register'];
+
+export const babelJitEnv = { BABEL_DISABLE_CACHE: '1' };
+export const typescriptJitEnv = { TS_NODE_PROJECT: tsconfigPath };
