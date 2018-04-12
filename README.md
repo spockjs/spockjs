@@ -131,6 +131,9 @@ your tests. To work around this, most linters will give you multiple options:
 * Create a separate config for tests that extends the base config, but disables
   the rules.
 
+If you're using TypeScript, tsc might also complain about unused labels.
+`allowUnusedLabels` can turn those warnings off.
+
 ## Configuration
 
 You can configure this plugin using Babel's regular
