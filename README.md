@@ -113,6 +113,10 @@ small helper libraries on npm. For example,
 perform deep equality checks on object structures. In the future, this plugin
 might provide special syntax for such use cases.
 
+Of course, you still have the option to use your native assertion library
+alongside assertion blocks wherever you consider it appropriate.
+Some assertion libraries may provide features on top of what this plugin supports.
+
 ### Linters
 
 The test you will write using this plugin often employ syntax that is otherwise
