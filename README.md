@@ -46,7 +46,7 @@ support for Babel. Babel integrates quite nicely into most modern test runners.
 Check the documentation of your test runner for instructions on how to configure
 Babel (e.g. for
 [Jest](https://facebook.github.io/jest/docs/en/getting-started.html#using-babel),
-[AVA](https://github.com/avajs/ava#es2017-support) etc.) or consult Babel's own
+[AVA](https://github.com/avajs/ava/blob/master/docs/recipes/babel.md) etc.) or consult Babel's own
 [documentation](http://babeljs.io/docs/setup/).
 
 Once Babel is set up for your test files, simply add `"babel-plugin-spock"` to
