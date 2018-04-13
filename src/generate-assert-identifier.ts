@@ -37,6 +37,11 @@ const addImport = (
   source: string,
   name: string,
 ) => {
+  if (name) {
+    // clear possible binding conflicts
+    scope.rename(name);
+  }
+
   const program = scope.getProgramParent().path;
 
   // generate default or specified import from source
