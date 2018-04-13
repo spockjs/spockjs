@@ -3,7 +3,7 @@ import * as BabelTypes from '@babel/types';
 
 import { InternalConfig } from './config';
 
-const ASSERT_IDENTIFIER_NAME = 'assert';
+const DEFAULT_ASSERTION_FUNCTION_NAME_HINT = 'assert';
 
 const findExistingImportFromSource = (
   scope: Scope,
@@ -42,7 +42,7 @@ const addImport = (
   // generate default or specified import from source
   const id = name
     ? t.identifier(name)
-    : scope.generateUidIdentifier(ASSERT_IDENTIFIER_NAME);
+    : scope.generateUidIdentifier(DEFAULT_ASSERTION_FUNCTION_NAME_HINT);
   (program as any).unshiftContainer(
     'body',
     t.importDeclaration(
@@ -67,5 +67,7 @@ export default (
     return addImport(scope, t, importSource, assertFunctionName);
   }
 
-  return t.identifier(assertFunctionName || ASSERT_IDENTIFIER_NAME);
+  return t.identifier(
+    assertFunctionName || DEFAULT_ASSERTION_FUNCTION_NAME_HINT,
+  );
 };
