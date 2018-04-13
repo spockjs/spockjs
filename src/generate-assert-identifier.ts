@@ -39,7 +39,13 @@ const addImport = (
 ) => {
   const program = scope.getProgramParent().path;
 
-  // generate default or specified import from source
+  // Generate default import from exact name or default name hint.
+  // Using @babel/helper-module-imports would give us commonjs support
+  // for free without requiring @babel/preset-env, however
+  // 1. it does not support exact names, so we would still need to
+  //    use our manual import generation if assertFunctionName is set and
+  // 2. it might generate SequenceExpressions instead of Identifiers,
+  //    which are annoying to deal with because of powerAssert patterns.
   const id = name
     ? t.identifier(name)
     : scope.generateUidIdentifier(DEFAULT_ASSERTION_FUNCTION_NAME_HINT);
