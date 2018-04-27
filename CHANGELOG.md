@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+
+# [0.5.0](https://github.com/jeysal/babel-plugin-spock/compare/v0.4.0...v0.5.0) (2018-04-27)
+
+### Features
+
+* add assertFunctionName option ([448b277](https://github.com/jeysal/babel-plugin-spock/commit/448b277))
+* **assert-function-name/auto-import:** gracefully handle conflicts by renaming existing bindings ([4bea5c8](https://github.com/jeysal/babel-plugin-spock/commit/4bea5c8))
+
 <a name="0.4.0"></a>
 
 # [0.4.0](https://github.com/jeysal/babel-plugin-spock/compare/v0.3.1...v0.4.0) (2018-03-30)
