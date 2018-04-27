@@ -33,7 +33,11 @@ test('produces correct output', () => {
 
   const {
     stats: { passes, failures },
-    failures: [{ err: { message } }],
+    failures: [
+      {
+        err: { message },
+      },
+    ],
   } = JSON.parse(stdout.toString());
 
   expect: {
