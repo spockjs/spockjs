@@ -2,7 +2,12 @@ import { sync as run } from 'cross-spawn';
 
 import { env } from 'process';
 
-import { nodeModulesPath, resolvePath, tsconfigPath } from './utils';
+import {
+  babelJitEnv,
+  nodeModulesPath,
+  resolvePath,
+  typescriptJitEnv,
+} from './utils';
 
 const jasmineCli = resolvePath(nodeModulesPath, 'jasmine', 'bin', 'jasmine');
 const cwd = resolvePath('jasmine');
@@ -12,9 +17,9 @@ test('produces correct output', () => {
     cwd,
     env: {
       ...env,
+      ...babelJitEnv,
+      ...typescriptJitEnv,
       JASMINE_CONFIG_PATH: 'jasmine.json',
-      TS_NODE_PROJECT: tsconfigPath,
-      BABEL_DISABLE_CACHE: '1',
     },
   });
 

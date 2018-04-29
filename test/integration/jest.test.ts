@@ -1,27 +1,11 @@
-import { sync as run } from 'cross-spawn';
-
-import {
-  nodeModulesPath,
-  resolvePath,
-  tsconfigPath,
-  tsNodePath,
-} from './utils';
+import { nodeModulesPath, resolvePath, runWithTypescriptJit } from './utils';
 
 const jestCli = resolvePath(nodeModulesPath, 'jest-cli', 'bin', 'jest');
 const cwd = resolvePath('jest');
 
 test('produces correct output', () => {
-  const { status, stdout } = run(
-    tsNodePath,
-    [
-      '--project',
-      tsconfigPath,
-      jestCli,
-      '--no-cache',
-      '--noStackTrace',
-      '--runInBand',
-      '--json',
-    ],
+  const { status, stdout } = runWithTypescriptJit(
+    [jestCli, '--no-cache', '--noStackTrace', '--runInBand', '--json'],
     { cwd },
   );
 
