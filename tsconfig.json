@@ -1,15 +1,9 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "noEmit": true,
-    "skipLibCheck": true,
     "strict": true,
     "noUnusedLocals": true,
-    "esModuleInterop": true,
-    "allowUnusedLabels": true,
-    "lib": ["es2017"],
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./typings/*"]
-    }
+    "allowUnusedLabels": true
   }
 }

@@ -1,0 +1,32 @@
+{
+  "private": true,
+  "name": "@spockjs/integration-tests",
+  "version": "0.5.0",
+  "author": "Tim Seckinger <seckinger.tim@gmail.com>",
+  "homepage": "https://github.com/spockjs/spockjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spockjs/spockjs.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 6"
+  },
+  "bugs": {
+    "url": "https://github.com/spockjs/spockjs/issues"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "7.0.0-beta.44",
+    "@babel/register": "7.0.0-beta.44",
+    "@types/cross-spawn": "^6.0.0",
+    "ava": "1.0.0-beta.3",
+    "cross-spawn": "^6.0.5",
+    "get-installed-path": "^4.0.8",
+    "jasmine": "^3.1.0",
+    "mocha": "^5.0.5",
+    "npm-which": "^3.0.1",
+    "tap-parser": "^7.0.0",
+    "tape": "^4.9.0",
+    "tape-catch": "^1.0.6"
+  }
+}

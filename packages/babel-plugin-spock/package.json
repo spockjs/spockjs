@@ -1,0 +1,34 @@
+{
+  "name": "@spockjs/babel-plugin-spock",
+  "version": "0.5.0",
+  "description": "Structured JS test cases, inspired by Spock Framework",
+  "keywords": [
+    "spock",
+    "framework",
+    "test",
+    "structure",
+    "babel",
+    "plugin"
+  ],
+  "author": "Tim Seckinger <seckinger.tim@gmail.com>",
+  "homepage": "https://github.com/spockjs/spockjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spockjs/spockjs.git"
+  },
+  "license": "MIT",
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">= 6"
+  },
+  "bugs": {
+    "url": "https://github.com/spockjs/spockjs/issues"
+  },
+  "dependencies": {
+    "babel-plugin-espower": "3.0.0-beta.1"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0-beta",
+    "power-assert": "^1.4.4"
+  }
+}

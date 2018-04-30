@@ -1,16 +1,16 @@
-# babel-plugin-spock
+# spockjs
 
 > Structured JS test cases, inspired by
 > [Spock Framework](http://spockframework.org)
 
-[![build status](https://img.shields.io/travis/jeysal/babel-plugin-spock/master.svg?style=flat-square)](https://travis-ci.org/jeysal/babel-plugin-spock)
-[![AppVeyor build status](https://img.shields.io/appveyor/ci/jeysal/babel-plugin-spock/master.svg?style=flat-square&label=windows+build)](https://ci.appveyor.com/project/jeysal/babel-plugin-spock)
-[![code coverage](https://img.shields.io/codecov/c/github/jeysal/babel-plugin-spock/master.svg?style=flat-square)](https://codecov.io/gh/jeysal/babel-plugin-spock)
+[![build status](https://img.shields.io/travis/spockjs/spockjs/master.svg?style=flat-square)](https://travis-ci.org/spockjs/spockjs)
+[![AppVeyor build status](https://img.shields.io/appveyor/ci/jeysal/spockjs/master.svg?style=flat-square&label=windows+build)](https://ci.appveyor.com/project/jeysal/spockjs)
+[![code coverage](https://img.shields.io/codecov/c/github/spockjs/spockjs/master.svg?style=flat-square)](https://codecov.io/gh/spockjs/spockjs)
 
-[![npm package](https://img.shields.io/npm/v/babel-plugin-spock.svg?style=flat-square)](https://www.npmjs.com/package/babel-plugin-spock)
-[![license](https://img.shields.io/github/license/jeysal/babel-plugin-spock.svg?style=flat-square)](https://github.com/jeysal/babel-plugin-spock/blob/master/LICENSE)
+[![npm package](https://img.shields.io/npm/v/@spockjs/babel-plugin-spock.svg?style=flat-square)](https://www.npmjs.com/package/babel-plugin-spock)
+[![license](https://img.shields.io/github/license/spockjs/spockjs.svg?style=flat-square)](https://github.com/spockjs/spockjs/blob/master/LICENSE)
 
-**Note:** This module is in an early stage of development and currently provides
+**Note:** This project is in an early stage of development and currently provides
 only a small set of features.
 
 ## Example test case
@@ -38,9 +38,9 @@ Received:
 
 ## Installation
 
-    npm install --save-dev babel-plugin-spock power-assert
+    npm install --save-dev @spockjs/babel-plugin-spock power-assert
 
-This module is a [Babel](https://babeljs.io/) plugin that needs to transform
+This project is a [Babel](https://babeljs.io/) plugin that needs to transform
 your test sources in order to generate assertions, so your test runner will need
 support for Babel. Babel integrates quite nicely into most modern test runners.
 Check the documentation of your test runner for instructions on how to configure
@@ -49,10 +49,10 @@ Babel (e.g. for
 [AVA](https://github.com/avajs/ava/blob/master/docs/recipes/babel.md) etc.) or consult Babel's own
 [documentation](http://babeljs.io/docs/setup/).
 
-Once Babel is set up for your test files, simply add `"babel-plugin-spock"` to
+Once Babel is set up for your test files, simply add `"@spockjs/babel-plugin-spock"` to
 the `plugins` array in your babel configuration and you're good to go.
 
-**Note:** The last version of this plugin that supports Babel 6 is `0.1.0`
+**Note:** This plugin requires Babel 7. Babel 6 is no longer supported.
 
 ## Usage
 
@@ -208,7 +208,7 @@ Create a `config.json`:
 {
   "plugins": [
     [
-      "babel-plugin-spock",
+      "@spockjs/babel-plugin-spock",
       {
         "powerAssert": false,
         "autoImport": "assert",
