@@ -17,7 +17,8 @@
     "test": "yarn run test-once --watchAll",
     "prebuild": "lerna exec --scope @spockjs/babel-plugin-spock -- tsc --project tsconfig.d.json",
     "build": "lerna exec --scope @spockjs/babel-plugin-spock -- babel src -d dist --extensions .ts --ignore .*\\/__tests__\\/.* --ignore .*\\/__mocks__\\/.*",
-    "all": "run-p lint typecheck test-once build"
+    "all": "run-p lint typecheck test-once build",
+    "publish": "lerna publish --npmClient npm --allowBranch master --conventional-commits"
   },
   "devDependencies": {
     "@babel/cli": "7.0.0-beta.44",
