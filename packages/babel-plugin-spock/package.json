@@ -1,6 +1,6 @@
 {
   "name": "@spockjs/babel-plugin-spock",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Structured JS test cases, inspired by Spock Framework",
   "keywords": [
     "spock",
@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "publishConfig": {
-    "access":"public"
+    "access": "public"
   },
   "main": "dist/index.js",
   "engines": {
