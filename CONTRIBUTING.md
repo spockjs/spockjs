@@ -14,10 +14,8 @@ the dependencies.
     test run
   * `yarn build` - assemble the build output in the dist folder
 * `yarn test` - run the tests in watch mode
-* `yarn serve-cov` - show the live coverage stats in the browser
-  (`yarn test` should be running at the same time)
 * `yarn fix` - fix all auto-fixable issues and format the code
-* `yarn clean` - removes generated distribution files and coverage stats
+* `yarn clean` - remove generated distribution files and coverage stats
 
 ## Commits
 
