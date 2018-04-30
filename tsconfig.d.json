@@ -1,15 +1,8 @@
 {
+  "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist",
     "declaration": true,
-    "emitDeclarationOnly": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "lib": ["es2017"],
-    "baseUrl": ".",
-    "paths": {
-      "*": ["./typings/*"]
-    }
+    "emitDeclarationOnly": true
   },
-  "include": ["src/**/*.ts"]
+  "exclude": ["**/__tests__/**", "**/__mocks__/**", "packages/*/dist/**"]
 }

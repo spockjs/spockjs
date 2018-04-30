@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    [
+      "@spockjs/babel-plugin-spock/src/index.ts",
+      {
+        "powerAssert": false,
+        "autoImport": "assert",
+        "assertFunctionName": "assert"
+      }
+    ]
+  ]
+}

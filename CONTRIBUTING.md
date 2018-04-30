@@ -12,7 +12,7 @@ the dependencies.
     [TypeScript](https://www.typescriptlang.org/) compiler
   * `yarn test-once` - perform a single [Jest](https://facebook.github.io/jest/)
     test run
-  * `yarn build` - assemble the build output in the dist folder
+  * `yarn build` - assemble the build output in the dist folder of each package
 * `yarn test` - run the tests in watch mode
 * `yarn serve-cov` - show the live coverage stats in the browser
   (`yarn test` should be running at the same time)
@@ -26,6 +26,8 @@ We follow the
 This is also important for automatic generation of changelogs.
 
 ## Releasing
+
+TODO changed with Lerna, update this section.
 
 1.  Check that CI ran successfully
 2.  Update the `CHANGELOG.md` using

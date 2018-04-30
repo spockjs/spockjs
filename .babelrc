@@ -13,7 +13,7 @@
   "plugins": ["@babel/plugin-proposal-object-rest-spread"],
   "env": {
     "test": {
-      "plugins": ["./src/index.ts"]
+      "plugins": ["./packages/babel-plugin-spock/src/index.ts"]
     }
   }
 }
