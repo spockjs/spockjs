@@ -1,2 +1,5 @@
 coverage/**/*
 **/dist/**/*
+
+CHANGELOG.md
+package.json

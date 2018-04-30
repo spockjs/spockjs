@@ -8,9 +8,9 @@
   ],
   "scripts": {
     "clean": "rimraf coverage packages/*/dist",
-    "prefix": "prettier --write **/*.{js,md}",
+    "prefix": "prettier --write **/*.{js,json,md}",
     "fix": "tslint --project . --fix",
-    "prelint": "prettier -l **/*.{js,md}",
+    "prelint": "prettier -l **/*.{js,json,md}",
     "lint": "tslint --project .",
     "typecheck": "tsc",
     "test-once": "ts-node --project tsconfig.json node_modules/jest-cli/bin/jest.js --coverage --config jest.config.js --no-cache",
