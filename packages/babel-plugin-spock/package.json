@@ -17,6 +17,9 @@
     "url": "git+https://github.com/spockjs/spockjs.git"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access":"public"
+  },
   "main": "dist/index.js",
   "engines": {
     "node": ">= 6"
