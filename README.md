@@ -54,6 +54,12 @@ to the `plugins` array in your babel configuration and you're good to go.
 
 **Note:** This plugin requires Babel 7. Babel 6 is no longer supported.
 
+### TypeScript
+
+It is possible to use this plugin with TypeScript,
+but only if you compile the TypeScript code with Babel (`@babel/preset-typescript`).
+The official TypeScript compiler (`tsc`) is not supported.
+
 ## Usage
 
 ### Assertion blocks
