@@ -1,7 +1,7 @@
 import { Scope } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 
-import { InternalConfig } from './config';
+import { InternalConfig } from '@spockjs/config';
 
 const DEFAULT_ASSERTION_FUNCTION_NAME_HINT = 'assert';
 

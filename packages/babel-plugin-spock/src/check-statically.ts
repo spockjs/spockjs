@@ -1,7 +1,7 @@
-import { NodePath } from 'babel-traverse';
-import { Expression } from 'babel-types';
+import { NodePath } from '@babel/traverse';
+import { Expression } from '@babel/types';
 
-import { InternalConfig } from './config';
+import { InternalConfig } from '@spockjs/config';
 
 export default (
   expressionPath: NodePath<Expression>,

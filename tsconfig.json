@@ -4,6 +4,9 @@
     "noEmit": true,
     "strict": true,
     "noUnusedLocals": true,
-    "allowUnusedLabels": true
+    "allowUnusedLabels": true,
+    "paths": {
+      "@spockjs/*": ["./packages/*/src"]
+    }
   }
 }
