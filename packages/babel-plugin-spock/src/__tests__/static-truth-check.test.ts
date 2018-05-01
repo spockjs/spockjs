@@ -1,7 +1,7 @@
 import { transform } from '@babel/core';
+import { Config, minimalConfig } from '@spockjs/config';
 
 import plugin from '..';
-import { Config, minimalConfig } from '../config';
 
 test('throws if an expression can be inferred to always be truthy', () => {
   expect(() =>

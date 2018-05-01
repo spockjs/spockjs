@@ -1,9 +1,11 @@
 import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
+
+import { InternalConfig } from '@spockjs/config';
+
 import createEspowerVisitor from 'babel-plugin-espower/create';
 
 import checkStatically from './check-statically';
-import { InternalConfig } from './config';
 import generateAssertIdentifier from './generate-assert-identifier';
 
 export default (

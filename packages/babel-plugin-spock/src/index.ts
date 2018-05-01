@@ -1,9 +1,10 @@
 import { PluginObj } from '@babel/core';
+import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
-import { NodePath } from 'babel-traverse';
+
+import { extractConfigFromState } from '@spockjs/config';
 
 import assertifyStatement from './assertify-statement';
-import { extractConfigFromState } from './config';
 
 const assertionBlockLabels = ['expect', 'then'];
 

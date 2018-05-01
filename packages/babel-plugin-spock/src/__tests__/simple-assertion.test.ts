@@ -1,7 +1,7 @@
 import { transform } from '@babel/core';
+import { minimalConfig } from '@spockjs/config';
 
 import plugin from '..';
-import { minimalConfig } from '../config';
 
 test('assertifies an "expect"-labeled expression statement', () => {
   const { code } = transform(`expect: 1 === 1;`, {
