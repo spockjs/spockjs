@@ -1,4 +1,4 @@
-# babel-plugin-spock
+# @spockjs/babel-plugin-spock
 
 > Structured JS test cases, inspired by
 > [Spock Framework](http://spockframework.org)
