@@ -27,4 +27,4 @@ This is also important for automatic generation of changelogs.
 
 1.  Check that CI ran successfully
 2.  `npm login --scope=@spockjs`
-3.  `yarn clean && yarn all && yarn publish`
+3.  `yarn clean && yarn all && scripts/publish.sh`

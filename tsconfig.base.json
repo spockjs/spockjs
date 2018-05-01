@@ -5,7 +5,6 @@
     "lib": ["es2017"],
     "baseUrl": ".",
     "paths": {
-      "@spockjs/*": ["./packages/*/src"],
       "*": ["./typings/*"]
     }
   }

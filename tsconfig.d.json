@@ -2,7 +2,10 @@
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
     "declaration": true,
-    "emitDeclarationOnly": true
+    "emitDeclarationOnly": true,
+    "paths": {
+      "@spockjs/*": ["./packages/*/dist"]
+    }
   },
   "exclude": ["**/__tests__/**", "**/__mocks__/**", "packages/*/dist/**"]
 }
