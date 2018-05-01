@@ -1,14 +1,7 @@
 import { NodePath } from '@babel/traverse';
 import { Expression } from '@babel/types';
 
-import { InternalConfig } from '@spockjs/config';
-
-export default (
-  expressionPath: NodePath<Expression>,
-  { staticTruthCheck }: InternalConfig,
-) => {
-  if (!staticTruthCheck) return;
-
+export default (expressionPath: NodePath<Expression>) => {
   const truthy: boolean | undefined = expressionPath.evaluateTruthy();
 
   if (truthy !== undefined) {

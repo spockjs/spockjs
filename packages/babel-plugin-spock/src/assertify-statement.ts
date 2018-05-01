@@ -2,10 +2,10 @@ import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 
 import { InternalConfig } from '@spockjs/config';
+import checkStatically from '@spockjs/static-check';
 
 import createEspowerVisitor from 'babel-plugin-espower/create';
 
-import checkStatically from './check-statically';
 import generateAssertIdentifier from './generate-assert-identifier';
 
 export default (
@@ -20,7 +20,9 @@ export default (
     const expressionPath = statementPath.get('expression') as NodePath<
       BabelTypes.Expression
     >;
-    checkStatically(expressionPath, config);
+    if (config.staticTruthCheck) {
+      checkStatically(expressionPath);
+    }
 
     const origExpr = statement.expression;
 
