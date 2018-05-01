@@ -46,11 +46,11 @@ support for Babel. Babel integrates quite nicely into most modern test runners.
 Check the documentation of your test runner for instructions on how to configure
 Babel (e.g. for
 [Jest](https://facebook.github.io/jest/docs/en/getting-started.html#using-babel),
-[AVA](https://github.com/avajs/ava/blob/master/docs/recipes/babel.md) etc.) or consult Babel's own
-[documentation](http://babeljs.io/docs/setup/).
+[AVA](https://github.com/avajs/ava/blob/master/docs/recipes/babel.md) etc.)
+or consult Babel's own [documentation](http://babeljs.io/docs/setup/).
 
-Once Babel is set up for your test files, simply add `"@spockjs/babel-plugin-spock"` to
-the `plugins` array in your babel configuration and you're good to go.
+Once Babel is set up for your test files, simply add `"@spockjs/babel-plugin-spock"`
+to the `plugins` array in your babel configuration and you're good to go.
 
 **Note:** This plugin requires Babel 7. Babel 6 is no longer supported.
 
