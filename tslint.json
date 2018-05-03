@@ -11,6 +11,7 @@
     "no-function-constructor-with-string-args": false,
     "function-name": false,
     "import-name": false,
-    "ordered-imports": [true, { "grouped-imports": true }]
+    "ordered-imports": [true, { "grouped-imports": true }],
+    "import-blacklist": [true, "babel-core", "babel-traverse", "babel-types"]
   }
 }
