@@ -7,7 +7,7 @@
 [![AppVeyor build status](https://img.shields.io/appveyor/ci/jeysal/spockjs/master.svg?style=flat-square&label=windows+build)](https://ci.appveyor.com/project/jeysal/spockjs)
 [![code coverage](https://img.shields.io/codecov/c/github/spockjs/spockjs/master.svg?style=flat-square)](https://codecov.io/gh/spockjs/spockjs)
 
-[![npm package](https://img.shields.io/npm/v/@spockjs/babel-plugin-spock.svg?style=flat-square)](https://www.npmjs.com/package/babel-plugin-spock)
+[![npm package](https://img.shields.io/npm/v/@spockjs/babel-plugin-spock.svg?style=flat-square)](https://www.npmjs.com/package/@spockjs/babel-plugin-spock)
 [![license](https://img.shields.io/github/license/spockjs/spockjs.svg?style=flat-square)](https://github.com/spockjs/spockjs/blob/master/LICENSE)
 
 **Note:** This project is in an early stage of development and currently provides
