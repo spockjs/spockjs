@@ -2,9 +2,8 @@ import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 
 import { InternalConfig } from '@spockjs/config';
+import empowerAssert from '@spockjs/power-assert';
 import checkStatically from '@spockjs/static-check';
-
-import createEspowerVisitor from 'babel-plugin-espower/create';
 
 import generateAssertIdentifier from './generate-assert-identifier';
 
@@ -42,11 +41,7 @@ export default (
     (scope.getProgramParent() as any).crawl();
 
     if (config.powerAssert) {
-      // Now let espower generate nice power assertions for this assertion
-      createEspowerVisitor(babel, {
-        embedAst: true,
-        patterns: [`${assertIdentifier.name}(value)`],
-      }).visitor.Program(statementPath, state);
+      empowerAssert(babel, state, assertIdentifier.name, statementPath);
     }
   } else {
     throw statementPath.buildCodeFrameError(
