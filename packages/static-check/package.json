@@ -1,15 +1,7 @@
 {
-  "name": "@spockjs/babel-plugin-spock",
+  "name": "@spockjs/static-check",
   "version": "0.6.0",
-  "description": "Structured JS test cases, inspired by Spock Framework",
-  "keywords": [
-    "spock",
-    "framework",
-    "test",
-    "structure",
-    "babel",
-    "plugin"
-  ],
+  "description": "Static expression checks for spockjs",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
   "repository": {
@@ -27,13 +19,7 @@
   "bugs": {
     "url": "https://github.com/spockjs/spockjs/issues"
   },
-  "dependencies": {
-    "@spockjs/config": "^0.6.0",
-    "@spockjs/static-check": "^0.6.0",
-    "babel-plugin-espower": "3.0.0-beta.1"
-  },
   "peerDependencies": {
-    "@babel/core": "^7.0.0-beta",
-    "power-assert": "^1.4.4"
+    "@babel/core": "^7.0.0-beta"
   }
 }
