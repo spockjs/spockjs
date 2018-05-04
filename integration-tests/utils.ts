@@ -51,4 +51,7 @@ export const requireBabelJitArgs = ['--require', '@babel/register'];
 export const requireTypescriptJitArgs = ['--require', 'ts-node/register'];
 
 export const babelJitEnv = { BABEL_DISABLE_CACHE: '1' };
-export const typescriptJitEnv = { TS_NODE_PROJECT: tsconfigPath };
+export const typescriptJitEnv = {
+  TS_NODE_TRANSPILE_ONLY: 'true',
+  TS_NODE_PROJECT: tsconfigPath,
+};
