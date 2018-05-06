@@ -9,6 +9,9 @@ import {
   typescriptJitEnv,
 } from './utils';
 
+// mark implicit dependencies for jest
+() => require('./jasmine/jasmine.js') && require('./jasmine/package.json');
+
 const jasmineCli = resolvePath(modulePath('jasmine'), 'bin', 'jasmine');
 const cwd = resolvePath('jasmine');
 const jasmineConfig = resolvePath(cwd, 'jasmine.json');

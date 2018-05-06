@@ -11,6 +11,9 @@ import {
   typescriptJitEnv,
 } from './utils';
 
+// mark implicit dependencies for jest
+() => require('./tape/tape.js') && require('./tape/package.json');
+
 const tapeCli = resolvePath(modulePath('tape'), 'bin', 'tape');
 const cwd = resolvePath('tape');
 

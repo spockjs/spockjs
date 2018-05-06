@@ -1,0 +1,10 @@
+{
+  "babel": {
+    "presets": [["@babel/preset-env", { "targets": { "node": 6 } }]],
+    "plugins": ["@spockjs/babel-plugin-spock"]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "jest.js"
+  }
+}

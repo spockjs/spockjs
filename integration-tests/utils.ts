@@ -4,6 +4,9 @@ import { getInstalledPathSync } from 'get-installed-path';
 import which from 'npm-which';
 import * as path from 'path';
 
+// mark implicit dependency for Jest
+() => require('@spockjs/babel-plugin-spock');
+
 /*
   Integration tests execute the test runners with ts-node
   so that we can use the plugin's index.ts directly for
