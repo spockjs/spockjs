@@ -8,6 +8,12 @@ import {
   runWithTypescriptJit,
 } from './utils';
 
+// mark implicit dependencies for jest
+() =>
+  require('./codemod/codemod.js') &&
+  require('./codemod/config.json') &&
+  require('./codemod/package.json');
+
 const babelCli = resolvePath(modulePath('@babel/cli'), 'bin', 'babel');
 const cwd = resolvePath('codemod');
 const babelConfig = resolvePath(cwd, 'config.json');

@@ -10,6 +10,9 @@ import {
   typescriptJitEnv,
 } from './utils';
 
+// mark implicit dependencies for jest
+() => require('./mocha/mocha.js') && require('./mocha/package.json');
+
 const mochaCli = resolvePath(modulePath('mocha'), 'bin', 'mocha');
 const cwd = resolvePath('mocha');
 

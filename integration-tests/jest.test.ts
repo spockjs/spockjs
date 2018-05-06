@@ -1,5 +1,8 @@
 import { modulePath, resolvePath, runWithTypescriptJit } from './utils';
 
+// mark implicit dependencies for jest
+() => require('./jest/jest.js') && require('./jest/package.json');
+
 const jestCli = resolvePath(modulePath('jest-cli'), 'bin', 'jest');
 const cwd = resolvePath('jest');
 
