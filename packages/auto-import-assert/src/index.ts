@@ -1,11 +1,7 @@
 import { Scope } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 
-import { InternalConfig } from '@spockjs/config';
-
-const DEFAULT_ASSERTION_FUNCTION_NAME_HINT = 'assert';
-
-const findExistingImportFromSource = (
+export const findExistingImport = (
   scope: Scope,
   t: typeof BabelTypes,
   source: string,
@@ -31,15 +27,16 @@ const findExistingImportFromSource = (
   return;
 };
 
-const addImport = (
+export const addImport = (
   scope: Scope,
   t: typeof BabelTypes,
   source: string,
-  name: string,
+  exactName: string,
+  fallbackNameHint: string,
 ) => {
-  if (name) {
+  if (exactName) {
     // clear possible binding conflicts
-    scope.rename(name);
+    scope.rename(exactName);
   }
 
   const program = scope.getProgramParent().path;
@@ -51,9 +48,9 @@ const addImport = (
   //    use our manual import generation if assertFunctionName is set and
   // 2. it might generate SequenceExpressions instead of Identifiers,
   //    which are annoying to deal with because of powerAssert patterns.
-  const id = name
-    ? t.identifier(name)
-    : scope.generateUidIdentifier(DEFAULT_ASSERTION_FUNCTION_NAME_HINT);
+  const id = exactName
+    ? t.identifier(exactName)
+    : scope.generateUidIdentifier(fallbackNameHint);
   (program as any).unshiftContainer(
     'body',
     t.importDeclaration(
@@ -62,23 +59,5 @@ const addImport = (
     ),
   );
 
-  return id;
-};
-
-export default (
-  t: typeof BabelTypes,
-  { autoImport: importSource, assertFunctionName }: InternalConfig,
-) => (scope: Scope) => {
-  if (importSource) {
-    const name = findExistingImportFromSource(scope, t, importSource);
-    if (name) {
-      return t.identifier(name);
-    }
-
-    return addImport(scope, t, importSource, assertFunctionName);
-  }
-
-  return t.identifier(
-    assertFunctionName || DEFAULT_ASSERTION_FUNCTION_NAME_HINT,
-  );
+  return id.name;
 };

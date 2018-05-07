@@ -1,15 +1,7 @@
 {
-  "name": "@spockjs/babel-plugin-spock",
+  "name": "@spockjs/auto-import-assert",
   "version": "0.6.0",
-  "description": "Structured JS test cases, inspired by Spock Framework",
-  "keywords": [
-    "spock",
-    "framework",
-    "test",
-    "structure",
-    "babel",
-    "plugin"
-  ],
+  "description": "Assert function auto import helper for spockjs",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
   "repository": {
@@ -26,12 +18,6 @@
   },
   "bugs": {
     "url": "https://github.com/spockjs/spockjs/issues"
-  },
-  "dependencies": {
-    "@spockjs/auto-import-assert": "^0.6.0",
-    "@spockjs/config": "^0.6.0",
-    "@spockjs/power-assert": "^0.6.0",
-    "@spockjs/static-check": "^0.6.0"
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0-beta"
