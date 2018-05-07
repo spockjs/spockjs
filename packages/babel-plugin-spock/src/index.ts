@@ -19,16 +19,22 @@ const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
           const bodyPath = path.get('body') as NodePath<BabelTypes.Statement>;
           switch (bodyPath.type) {
             case 'BlockStatement':
-              const statementPaths = (bodyPath.get('body') as any) as NodePath<
-                BabelTypes.Statement
-              >[];
-              statementPaths.forEach(assertify);
+              // power-assert may add statements in betweeen,
+              // so never reuse body array
+              const statementPaths = () =>
+                (bodyPath.get('body') as any) as NodePath<
+                  BabelTypes.Statement
+                >[];
+
+              statementPaths().forEach(assertify);
+              path.replaceWithMultiple(
+                statementPaths().map(stmtPath => stmtPath.node),
+              );
               break;
             default:
               assertify(bodyPath);
+              path.replaceWith(bodyPath);
           }
-
-          path.replaceWith(bodyPath);
         }
       },
     },

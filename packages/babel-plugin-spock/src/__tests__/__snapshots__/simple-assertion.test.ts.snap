@@ -3,12 +3,10 @@
 exports[`assertifies a "then"-labeled expression statement 1`] = `"assert(1 === 1);"`;
 
 exports[`assertifies all expression statements in a labeled block statement 1`] = `
-"{
-  assert(1 === 1);
-  assert(0.5 * 4 < 3);
-  assert(abc.xyz() === 'result');
-  assert(((x, y) => x === y)(42, 42));
-}"
+"assert(1 === 1);
+assert(0.5 * 4 < 3);
+assert(abc.xyz() === 'result');
+assert(((x, y) => x === y)(42, 42));"
 `;
 
 exports[`assertifies an "expect"-labeled expression statement 1`] = `"assert(1 === 1);"`;
