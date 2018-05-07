@@ -51,6 +51,10 @@ or consult Babel's own [documentation](http://babeljs.io/docs/setup/).
 
 Once Babel is set up for your test files, simply add `"@spockjs/babel-plugin-spock"`
 to the `plugins` array in your babel configuration and you're good to go.
+If you do not already use ES modules via Babel,
+you will also need to set up Babel for transforming ES2015 imports (usually via
+[@babel/preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env)
+) so the assert helpers can be imported automatically.
 
 **Note:** This plugin requires Babel 7. Babel 6 is no longer supported.
 
