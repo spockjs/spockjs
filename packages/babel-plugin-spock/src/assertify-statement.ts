@@ -1,16 +1,20 @@
 import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 
+import { addImport, findExistingImport } from '@spockjs/auto-import-assert';
 import { InternalConfig } from '@spockjs/config';
 import empowerAssert from '@spockjs/power-assert';
 import checkStatically from '@spockjs/static-check';
 
-import generateAssertIdentifier from './generate-assert-identifier';
-
 export default (
   babel: { types: typeof BabelTypes },
   state: any,
-  config: InternalConfig,
+  {
+    assertFunctionName,
+    autoImport,
+    powerAssert,
+    staticTruthCheck,
+  }: InternalConfig,
 ) => (statementPath: NodePath<BabelTypes.Statement>) => {
   const { types: t } = babel;
   const { scope, node: statement } = statementPath;
@@ -19,13 +23,20 @@ export default (
     const expressionPath = statementPath.get('expression') as NodePath<
       BabelTypes.Expression
     >;
-    if (config.staticTruthCheck) {
+    if (staticTruthCheck) {
       checkStatically(expressionPath);
     }
 
     const origExpr = statement.expression;
 
-    const assertIdentifier = generateAssertIdentifier(t, config)(scope);
+    const assertIdentifier = t.identifier(
+      autoImport
+        ? // reuse or add import from given source
+          findExistingImport(scope, t, autoImport) ||
+          addImport(scope, t, autoImport, assertFunctionName, 'assert')
+        : // assume assert identifier is already available
+          assertFunctionName || 'assert',
+    );
     assertIdentifier.loc = {
       start: origExpr.loc.start,
       end: origExpr.loc.start,
@@ -40,7 +51,7 @@ export default (
     // with our call expression, otherwise the import will be removed
     (scope.getProgramParent() as any).crawl();
 
-    if (config.powerAssert) {
+    if (powerAssert) {
       empowerAssert(babel, state, assertIdentifier.name, statementPath);
     }
   } else {
