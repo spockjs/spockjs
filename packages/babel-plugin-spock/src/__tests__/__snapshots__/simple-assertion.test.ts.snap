@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`assertifies a "then"-labeled expression statement 1`] = `"then: assert(1 === 1);"`;
+exports[`assertifies a "then"-labeled expression statement 1`] = `"assert(1 === 1);"`;
 
 exports[`assertifies all expression statements in a labeled block statement 1`] = `
-"expect: {
+"{
   assert(1 === 1);
   assert(0.5 * 4 < 3);
   assert(abc.xyz() === 'result');
@@ -11,13 +11,13 @@ exports[`assertifies all expression statements in a labeled block statement 1`] 
 }"
 `;
 
-exports[`assertifies an "expect"-labeled expression statement 1`] = `"expect: assert(1 === 1);"`;
+exports[`assertifies an "expect"-labeled expression statement 1`] = `"assert(1 === 1);"`;
 
 exports[`assertifies inside an if / else statement 1`] = `
 "if (1 < 2) {
-  expect: assert(1 < 2);
+  assert(1 < 2);
 } else {
-  expect: assert(1 >= 2);
+  assert(1 >= 2);
 }"
 `;
 

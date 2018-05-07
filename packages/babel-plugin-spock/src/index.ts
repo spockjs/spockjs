@@ -27,6 +27,8 @@ const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
             default:
               assertify(bodyPath);
           }
+
+          path.replaceWith(bodyPath);
         }
       },
     },

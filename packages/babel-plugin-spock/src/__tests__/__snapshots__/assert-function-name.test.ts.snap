@@ -5,22 +5,20 @@ exports[`does not rename non-conflicting bindings of the same name 1`] = `
 {
   let check;
 }
-
-expect: check(1 === 1);"
+check(1 === 1);"
 `;
 
 exports[`generates import with specified name when autoImport is set 1`] = `
 "import check from \\"power-assert\\";
-
-expect: check(1 === 1);"
+check(1 === 1);"
 `;
 
-exports[`generates specified assert function 1`] = `"expect: check(1 === 1);"`;
+exports[`generates specified assert function 1`] = `"check(1 === 1);"`;
 
 exports[`renames conflicting bindings when autoImporting 1`] = `
 "import check from \\"power-assert\\";
 
 let _check;
 
-expect: check(1 === 1);"
+check(1 === 1);"
 `;
