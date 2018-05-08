@@ -9,20 +9,26 @@ import checkStatically from '@spockjs/static-check';
 export default (
   babel: { types: typeof BabelTypes },
   state: any,
-  {
+  config: InternalConfig,
+) => (statementPath: NodePath<BabelTypes.Statement>) => {
+  const { types: t } = babel;
+  const {
     assertFunctionName,
     autoImport,
     powerAssert,
     staticTruthCheck,
-  }: InternalConfig,
-) => (statementPath: NodePath<BabelTypes.Statement>) => {
-  const { types: t } = babel;
+    hooks: { assertionPostProcessors },
+  } = config;
+
   const { scope, node: statement } = statementPath;
 
   if (t.isExpressionStatement(statement)) {
-    const expressionPath = statementPath.get('expression') as NodePath<
-      BabelTypes.Expression
+    const expressionStatementPath = statementPath as NodePath<
+      BabelTypes.ExpressionStatement
     >;
+    const expressionPath = expressionStatementPath.get(
+      'expression',
+    ) as NodePath<BabelTypes.Expression>;
     if (staticTruthCheck) {
       checkStatically(expressionPath);
     }
@@ -51,8 +57,18 @@ export default (
     // with our call expression, otherwise the import will be removed
     (scope.getProgramParent() as any).crawl();
 
+    const processedExpressionStatementPath = assertionPostProcessors.reduce(
+      (path, postProcessAssertion) => postProcessAssertion(t, config, path),
+      expressionStatementPath,
+    );
+
     if (powerAssert) {
-      empowerAssert(babel, state, assertIdentifier.name, statementPath);
+      empowerAssert(
+        babel,
+        state,
+        assertIdentifier.name,
+        processedExpressionStatementPath,
+      );
     }
   } else {
     throw statementPath.buildCodeFrameError(

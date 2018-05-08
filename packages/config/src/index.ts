@@ -1,3 +1,5 @@
+import { Hooks } from './hooks';
+
 /**
  * Config after sanitizing in extractConfigFromState.
  */
@@ -6,6 +8,7 @@ export interface InternalConfig {
   autoImport: string; // empty => no auto import
   staticTruthCheck: boolean;
   assertFunctionName: string; // empty => no custom assert function name
+  hooks: Hooks;
 }
 
 /**
@@ -17,6 +20,7 @@ export interface Config {
   autoImport?: boolean | string; // false => '', true => 'power-assert'
   staticTruthCheck?: boolean;
   assertFunctionName?: string;
+  presets?: string[]; // => hooks
 }
 
 /**
@@ -27,6 +31,7 @@ export const defaultConfig = {
   autoImport: true,
   staticTruthCheck: false,
   assertFunctionName: '',
+  presets: [],
 };
 
 /**
@@ -39,7 +44,13 @@ export const minimalConfig = {
 
 // tslint:disable no-parameter-reassignment
 export const extractConfigFromState = ({
-  opts: { powerAssert, autoImport, staticTruthCheck, assertFunctionName },
+  opts: {
+    powerAssert,
+    autoImport,
+    staticTruthCheck,
+    assertFunctionName,
+    presets,
+  },
 }: {
   opts: Config;
 }): InternalConfig => {
@@ -69,10 +80,25 @@ export const extractConfigFromState = ({
     ({ assertFunctionName } = defaultConfig);
   }
 
+  // presets
+  if (presets === undefined) {
+    ({ presets } = defaultConfig);
+  }
+  const hooks = presets.map(preset => require(preset) as Hooks).reduce(
+    (accHooks, moreHooks) => ({
+      assertionPostProcessors: [
+        ...accHooks.assertionPostProcessors,
+        ...moreHooks.assertionPostProcessors,
+      ],
+    }),
+    { assertionPostProcessors: [] },
+  );
+
   return {
     powerAssert,
     autoImport,
     staticTruthCheck,
     assertFunctionName,
+    hooks,
   };
 };
