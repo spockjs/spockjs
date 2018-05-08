@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`autoImport disabled warning warns about the need to import AssertionError 1`] = `
+Array [
+  Array [
+    "Generating catch clauses to intercept AssertionErrors with autoImport disabled. The AssertionError class must be imported and available in scope as \`AssertionError\`",
+  ],
+]
+`;
+
+exports[`does not require AssertionError in scope with autoImport enabled 1`] = `[Error: false == true]`;
+
+exports[`keeps the pretty error message from powerAssert 1`] = `
+[Error:   # test.js:3
+  
+  assert(1 === 2)
+           |     
+           false 
+  
+  [number] 2
+  => 2
+  [number] 1
+  => 1
+  ]
+`;
+
+exports[`throws plain Errors instead of AssertionErrors 1`] = `[Error: false == true]`;
+
+exports[`throws plain Errors instead of AssertionErrors with runner-ava instead of runner-jest 1`] = `[Error: false == true]`;
