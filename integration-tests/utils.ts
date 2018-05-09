@@ -2,7 +2,7 @@ import { SpawnSyncOptions } from 'child_process';
 import { sync as run } from 'cross-spawn';
 import { getInstalledPathSync } from 'get-installed-path';
 import which from 'npm-which';
-import * as path from 'path';
+import { resolve } from 'path';
 
 // mark implicit dependency for Jest
 () => require('@spockjs/babel-plugin-spock');
@@ -25,14 +25,10 @@ import * as path from 'path';
 
 // paths
 
-export const resolvePath: (...segments: string[]) => string = path.resolve.bind(
-  path,
-  __dirname,
-);
 export const modulePath = (packageName: string) =>
   getInstalledPathSync(packageName, { local: true });
 
-const tsconfigPath = resolvePath('..', 'tsconfig.json');
+const tsconfigPath = resolve(__dirname, '..', 'tsconfig.json');
 
 const tsNodePath = which(__dirname).sync('ts-node');
 

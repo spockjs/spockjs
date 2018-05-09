@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`produces correct output 1`] = `
+exports[`produces slightly too verbose output by default 1`] = `
 "  ● failing test
 
     assert.equal(received, expected) or assert(received) 

@@ -1,12 +1,14 @@
-import { modulePath, resolvePath, runWithTypescriptJit } from './utils';
+import { resolve } from 'path';
+
+import { modulePath, runWithTypescriptJit } from '../utils';
 
 // mark implicit dependencies for jest
-() => require('./jest/jest.js') && require('./jest/package.json');
+() => require('./workdir/jest.js') && require('./workdir/package.json');
 
-const jestCli = resolvePath(modulePath('jest-cli'), 'bin', 'jest');
-const cwd = resolvePath('jest');
+const jestCli = resolve(modulePath('jest-cli'), 'bin', 'jest');
+const cwd = resolve(__dirname, 'workdir');
 
-test('produces correct output', () => {
+test('produces slightly too verbose output by default', () => {
   const { status, stdout } = runWithTypescriptJit(
     [jestCli, '--no-cache', '--noStackTrace', '--runInBand', '--json'],
     { cwd },

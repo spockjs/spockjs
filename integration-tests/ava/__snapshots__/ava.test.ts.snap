@@ -9,6 +9,11 @@ exports[`produces correct output 1`] = `
 
   failing test
 
+  <FILEPATH HIDDEN>:12
+
+   11:   when: x = 3;          
+   12:   then: x === double(2);
+   13: });                     
 
   Error thrown in test:
 

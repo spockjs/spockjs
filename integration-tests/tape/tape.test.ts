@@ -1,4 +1,5 @@
 import { sync as run } from 'cross-spawn';
+import { resolve } from 'path';
 import { env } from 'process';
 import TapParser from 'tap-parser';
 
@@ -7,15 +8,14 @@ import {
   modulePath,
   requireBabelJitArgs,
   requireTypescriptJitArgs,
-  resolvePath,
   typescriptJitEnv,
-} from './utils';
+} from '../utils';
 
 // mark implicit dependencies for jest
-() => require('./tape/tape.js') && require('./tape/package.json');
+() => require('./workdir/tape.js') && require('./workdir/package.json');
 
-const tapeCli = resolvePath(modulePath('tape'), 'bin', 'tape');
-const cwd = resolvePath('tape');
+const tapeCli = resolve(modulePath('tape'), 'bin', 'tape');
+const cwd = resolve(__dirname, 'workdir');
 
 test('produces correct output', done => {
   const { status, stdout } = run(
