@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`produces very verbose output by default 1`] = `
+exports[`produces clean output with runner-ava preset 1`] = `
 "
     successful test
     failing test Error thrown in test
@@ -17,25 +17,7 @@ exports[`produces very verbose output by default 1`] = `
 
   Error thrown in test:
 
-  AssertionError [ERR_ASSERTION] (AssertionError) {
-    actual: false,
-    code: 'ERR_ASSERTION',
-    expected: true,
-    generatedMessage: true,
-    operator: '==',
-    powerAssertContext: {
-      args: [
-        Object { … },
-      ],
-      source: {
-        ast: Object { … },
-        content: '_assert(x === double(2))',
-        filepath: 'ava.js',
-        line: 12,
-        tokens: Array [ … ],
-        visitorKeys: Object { … },
-      },
-    },
+  Error {
     message: \`  # ava.js:12␊
       ␊
       _assert(x === double(2))␊
@@ -49,6 +31,9 @@ exports[`produces very verbose output by default 1`] = `
       => 3␊
       \`,
   }
+
+  Test.t [as fn] (ava.js:12:25)
+  Object.<anonymous> (LOCATION HIDDEN)
 
 "
 `;

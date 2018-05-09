@@ -1,24 +1,15 @@
 import { resolve } from 'path';
 
-import { modulePath, runWithTypescriptJit } from '../utils';
+import { runAva } from './ava';
 
 // mark implicit dependencies for jest
 () => require('./workdir/ava.js') && require('./workdir/package.json');
 
-const avaCli = resolve(modulePath('ava'), 'cli.js');
 const cwd = resolve(__dirname, 'workdir');
 
-test('produces correct output', () => {
-  const { status, stderr } = runWithTypescriptJit(
-    [avaCli, '--serial', '--no-cache', '--verbose'],
-    { cwd },
-  );
+test('produces very verbose output by default', () => {
+  const { status, stderr } = runAva(cwd);
 
   expect: status === 1;
-  expect(
-    stderr
-      .toString()
-      .replace(/✔|√|✖|×/g, ' ') // remove OS-dependent symbols
-      .replace(/[^ ]+ava\.js:/, '<FILEPATH HIDDEN>:'), // remove absolute path
-  ).toMatchSnapshot();
+  expect(stderr).toMatchSnapshot();
 });
