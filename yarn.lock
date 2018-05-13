@@ -1264,7 +1264,7 @@
   dependencies:
     "@types/babel-types" "*"
 
-"@types/babel-template@*":
+"@types/babel-template@*", "@types/babel-template@^6.25.0":
   version "6.25.0"
   resolved "https://registry.yarnpkg.com/@types/babel-template/-/babel-template-6.25.0.tgz#2505d7b55b88f821d98048b4fdf07b3b22563d30"
   dependencies:
@@ -1293,6 +1293,10 @@
   dependencies:
     "@types/node" "*"
 
+"@types/empower@*":
+  version "1.2.30"
+  resolved "https://registry.yarnpkg.com/@types/empower/-/empower-1.2.30.tgz#c7cfc14b3a61e54c74c674c1fbc91ba2df0d1392"
+
 "@types/jest@^22.2.3":
   version "22.2.3"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-22.2.3.tgz#0157c0316dc3722c43a7b71de3fdf3acbccef10d"
@@ -1304,6 +1308,17 @@
 "@types/node@^10.0.3":
   version "10.0.3"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.0.3.tgz#1f89840c7aac2406cc43a2ecad98fc02a8e130e4"
+
+"@types/power-assert-formatter@*":
+  version "1.4.28"
+  resolved "https://registry.yarnpkg.com/@types/power-assert-formatter/-/power-assert-formatter-1.4.28.tgz#25b8fddb6322259c6b91c35338d39b0f8e524252"
+
+"@types/power-assert@^1.5.0":
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/@types/power-assert/-/power-assert-1.5.0.tgz#4cc43717127cd81901555f905c55f02938120dcb"
+  dependencies:
+    "@types/empower" "*"
+    "@types/power-assert-formatter" "*"
 
 JSONStream@^1.0.4:
   version "1.3.2"

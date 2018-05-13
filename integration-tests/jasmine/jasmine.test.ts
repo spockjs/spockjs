@@ -1,20 +1,16 @@
 import { sync as run } from 'cross-spawn';
 import { unlinkSync as del, writeFileSync as write } from 'fs';
+import { resolve } from 'path';
 import { env } from 'process';
 
-import {
-  babelJitEnv,
-  modulePath,
-  resolvePath,
-  typescriptJitEnv,
-} from './utils';
+import { babelJitEnv, modulePath, typescriptJitEnv } from '../utils';
 
 // mark implicit dependencies for jest
-() => require('./jasmine/jasmine.js') && require('./jasmine/package.json');
+() => require('./workdir/jasmine.js') && require('./workdir/package.json');
 
-const jasmineCli = resolvePath(modulePath('jasmine'), 'bin', 'jasmine');
-const cwd = resolvePath('jasmine');
-const jasmineConfig = resolvePath(cwd, 'jasmine.json');
+const jasmineCli = resolve(modulePath('jasmine'), 'bin', 'jasmine');
+const cwd = resolve(__dirname, 'workdir');
+const jasmineConfig = resolve(cwd, 'jasmine.json');
 
 beforeAll(() => {
   write(
@@ -23,8 +19,8 @@ beforeAll(() => {
       spec_dir: '.',
       spec_files: ['jasmine.js'],
       helpers: [
-        resolvePath(modulePath('@babel/register'), 'lib', 'node.js'),
-        resolvePath(modulePath('ts-node'), 'register', 'index.js'),
+        resolve(modulePath('@babel/register'), 'lib', 'node.js'),
+        resolve(modulePath('ts-node'), 'register', 'index.js'),
       ],
       random: false,
     }),

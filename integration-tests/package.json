@@ -18,6 +18,9 @@
   "devDependencies": {
     "@babel/preset-react": "7.0.0-beta.44",
     "@babel/register": "7.0.0-beta.44",
+    "@spockjs/babel-plugin-spock": "^0.6.0",
+    "@spockjs/runner-ava": "^0.6.0",
+    "@spockjs/runner-jest": "^0.6.0",
     "@types/cross-spawn": "^6.0.0",
     "ava": "1.0.0-beta.3",
     "cross-spawn": "^6.0.5",

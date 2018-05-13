@@ -1,4 +1,5 @@
 import { sync as run } from 'cross-spawn';
+import { resolve } from 'path';
 import { env } from 'process';
 
 import {
@@ -6,15 +7,14 @@ import {
   modulePath,
   requireBabelJitArgs,
   requireTypescriptJitArgs,
-  resolvePath,
   typescriptJitEnv,
-} from './utils';
+} from '../utils';
 
 // mark implicit dependencies for jest
-() => require('./mocha/mocha.js') && require('./mocha/package.json');
+() => require('./workdir/mocha.js') && require('./workdir/package.json');
 
-const mochaCli = resolvePath(modulePath('mocha'), 'bin', 'mocha');
-const cwd = resolvePath('mocha');
+const mochaCli = resolve(modulePath('mocha'), 'bin', 'mocha');
+const cwd = resolve(__dirname, 'workdir');
 
 test('produces correct output', () => {
   const { status, stdout } = run(

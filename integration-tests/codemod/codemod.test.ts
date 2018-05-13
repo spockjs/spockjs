@@ -1,24 +1,24 @@
 import { sync as run } from 'cross-spawn';
 import { readFileSync as read, unlinkSync as del } from 'fs';
+import { resolve } from 'path';
 
 import {
   modulePath,
   requireBabelJitArgs,
-  resolvePath,
   runWithTypescriptJit,
-} from './utils';
+} from '../utils';
 
 // mark implicit dependencies for jest
 () =>
-  require('./codemod/codemod.js') &&
-  require('./codemod/config.json') &&
-  require('./codemod/package.json');
+  require('./workdir/codemod.js') &&
+  require('./workdir/config.json') &&
+  require('./workdir/package.json');
 
-const babelCli = resolvePath(modulePath('@babel/cli'), 'bin', 'babel');
-const cwd = resolvePath('codemod');
-const babelConfig = resolvePath(cwd, 'config.json');
-const inFile = resolvePath(cwd, 'codemod.js');
-const outFile = resolvePath(cwd, 'codemod.out.js');
+const babelCli = resolve(modulePath('@babel/cli'), 'bin', 'babel');
+const cwd = resolve(__dirname, 'workdir');
+const babelConfig = resolve(cwd, 'config.json');
+const inFile = resolve(cwd, 'codemod.js');
+const outFile = resolve(cwd, 'codemod.out.js');
 
 beforeAll(() => {
   const { status } = runWithTypescriptJit(

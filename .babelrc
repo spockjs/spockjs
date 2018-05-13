@@ -13,7 +13,9 @@
   "plugins": ["@babel/plugin-proposal-object-rest-spread"],
   "env": {
     "test": {
-      "plugins": ["@spockjs/babel-plugin-spock"]
+      "plugins": [
+        ["@spockjs/babel-plugin-spock", { "presets": ["@spockjs/runner-jest"] }]
+      ]
     }
   }
 }

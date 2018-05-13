@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`produces clean output with runner-ava preset 1`] = `
+"
+    successful test
+    failing test Error thrown in test
+
+  1 test failed
+
+  failing test
+
+  <FILEPATH HIDDEN>:12
+
+   11:   when: x = 3;          
+   12:   then: x === double(2);
+   13: });                     
+
+  Error thrown in test:
+
+  Error {
+    message: \`  # ava.js:12␊
+      ␊
+      _assert(x === double(2))␊
+              | |   |         ␊
+              | |   4         ␊
+              3 false         ␊
+      ␊
+      [number] double(2)␊
+      => 4␊
+      [number] x␊
+      => 3␊
+      \`,
+  }
+
+  Test.t [as fn] (ava.js:12:25)
+  Object.<anonymous> (LOCATION HIDDEN)
+
+"
+`;

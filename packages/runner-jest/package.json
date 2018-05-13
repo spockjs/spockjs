@@ -1,0 +1,25 @@
+{
+  "name": "@spockjs/runner-jest",
+  "version": "0.6.0",
+  "description": "spockjs tailored for Jest",
+  "author": "Tim Seckinger <seckinger.tim@gmail.com>",
+  "homepage": "https://github.com/spockjs/spockjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spockjs/spockjs.git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/index.ts",
+  "engines": {
+    "node": ">= 6"
+  },
+  "bugs": {
+    "url": "https://github.com/spockjs/spockjs/issues"
+  },
+  "dependencies": {
+    "@spockjs/assertion-post-processor-regular-errors": "^0.6.0"
+  }
+}
