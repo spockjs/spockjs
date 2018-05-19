@@ -54,7 +54,7 @@ test('still works if babel-plugin-espower is used for other assertions in the fi
     {
       plugins: [
         [plugin, { ...minimalConfig, powerAssert: true } as Config],
-        'espower',
+        'babel-plugin-espower',
       ],
       filename: 'test.js',
     },
