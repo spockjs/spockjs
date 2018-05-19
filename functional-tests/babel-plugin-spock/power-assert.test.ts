@@ -1,7 +1,7 @@
 import { transform } from '@babel/core';
 import { Config, minimalConfig } from '@spockjs/config';
 
-import plugin from '..';
+import plugin from '@spockjs/babel-plugin-spock';
 
 test('prints a nice error for an "expected"-labeled expression statement', () => {
   const { code } = transform(

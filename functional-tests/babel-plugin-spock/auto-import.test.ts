@@ -1,7 +1,7 @@
 import { transform } from '@babel/core';
 import { Config, minimalConfig } from '@spockjs/config';
 
-import plugin from '..';
+import plugin from '@spockjs/babel-plugin-spock';
 
 test('imports from power-assert by default', () => {
   const { code } = transform(`expect: 1 === 1;`, {

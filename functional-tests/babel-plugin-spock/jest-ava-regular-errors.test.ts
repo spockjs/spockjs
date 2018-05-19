@@ -5,7 +5,7 @@ import { Config, minimalConfig } from '@spockjs/config';
 
 import autoImportDisabled from '@spockjs/assertion-post-processor-regular-errors/src/auto-import-disabled-warning';
 
-import plugin from '..';
+import plugin from '@spockjs/babel-plugin-spock';
 
 // mark implicit dependencies for jest
 () => require('@spockjs/runner-jest') && require('@spockjs/runner-ava');
