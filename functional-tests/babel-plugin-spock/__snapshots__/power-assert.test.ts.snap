@@ -3,7 +3,7 @@
 exports[`leaves unrelated assert statements untouched 1`] = `"false == true"`;
 
 exports[`prints a nice error for an "expected"-labeled expression statement 1`] = `
-"  # test.js:2
+"  # test.js:1
   
   assert(1 === 2)
            |     
@@ -17,7 +17,7 @@ exports[`prints a nice error for an "expected"-labeled expression statement 1`] 
 `;
 
 exports[`still works if babel-plugin-espower is used for other assertions in the file 1`] = `
-"  # test.js:3
+"  # test.js:2
   
   assert(x > 0)
          | |   
@@ -26,7 +26,7 @@ exports[`still works if babel-plugin-espower is used for other assertions in the
 `;
 
 exports[`still works if babel-plugin-espower is used for other assertions in the file 2`] = `
-"  # test.js:2
+"  # test.js:1
   
   assert(x >= 0)
          | |    
@@ -36,7 +36,7 @@ exports[`still works if babel-plugin-espower is used for other assertions in the
 `;
 
 exports[`supports non-standard JSX syntax 1`] = `
-"  # test.js:2
+"  # test.js:1
   
   assert(<div></div>.prop === 'expected')
                      |    |              

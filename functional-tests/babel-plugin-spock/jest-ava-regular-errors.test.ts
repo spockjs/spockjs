@@ -1,5 +1,5 @@
 import { transform } from '@babel/core';
-import { AssertionError } from 'power-assert';
+import assert, { AssertionError } from 'power-assert';
 
 import { Config, minimalConfig } from '@spockjs/config';
 
@@ -16,23 +16,21 @@ beforeEach(() => (console.warn = consoleWarn = jest.fn()));
 afterEach(() => (console.warn = originalConsoleWarn));
 
 test('throws plain Errors instead of AssertionErrors', () => {
-  const { code } = transform(
-    `const assert = require('power-assert');
-    const { AssertionError } = assert;
-    expect: 1 === 2;`,
-    {
-      plugins: [
-        [
-          plugin,
-          { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
-        ],
+  const { code } = transform(`expect: 1 === 2;`, {
+    plugins: [
+      [
+        plugin,
+        { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
       ],
-    },
-  );
+    ],
+  });
 
   expect.assertions(1);
   try {
-    new Function('require', code as string)(require);
+    new Function('assert', 'AssertionError', code as string)(
+      assert,
+      AssertionError,
+    );
   } catch (e) {
     expect: !(e instanceof AssertionError);
     expect(e).toMatchSnapshot();
@@ -40,23 +38,21 @@ test('throws plain Errors instead of AssertionErrors', () => {
 });
 
 test('throws plain Errors instead of AssertionErrors with runner-ava instead of runner-jest', () => {
-  const { code } = transform(
-    `const assert = require('power-assert');
-    const { AssertionError } = assert;
-    expect: 1 === 2;`,
-    {
-      plugins: [
-        [
-          plugin,
-          { ...minimalConfig, presets: ['@spockjs/runner-ava'] } as Config,
-        ],
+  const { code } = transform(`expect: 1 === 2;`, {
+    plugins: [
+      [
+        plugin,
+        { ...minimalConfig, presets: ['@spockjs/runner-ava'] } as Config,
       ],
-    },
-  );
+    ],
+  });
 
   expect.assertions(1);
   try {
-    new Function('require', code as string)(require);
+    new Function('assert', 'AssertionError', code as string)(
+      assert,
+      AssertionError,
+    );
   } catch (e) {
     expect: !(e instanceof AssertionError);
     expect(e).toMatchSnapshot();
@@ -68,22 +64,21 @@ test('leaves other errors untouched', () => {
   const throws = () => {
     throw new CustomError();
   };
-  const { code } = transform(
-    `const assert = require('power-assert');
-    const { AssertionError } = assert;
-    expect: throws() === 1;`,
-    {
-      plugins: [
-        [
-          plugin,
-          { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
-        ],
+  const { code } = transform(`expect: throws() === 1;`, {
+    plugins: [
+      [
+        plugin,
+        { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
       ],
-    },
-  );
+    ],
+  });
 
   expect(() => {
-    new Function('require', 'throws', code as string)(require, throws);
+    new Function('assert', 'AssertionError', 'throws', code as string)(
+      assert,
+      AssertionError,
+      throws,
+    );
   }).toThrowError(CustomError);
 });
 
@@ -91,19 +86,14 @@ describe('autoImport disabled warning', () => {
   beforeEach(() => (autoImportDisabled.warned = false));
 
   test('warns about the need to import AssertionError', () => {
-    transform(
-      `const assert = require('power-assert');
-      const { AssertionError } = assert;
-      expect: 1 === 2;`,
-      {
-        plugins: [
-          [
-            plugin,
-            { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
-          ],
+    transform(`expect: 1 === 2;`, {
+      plugins: [
+        [
+          plugin,
+          { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
         ],
-      },
-    );
+      ],
+    });
 
     expect(consoleWarn.mock.calls).toMatchSnapshot();
   });
@@ -111,10 +101,8 @@ describe('autoImport disabled warning', () => {
   test('warns only once in spite of multiple traversals and assertions', () => {
     const doTransform = () =>
       transform(
-        `const assert = require('power-assert');
-      const { AssertionError } = assert;
-      expect: 1 === 2;
-      expect: 2 === 3;`,
+        `expect: 1 === 2;
+        expect: 2 === 3;`,
         {
           plugins: [
             [
@@ -156,28 +144,26 @@ test('does not require AssertionError in scope with autoImport enabled', () => {
 });
 
 test('keeps the pretty error message from powerAssert', () => {
-  const { code } = transform(
-    `const assert = require('power-assert');
-    const { AssertionError } = assert;
-    expect: 1 === 2;`,
-    {
-      plugins: [
-        [
-          plugin,
-          {
-            ...minimalConfig,
-            presets: ['@spockjs/runner-jest'],
-            powerAssert: true,
-          } as Config,
-        ],
+  const { code } = transform(`expect: 1 === 2;`, {
+    plugins: [
+      [
+        plugin,
+        {
+          ...minimalConfig,
+          presets: ['@spockjs/runner-jest'],
+          powerAssert: true,
+        } as Config,
       ],
-      filename: 'test.js',
-    },
-  );
+    ],
+    filename: 'test.js',
+  });
 
   expect.assertions(1);
   try {
-    new Function('require', code as string)(require);
+    new Function('assert', 'AssertionError', code as string)(
+      assert,
+      AssertionError,
+    );
   } catch (e) {
     expect: !(e instanceof AssertionError);
     expect(e).toMatchSnapshot();
