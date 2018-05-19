@@ -16,8 +16,8 @@
     "test-once": "ts-node --transpileOnly --project tsconfig.json node_modules/jest-cli/bin/jest.js --coverage --no-cache",
     "test-only": "yarn run test-once --watch",
     "test": "yarn run test-only --projects jest.config.js jest-tslint.config.js",
-    "prebuild": "lerna exec --scope @spockjs/babel-plugin-spock --include-filtered-dependencies -- tsc --project tsconfig.d.json",
-    "build": "lerna exec --scope @spockjs/babel-plugin-spock --include-filtered-dependencies -- babel src -d dist --extensions .ts --ignore .*\\/__tests__\\/.* --ignore .*\\/__mocks__\\/.*",
+    "prebuild": "lerna exec --scope @spockjs/babel-plugin-spock --scope @spockjs/runner-* --include-filtered-dependencies -- tsc --project tsconfig.d.json",
+    "build": "lerna exec --scope @spockjs/babel-plugin-spock --scope @spockjs/runner-* --include-filtered-dependencies -- babel src -d dist --extensions .ts --ignore .*\\/__tests__\\/.* --ignore .*\\/__mocks__\\/.*",
     "all": "run-p lint typecheck test-once build"
   },
   "devDependencies": {
