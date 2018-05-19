@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`leaves unrelated assert statements untouched 1`] = `
-"\\"use strict\\";
-
-const assert = require('power-assert');
-
-assert(1 === 2);"
-`;
+exports[`leaves unrelated assert statements untouched 1`] = `"false == true"`;
 
 exports[`prints a nice error for an "expected"-labeled expression statement 1`] = `
 "  # test.js:2

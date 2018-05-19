@@ -41,7 +41,9 @@ test('leaves unrelated assert statements untouched', () => {
     },
   );
 
-  expect(code).toMatchSnapshot();
+  expect(() =>
+    new Function('require', code as string)(require),
+  ).toThrowErrorMatchingSnapshot();
 });
 
 test('still works if babel-plugin-espower is used for other assertions in the file', () => {
