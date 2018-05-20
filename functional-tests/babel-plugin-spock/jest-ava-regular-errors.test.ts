@@ -79,7 +79,7 @@ test('leaves other errors untouched', () => {
       AssertionError,
       throws,
     );
-  }).toThrowError(CustomError);
+  }).toThrow(CustomError);
 });
 
 describe('autoImport disabled warning', () => {

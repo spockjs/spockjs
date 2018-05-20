@@ -47,5 +47,5 @@ test('does not throw if an expression may or may not be truthy', () => {
         ],
       },
     ),
-  ).not.toThrowError();
+  ).not.toThrow();
 });
