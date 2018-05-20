@@ -6,8 +6,10 @@ import { Config, minimalConfig } from '@spockjs/config';
 
 test('makes a manual import superfluous', () => {
   const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-    presets: ['@babel/preset-env'],
+    plugins: [
+      [plugin, { ...minimalConfig, autoImport: true } as Config],
+      '@babel/plugin-transform-modules-commonjs',
+    ],
   });
   expect(() => new Function('require', code as string)(require)).toThrow(
     AssertionError,
@@ -19,8 +21,10 @@ test('does not clash with an existing "_assert" import', () => {
     `import _assert from 'fs';
     expect: 1 === 2;`,
     {
-      plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-      presets: ['@babel/preset-env'],
+      plugins: [
+        [plugin, { ...minimalConfig, autoImport: true } as Config],
+        '@babel/plugin-transform-modules-commonjs',
+      ],
     },
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
@@ -36,8 +40,10 @@ test('does not clash with an existing "_assert" identifier in another scope afte
       expect: 1 === 2;
     }`,
     {
-      plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-      presets: ['@babel/preset-env'],
+      plugins: [
+        [plugin, { ...minimalConfig, autoImport: true } as Config],
+        '@babel/plugin-transform-modules-commonjs',
+      ],
     },
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
@@ -49,8 +55,8 @@ test('imports from a custom source', () => {
   const { code } = transform(`expect: 1 === 2;`, {
     plugins: [
       [plugin, { ...minimalConfig, autoImport: 'fancy-assert' } as Config],
+      '@babel/plugin-transform-modules-commonjs',
     ],
-    presets: ['@babel/preset-env'],
   });
 
   const customRequire = (name: string) =>
@@ -66,8 +72,10 @@ test('uses an existing default import', () => {
     `import fancyAssert from 'power-assert';
     expect: 1 === 2;`,
     {
-      plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-      presets: ['@babel/preset-env'],
+      plugins: [
+        [plugin, { ...minimalConfig, autoImport: true } as Config],
+        '@babel/plugin-transform-modules-commonjs',
+      ],
     },
   );
 
@@ -83,8 +91,10 @@ test('does not attempt to use an existing named import', () => {
     `import { fancyAssert } from 'power-assert';
     expect: 1 === 2;`,
     {
-      plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-      presets: ['@babel/preset-env'],
+      plugins: [
+        [plugin, { ...minimalConfig, autoImport: true } as Config],
+        '@babel/plugin-transform-modules-commonjs',
+      ],
     },
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
@@ -100,8 +110,10 @@ test('does not attempt to use a shadowed existing default import', () => {
       expect: 1 === 2;
     }`,
     {
-      plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-      presets: ['@babel/preset-env'],
+      plugins: [
+        [plugin, { ...minimalConfig, autoImport: true } as Config],
+        '@babel/plugin-transform-modules-commonjs',
+      ],
     },
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
@@ -114,8 +126,10 @@ test('reuses the same import for multiple assertions', () => {
     `expect: 1 === 1;
     expect: 2 === 2;`,
     {
-      plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-      presets: ['@babel/preset-env'],
+      plugins: [
+        [plugin, { ...minimalConfig, autoImport: true } as Config],
+        '@babel/plugin-transform-modules-commonjs',
+      ],
     },
   );
 
@@ -131,8 +145,10 @@ test('reuses the same import for multiple assertions in nested scopes', () => {
       expect: 2 === 2;
     })()`,
     {
-      plugins: [[plugin, { ...minimalConfig, autoImport: true } as Config]],
-      presets: ['@babel/preset-env'],
+      plugins: [
+        [plugin, { ...minimalConfig, autoImport: true } as Config],
+        '@babel/plugin-transform-modules-commonjs',
+      ],
     },
   );
 

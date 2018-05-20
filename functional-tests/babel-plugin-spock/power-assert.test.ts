@@ -79,8 +79,7 @@ test('supports non-standard JSX syntax', () => {
 
 test('works when using autoImport', () => {
   const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [[plugin]],
-    presets: ['@babel/preset-env'],
+    plugins: [plugin, '@babel/plugin-transform-modules-commonjs'],
     filename: 'test.js',
   });
 

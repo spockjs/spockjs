@@ -130,8 +130,8 @@ test('does not require AssertionError in scope with autoImport enabled', () => {
           autoImport: true,
         } as Config,
       ],
+      '@babel/plugin-transform-modules-commonjs',
     ],
-    presets: ['@babel/preset-env'],
   });
 
   expect.assertions(1);
