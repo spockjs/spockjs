@@ -18,5 +18,8 @@
   },
   "bugs": {
     "url": "https://github.com/spockjs/spockjs/issues"
+  },
+  "dependencies": {
+    "io-ts": "^1.1.2"
   }
 }

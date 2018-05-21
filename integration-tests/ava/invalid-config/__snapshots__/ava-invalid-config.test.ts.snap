@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reports a transform error 1`] = `
+"
+  Uncaught exception in ava.js
+  undefined
+  Error: Invalid plugin configuration:
+  Invalid value true supplied to : Config/asdf: never"
+`;

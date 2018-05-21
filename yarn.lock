@@ -3090,6 +3090,10 @@ form-data@~2.3.1:
     combined-stream "1.0.6"
     mime-types "^2.1.12"
 
+fp-ts@^1.0.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-1.5.0.tgz#f1f6498d44ecedd38465728012da549932aa4ef0"
+
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -3620,6 +3624,12 @@ inversify@^4.10.0:
 invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
+
+io-ts@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-1.1.2.tgz#e6e4bbea51183e3bff38cacb435becdb637feffb"
+  dependencies:
+    fp-ts "^1.0.0"
 
 irregular-plurals@^1.0.0:
   version "1.4.0"

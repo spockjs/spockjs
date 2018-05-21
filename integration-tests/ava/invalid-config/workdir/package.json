@@ -1,0 +1,19 @@
+{
+  "ava": {
+    "files": ["ava.js"],
+    "failWithoutAssertions": false,
+    "babel": {
+      "testOptions": {
+        "plugins": [
+          [
+            "../../../../packages/babel-plugin-spock/src/index.ts",
+            { "asdf": true }
+          ]
+        ]
+      }
+    }
+  },
+  "babel": {
+    "presets": [["@babel/preset-env", { "targets": { "node": 6 } }]]
+  }
+}

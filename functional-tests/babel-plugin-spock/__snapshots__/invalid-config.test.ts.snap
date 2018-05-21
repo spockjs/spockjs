@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`throws if the config contains an invalid data type 1`] = `
+"Invalid plugin configuration:
+Invalid value 42 supplied to : Config/powerAssert: (boolean | undefined)/0: boolean
+Invalid value 42 supplied to : Config/powerAssert: (boolean | undefined)/1: undefined"
+`;
+
+exports[`throws if the config contains an unknown key 1`] = `
+"Invalid plugin configuration:
+Invalid value true supplied to : Config/asdf: never"
+`;
