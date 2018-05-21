@@ -10,5 +10,5 @@ export type AssertionPostProcessor = (
 ) => NodePath<BabelTypes.ExpressionStatement>;
 
 export interface Hooks {
-  assertionPostProcessors: AssertionPostProcessor[];
+  readonly assertionPostProcessors: ReadonlyArray<AssertionPostProcessor>;
 }

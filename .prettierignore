@@ -2,4 +2,5 @@ coverage/**/*
 **/dist/**/*
 
 CHANGELOG.md
-package.json
+/package.json
+/packages/*/package.json
