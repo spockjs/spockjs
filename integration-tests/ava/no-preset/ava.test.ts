@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 
-import { runAva } from './ava';
+import { runAva } from '../ava';
 
 // mark implicit dependencies for jest
 () => require('./workdir/ava.js') && require('./workdir/package.json');
