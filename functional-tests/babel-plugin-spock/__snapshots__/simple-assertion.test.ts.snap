@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`throws if a statement is not an expression statement 1`] = `
+"undefined: Expected an expression statement, but got a statement of type IfStatement
+> 1 | expect: if(true);
+    |         ^"
+`;

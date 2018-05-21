@@ -1,27 +1,32 @@
 import { transform } from '@babel/core';
+import assert, { AssertionError } from 'assert';
+
+import plugin from '@spockjs/babel-plugin-spock';
 import { minimalConfig } from '@spockjs/config';
 
-import plugin from '..';
-
 test('assertifies an "expect"-labeled expression statement', () => {
-  const { code } = transform(`expect: 1 === 1;`, {
+  const { code } = transform(`expect: 1 === 2;`, {
     plugins: [[plugin, minimalConfig]],
   });
-  expect(code).toMatchSnapshot();
+  expect(() => new Function('assert', code as string)(assert)).toThrow(
+    AssertionError,
+  );
 });
 
 test('assertifies a "then"-labeled expression statement', () => {
-  const { code } = transform(`then: 1 === 1;`, {
+  const { code } = transform(`then: 1 === 2;`, {
     plugins: [[plugin, minimalConfig]],
   });
-  expect(code).toMatchSnapshot();
+  expect(() => new Function('assert', code as string)(assert)).toThrow(
+    AssertionError,
+  );
 });
 
 test('does not assertify a "when"-labeled expression statement', () => {
-  const { code } = transform(`when: 1 === 1;`, {
+  const { code } = transform(`when: 1 === 2;`, {
     plugins: [[plugin, minimalConfig]],
   });
-  expect(code).toMatchSnapshot();
+  expect(() => new Function('assert', code as string)(assert)).not.toThrow();
 });
 
 test('assertifies all expression statements in a labeled block statement', () => {
@@ -29,29 +34,31 @@ test('assertifies all expression statements in a labeled block statement', () =>
     `expect: {
       1 === 1;
       0.5 * 4 < 3;
-      abc.xyz() === 'result';
       ((x, y) => x === y)(42, 42);
     }`,
     {
       plugins: [[plugin, minimalConfig]],
     },
   );
-  expect(code).toMatchSnapshot();
+
+  const customAssert = jest.fn(assert);
+  new Function('assert', code as string)(customAssert);
+  expect(customAssert).toHaveBeenCalledTimes(3);
 });
 
 test('assertifies inside an if / else statement', () => {
   const { code } = transform(
     `if(1 < 2) {
-      expect: 1 < 2;
+      expect: false;
     }
     else {
-      expect: 1 >= 2;
+      expect: true;
     }`,
-    {
-      plugins: [[plugin, minimalConfig]],
-    },
+    { plugins: [[plugin, minimalConfig]] },
   );
-  expect(code).toMatchSnapshot();
+  expect(() => new Function('assert', code as string)(assert)).toThrow(
+    AssertionError,
+  );
 });
 
 test('throws if a statement is not an expression statement', () => {

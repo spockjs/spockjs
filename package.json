@@ -4,6 +4,7 @@
   "license": "MIT",
   "workspaces": [
     "packages/*",
+    "functional-tests",
     "integration-tests"
   ],
   "scripts": {

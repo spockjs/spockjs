@@ -35,8 +35,5 @@
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0-beta"
-  },
-  "devDependencies": {
-    "@spockjs/runner-jest": "^0.6.0"
   }
 }

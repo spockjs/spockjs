@@ -1,7 +1,7 @@
 import { transform } from '@babel/core';
 import { Config, minimalConfig } from '@spockjs/config';
 
-import plugin from '..';
+import plugin from '@spockjs/babel-plugin-spock';
 
 test('throws if an expression can be inferred to always be truthy', () => {
   expect(() =>
@@ -47,5 +47,5 @@ test('does not throw if an expression may or may not be truthy', () => {
         ],
       },
     ),
-  ).not.toThrowError();
+  ).not.toThrow();
 });
