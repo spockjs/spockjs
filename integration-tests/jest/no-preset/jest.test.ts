@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 
-import { runJest } from './jest';
+import { runJest } from '../jest';
 
 // mark implicit dependencies for jest
 () => require('./workdir/jest.js') && require('./workdir/package.json');
