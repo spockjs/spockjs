@@ -3,6 +3,8 @@
 We use [yarn](https://yarnpkg.org) as our package manager. Run `yarn` to install
 the dependencies.
 
+**Note:** The tests currently do not pass on node 10 due to a bug in node. Please use node 9 instead.
+
 ## Scripts
 
 * `yarn all` - run all checks and build
