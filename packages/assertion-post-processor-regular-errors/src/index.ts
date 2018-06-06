@@ -18,7 +18,12 @@ const createTryStatement = template(`
   }
 `);
 
-const processor: AssertionPostProcessor = (t, { autoImport }, originalPath) => {
+const processor: AssertionPostProcessor = (
+  t,
+  { autoImport },
+  originalPath,
+  patterns,
+) => {
   const assertionErrorImportedName = 'AssertionError';
   const assertionErrorLocal = autoImport
     ? addNamed(originalPath, assertionErrorImportedName, autoImport)
@@ -51,8 +56,11 @@ const processor: AssertionPostProcessor = (t, { autoImport }, originalPath) => {
     },
   });
 
-  // return the original assertion ExpressionStatement
-  return tryPath.get('block.body.0') as NodePath<ExpressionStatement>;
+  return {
+    patterns,
+    // the original assertion ExpressionStatement
+    path: tryPath.get('block.body.0') as NodePath<ExpressionStatement>,
+  };
 };
 
 export default processor;

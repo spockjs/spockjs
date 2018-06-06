@@ -7,7 +7,11 @@ export type AssertionPostProcessor = (
   t: typeof BabelTypes,
   config: InternalConfig,
   path: NodePath<BabelTypes.ExpressionStatement>,
-) => NodePath<BabelTypes.ExpressionStatement>;
+  patterns: string[],
+) => {
+  path: NodePath<BabelTypes.ExpressionStatement>;
+  patterns: string[];
+};
 
 export interface Hooks {
   readonly assertionPostProcessors: ReadonlyArray<AssertionPostProcessor>;

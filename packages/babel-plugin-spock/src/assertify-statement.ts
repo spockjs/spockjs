@@ -57,18 +57,20 @@ export default (
     // with our call expression, otherwise the import will be removed
     (scope.getProgramParent() as any).crawl();
 
-    const processedExpressionStatementPath = assertionPostProcessors.reduce(
-      (path, postProcessAssertion) => postProcessAssertion(t, config, path),
-      expressionStatementPath,
+    const {
+      path: processedExpressionStatementPath,
+      patterns,
+    } = assertionPostProcessors.reduce(
+      ({ path, patterns }, postProcessAssertion) =>
+        postProcessAssertion(t, config, path, patterns),
+      {
+        path: expressionStatementPath,
+        patterns: [`${assertIdentifier.name}(value)`],
+      },
     );
 
     if (powerAssert) {
-      empowerAssert(
-        babel,
-        state,
-        assertIdentifier.name,
-        processedExpressionStatementPath,
-      );
+      empowerAssert(babel, state, patterns, processedExpressionStatementPath);
     }
   } else {
     throw statementPath.buildCodeFrameError(
