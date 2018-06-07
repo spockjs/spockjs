@@ -8,8 +8,6 @@ install:
   - yarn
 
 test_script:
-  - node --version
-  - yarn --version
   - yarn run lint
   - yarn run typecheck
   - yarn run build
