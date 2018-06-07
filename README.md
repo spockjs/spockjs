@@ -84,7 +84,7 @@ for a flawless experience.
 
 **Currently provides**
 
-* cleaner error messages
+* assertion messages that show what went wrong
 
 #### AVA
 
