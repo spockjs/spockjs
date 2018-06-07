@@ -84,7 +84,7 @@ for a flawless experience.
 
 **Currently provides**
 
-* cleaner error messages
+- assertion messages that show what went wrong
 
 #### AVA
 
@@ -92,13 +92,13 @@ for a flawless experience.
 
 **Currently provides**
 
-* internal use of native AVA assertions
-  * no need to configure `"failWithoutAssertions": false`
-  * assertion errors look just like in regular AVA
+- internal use of native AVA assertions
+  - no need to configure `"failWithoutAssertions": false`
+  - assertion errors look just like in regular AVA
 
 **Peculiarities**:
 
-* AVA's `t` must be available in the test cases;
+- AVA's `t` must be available in the test cases;
   using a different name for the test case parameter is not currently supported.
   If you do not follow this convention in all your test cases,
   you will have to disable `@spockjs/runner-ava` and
@@ -174,11 +174,11 @@ uncommon in JavaScript code. For this reason, if you use a linter such as
 [ESLint](https://eslint.org/), you will likely see annoying warnings all over
 your tests. To work around this, most linters will give you multiple options:
 
-* Disable the problematic rules with special annotations in your test files.
+- Disable the problematic rules with special annotations in your test files.
   This can be a hassle because it needs to be done for every file.
-* Completely disable the rules in the configuration. This means that they will
+- Completely disable the rules in the configuration. This means that they will
   no longer apply to production code either.
-* Create a separate config for tests that extends the base config, but disables
+- Create a separate config for tests that extends the base config, but disables
   the rules.
 
 If you're using TypeScript, tsc might also complain about unused labels.

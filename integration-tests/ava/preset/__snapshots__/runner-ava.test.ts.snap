@@ -28,7 +28,7 @@ exports[`produces clean output with runner-ava preset 1`] = `
   x
   => 3
 
-  Test.t [as fn] (ava.js:12:9)
+  t (ava.js:12:9)
   Object.<anonymous> (LOCATION HIDDEN)
 
 "

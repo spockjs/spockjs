@@ -21,7 +21,7 @@
     "@spockjs/runner-ava": "^0.6.0",
     "@spockjs/runner-jest": "^0.6.0",
     "@types/cross-spawn": "^6.0.0",
-    "ava": "1.0.0-beta.3",
+    "ava": "1.0.0-beta.5.1",
     "cross-spawn": "^6.0.5",
     "get-installed-path": "^4.0.8",
     "jasmine": "^3.1.0",

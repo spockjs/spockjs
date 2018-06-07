@@ -8,8 +8,8 @@ import { runAva } from '../ava';
 const cwd = resolve(__dirname, 'workdir');
 
 test('produces very verbose output by default', () => {
-  const { status, stderr } = runAva(cwd);
+  const { status, stdout } = runAva(cwd);
 
   expect: status === 1;
-  expect(stderr).toMatchSnapshot();
+  expect(stdout).toMatchSnapshot();
 });
