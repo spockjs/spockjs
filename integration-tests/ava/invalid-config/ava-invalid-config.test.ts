@@ -8,8 +8,8 @@ import { runAva } from '../ava';
 const cwd = resolve(__dirname, 'workdir');
 
 test('reports a transform error', () => {
-  const { status, stderr } = runAva(cwd);
+  const { status, stdout } = runAva(cwd);
 
   expect: status === 1;
-  expect(stderr.replace(/\n\s+at.+config.+/s, '')).toMatchSnapshot();
+  expect(stdout.replace(/\n\s+at.+config.+/s, '')).toMatchSnapshot();
 });

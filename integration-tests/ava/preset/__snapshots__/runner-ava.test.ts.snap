@@ -32,7 +32,7 @@ exports[`produces clean output with runner-ava preset 1`] = `
       \`,
   }
 
-  Test.t [as fn] (ava.js:12:25)
+  t (ava.js:12:25)
   Object.<anonymous> (LOCATION HIDDEN)
 
 "

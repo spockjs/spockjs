@@ -5,14 +5,14 @@ import { modulePath, runWithTypescriptJit } from '../utils';
 const avaCli = resolve(modulePath('ava'), 'cli.js');
 
 export const runAva = (cwd: string) => {
-  const { status, stderr } = runWithTypescriptJit(
+  const { status, stdout } = runWithTypescriptJit(
     [avaCli, '--serial', '--no-cache', '--verbose'],
     { cwd },
   );
 
   return {
     status,
-    stderr: stderr
+    stdout: stdout
       .toString()
       .replace(/✔|√|✖|×/g, ' ') // remove OS-dependent symbols
       .replace(/[^ ]+ava\.js:/, '<FILEPATH HIDDEN>:'), // remove absolute path

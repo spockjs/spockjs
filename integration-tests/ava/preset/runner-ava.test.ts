@@ -9,11 +9,11 @@ import { runAva } from '../ava';
 const cwd = resolve(__dirname, 'workdir');
 
 test('produces clean output with runner-ava preset', () => {
-  const { status, stderr } = runAva(cwd);
+  const { status, stdout } = runAva(cwd);
 
   expect: status === 1;
   expect(
-    stderr.replace(
+    stdout.replace(
       /Object\.<anonymous> \(.+(:[0-9]+){2}\)/,
       'Object.<anonymous> (LOCATION HIDDEN)',
     ),
