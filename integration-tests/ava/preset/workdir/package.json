@@ -1,7 +1,6 @@
 {
   "ava": {
     "files": ["ava.js"],
-    "failWithoutAssertions": false,
     "babel": {
       "testOptions": {
         "plugins": [

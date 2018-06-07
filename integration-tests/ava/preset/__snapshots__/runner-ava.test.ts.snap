@@ -3,7 +3,7 @@
 exports[`produces clean output with runner-ava preset 1`] = `
 "
     successful test
-    failing test Error thrown in test
+    failing test 
 
   1 test failed
 
@@ -15,24 +15,20 @@ exports[`produces clean output with runner-ava preset 1`] = `
    12:   then: x === double(2);
    13: });                     
 
-  Error thrown in test:
+  Value is not truthy:
 
-  Error {
-    message: \`  # ava.js:12␊
-      ␊
-      _assert(x === double(2))␊
-              | |   |         ␊
-              | |   4         ␊
-              3 false         ␊
-      ␊
-      [number] double(2)␊
-      => 4␊
-      [number] x␊
-      => 3␊
-      \`,
-  }
+  false
 
-  Test.t [as fn] (ava.js:12:25)
+  x === double(2)
+  => false
+
+  double(2)
+  => 4
+
+  x
+  => 3
+
+  Test.t [as fn] (ava.js:12:9)
   Object.<anonymous> (LOCATION HIDDEN)
 
 "

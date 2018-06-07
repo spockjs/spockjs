@@ -1,7 +1,7 @@
 {
-  "name": "@spockjs/runner-ava",
+  "name": "@spockjs/assertion-post-processor-ava-assert",
   "version": "0.6.0",
-  "description": "spockjs tailored for AVA",
+  "description": "use native AVA assertions in spockjs",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
   "repository": {
@@ -20,6 +20,9 @@
     "url": "https://github.com/spockjs/spockjs/issues"
   },
   "dependencies": {
-    "@spockjs/assertion-post-processor-ava-assert": "^0.6.0"
+    "@spockjs/config": "^0.6.0"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0-beta"
   }
 }

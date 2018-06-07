@@ -8,7 +8,7 @@ import autoImportDisabled from '@spockjs/assertion-post-processor-regular-errors
 import plugin from '@spockjs/babel-plugin-spock';
 
 // mark implicit dependencies for jest
-() => require('@spockjs/runner-jest') && require('@spockjs/runner-ava');
+() => require('@spockjs/runner-jest');
 
 const originalConsoleWarn = console.warn;
 let consoleWarn: jest.Mock;
@@ -21,28 +21,6 @@ test('throws plain Errors instead of AssertionErrors', () => {
       [
         plugin,
         { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
-      ],
-    ],
-  });
-
-  expect.assertions(1);
-  try {
-    new Function('assert', 'AssertionError', code as string)(
-      assert,
-      AssertionError,
-    );
-  } catch (e) {
-    expect: !(e instanceof AssertionError);
-    expect(e).toMatchSnapshot();
-  }
-});
-
-test('throws plain Errors instead of AssertionErrors with runner-ava instead of runner-jest', () => {
-  const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [
-      [
-        plugin,
-        { ...minimalConfig, presets: ['@spockjs/runner-ava'] } as Config,
       ],
     ],
   });
