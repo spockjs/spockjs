@@ -13,7 +13,7 @@ test_script:
   - yarn run lint
   - yarn run typecheck
   - yarn run build
-  - yarn run test-once
+  - yarn run test-once --runInBand
 
 build: off
 shallow_clone: true
