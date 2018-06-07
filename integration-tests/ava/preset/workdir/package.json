@@ -1,19 +1,34 @@
 {
   "ava": {
-    "files": ["ava.js"],
+    "files": [
+      "ava.js"
+    ],
     "failWithoutAssertions": false,
     "babel": {
       "testOptions": {
         "plugins": [
           [
             "../../../../packages/babel-plugin-spock/src/index.ts",
-            { "presets": ["@spockjs/runner-ava"] }
+            {
+              "presets": [
+                "@spockjs/runner-ava"
+              ]
+            }
           ]
         ]
       }
     }
   },
   "babel": {
-    "presets": [["@babel/preset-env", { "targets": { "node": 6 } }]]
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": 6
+          }
+        }
+      ]
+    ]
   }
 }

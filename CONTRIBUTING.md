@@ -5,17 +5,17 @@ the dependencies.
 
 ## Scripts
 
-* `yarn all` - run all checks and build
-  * `yarn lint` - lint the code using
+- `yarn all` - run all checks and build
+  - `yarn lint` - lint the code using
     [tslint](https://palantir.github.io/tslint/)
-  * `yarn typecheck` - typecheck the code using the
+  - `yarn typecheck` - typecheck the code using the
     [TypeScript](https://www.typescriptlang.org/) compiler
-  * `yarn test-once` - perform a single [Jest](https://facebook.github.io/jest/)
+  - `yarn test-once` - perform a single [Jest](https://facebook.github.io/jest/)
     test run
-  * `yarn build` - assemble the build output in the dist folder of each package
-* `yarn test` - run the tests in watch mode
-* `yarn fix` - fix all auto-fixable issues and format the code
-* `yarn clean` - remove generated distribution files and coverage stats
+  - `yarn build` - assemble the build output in the dist folder of each package
+- `yarn test` - run the tests in watch mode
+- `yarn fix` - fix all auto-fixable issues and format the code
+- `yarn clean` - remove generated distribution files and coverage stats
 
 ## Commits
 
