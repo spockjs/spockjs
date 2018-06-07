@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.0-beta.0"></a>
+# [1.0.0-beta.0](http://spockjs/spockjs/compare/v0.6.0...v1.0.0-beta.0) (2018-06-07)
+
+
+### Features
+
+* cleaner output with presets [@spockjs](http://spockjs/spockjs)/runner-{jest,ava} ([586114c](http://spockjs/spockjs/commits/586114c))
+* native AVA assertions ([6ecbe7a](http://spockjs/spockjs/commits/6ecbe7a)), closes [#70](http://spockjs/spockjs/issues/70)
+* remove `expect`/`then` labels ([07e5010](http://spockjs/spockjs/commits/07e5010))
+* unwrap assertion blocks ([71be3c6](http://spockjs/spockjs/commits/71be3c6))
+* validate babel-plugin-spock config ([fb9006e](http://spockjs/spockjs/commits/fb9006e))
+
+
+### BREAKING CHANGES
+
+* If you previously passed an invalid configuration object to the plugin,
+but it still worked correctly, you will now get an error.
+
+
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](http://spockjs/spockjs/compare/v0.5.0...v0.6.0) (2018-04-30)
 

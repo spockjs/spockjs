@@ -10,7 +10,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 * native AVA assertions ([6ecbe7a](https://github.com/spockjs/spockjs/commit/6ecbe7a)), closes [#70](https://github.com/spockjs/spockjs/issues/70)
-* remove `expect`/`then` labels ([07e5010](https://github.com/spockjs/spockjs/commit/07e5010))
 * validate babel-plugin-spock config ([fb9006e](https://github.com/spockjs/spockjs/commit/fb9006e))
 
 
@@ -18,21 +17,3 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * If you previously passed an invalid configuration object to the plugin,
 but it still worked correctly, you will now get an error.
-
-
-
-
-
-<a name="0.6.0"></a>
-# [0.6.0](https://github.com/spockjs/spockjs/compare/v0.5.0...v0.6.0) (2018-04-30)
-
-
-### build
-
-* convert to lerna monorepo ([788546c](https://github.com/spockjs/spockjs/commit/788546c))
-
-
-### BREAKING CHANGES
-
-* rename package from babel-plugin-spock to
-@spockjs/babel-plugin-spock
