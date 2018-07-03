@@ -80,3 +80,5 @@ export default (
     );
   }
 };
+
+export const labels = ['expect', 'then'];
