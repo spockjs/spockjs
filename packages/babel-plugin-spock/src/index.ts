@@ -4,18 +4,18 @@ import * as BabelTypes from '@babel/types';
 
 import { extractConfigFromState } from '@spockjs/config';
 
-import assertifyStatement from './assertify-statement';
+import assertifyStatement, {
+  labels as assertionBlockLabels,
+} from '@spockjs/assertion-block';
 
-const assertionBlockLabels = ['expect', 'then'];
-
-const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
+export default (babel: { types: typeof BabelTypes }): PluginObj => {
   return {
     visitor: {
       LabeledStatement(path, state) {
-        const config = extractConfigFromState(state);
-        const assertify = assertifyStatement(babel, state, config);
-
         if (assertionBlockLabels.includes(path.node.label.name)) {
+          const config = extractConfigFromState(state);
+          const assertify = assertifyStatement(babel, state, config);
+
           const bodyPath = path.get('body') as NodePath<BabelTypes.Statement>;
           switch (bodyPath.type) {
             case 'BlockStatement':
@@ -40,5 +40,3 @@ const plugin = (babel: { types: typeof BabelTypes }): PluginObj => {
     },
   };
 };
-
-export default plugin;

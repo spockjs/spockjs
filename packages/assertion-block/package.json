@@ -1,15 +1,7 @@
 {
-  "name": "@spockjs/babel-plugin-spock",
+  "name": "@spockjs/assertion-block",
   "version": "0.6.0",
-  "description": "Structured JS test cases, inspired by Spock Framework",
-  "keywords": [
-    "spock",
-    "framework",
-    "test",
-    "structure",
-    "babel",
-    "plugin"
-  ],
+  "description": "spockjs assertion block transform",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
   "repository": {
@@ -28,8 +20,9 @@
     "url": "https://github.com/spockjs/spockjs/issues"
   },
   "dependencies": {
-    "@spockjs/assertion-block": "^0.6.0",
-    "@spockjs/config": "^0.6.0"
+    "@spockjs/auto-import-assert": "^0.6.0",
+    "@spockjs/power-assert": "^0.6.0",
+    "@spockjs/static-check": "^0.6.0"
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0-beta"
