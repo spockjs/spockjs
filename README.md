@@ -206,7 +206,7 @@ default: `true`
 **`autoImport`**
 
 The plugin transforms your assertion blocks to calls to an assert function.
-Be default (`true`), this function is automatically imported from `power-assert`.
+By default (`true`), this function is automatically imported from `power-assert`.
 You can set this option to a string containing the name of a module
 that exports an assert function as its default export
 to use that module for assertions instead.
