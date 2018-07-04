@@ -7,6 +7,10 @@ import { extractConfigFromState } from '@spockjs/config';
 import assertifyStatement, {
   labels as assertionBlockLabels,
 } from '@spockjs/assertion-block';
+import transformInteractionDeclarationStatement, {
+  declarationLabels as interactionDeclarationLabels,
+  verificationLabel as interactionVerificationLabel,
+} from '@spockjs/interaction-block';
 
 const transformLabeledBlockOrSingle = (
   transform: (statementPath: NodePath<BabelTypes.Statement>) => void,
@@ -32,7 +36,9 @@ const transformLabeledBlockOrSingle = (
       transform(labeledBodyPath);
 
       // remove label
-      path.replaceWith(labeledBodyPath);
+      if (!path.removed) {
+        path.replaceWith(labeledBodyPath);
+      }
   }
 };
 
@@ -46,6 +52,19 @@ export default (babel: { types: typeof BabelTypes }): PluginObj => ({
       if (assertionBlockLabels.includes(label)) {
         transformLabeledBlockOrSingle(
           assertifyStatement(babel, state, config),
+          path,
+        );
+      }
+
+      // interaction block
+      else if (interactionDeclarationLabels.includes(label)) {
+        transformLabeledBlockOrSingle(
+          transformInteractionDeclarationStatement(babel.types, config).declare,
+          path,
+        );
+      } else if (label === interactionVerificationLabel) {
+        transformLabeledBlockOrSingle(
+          transformInteractionDeclarationStatement(babel.types, config).verify,
           path,
         );
       }

@@ -99,13 +99,36 @@ export const extractConfigFromState = ({
     ({ presets } = defaultConfig);
   }
   const hooks = presets.map(preset => require(preset) as Hooks).reduce(
-    (accHooks, moreHooks) => ({
-      assertionPostProcessors: [
-        ...accHooks.assertionPostProcessors,
-        ...moreHooks.assertionPostProcessors,
-      ],
-    }),
-    { assertionPostProcessors: [] },
+    (accHooks, moreHooks) => {
+      if (
+        accHooks.interactionRuntimeAdapter &&
+        moreHooks.interactionRuntimeAdapter
+      ) {
+        throw new Error(
+          'More than one preset defines an interaction runtime adapter. ' +
+            'Please make sure you enable only one preset for your mocking library.',
+        );
+      }
+
+      return {
+        assertionPostProcessors: [
+          ...accHooks.assertionPostProcessors,
+          ...moreHooks.assertionPostProcessors,
+        ],
+        interactionRuntimeAdapter:
+          accHooks.interactionRuntimeAdapter ||
+          moreHooks.interactionRuntimeAdapter,
+        interactionVerificationPostProcessors: [
+          ...accHooks.interactionVerificationPostProcessors,
+          ...moreHooks.interactionVerificationPostProcessors,
+        ],
+      };
+    },
+    {
+      assertionPostProcessors: [],
+      interactionRuntimeAdapter: '',
+      interactionVerificationPostProcessors: [],
+    },
   );
 
   return {
