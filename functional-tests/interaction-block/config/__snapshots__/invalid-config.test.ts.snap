@@ -1,0 +1,6 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`throws if the config contains no preset defining a primary interaction processor 1`] = `
+"Found an interaction declaration, but no preset defines a primary interactionProcessor.
+You need to enable a preset for your mocking library."
+`;

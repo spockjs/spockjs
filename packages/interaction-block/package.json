@@ -1,7 +1,7 @@
 {
-  "name": "@spockjs/preset-runner-ava",
+  "name": "@spockjs/interaction-block",
   "version": "1.0.0-beta.1",
-  "description": "spockjs tailored for AVA",
+  "description": "spockjs interaction block transform",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
   "repository": {
@@ -19,8 +19,7 @@
   "bugs": {
     "url": "https://github.com/spockjs/spockjs/issues"
   },
-  "dependencies": {
-    "@spockjs/assertion-post-processor-ava-assert": "^1.0.0-beta.1",
-    "@spockjs/interaction-processor-ava-pass-after-verify": "^1.0.0-beta.1"
+  "peerDependencies": {
+    "@babel/core": "^7.0.0-beta"
   }
 }

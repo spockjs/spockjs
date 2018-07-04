@@ -98,14 +98,21 @@ export const extractConfigFromState = ({
   if (presets === undefined) {
     ({ presets } = defaultConfig);
   }
+
   const hooks = presets.map(preset => require(preset) as Hooks).reduce(
-    (accHooks, moreHooks) => ({
-      assertionPostProcessors: [
-        ...accHooks.assertionPostProcessors,
-        ...moreHooks.assertionPostProcessors,
-      ],
-    }),
-    { assertionPostProcessors: [] },
+    (accHooks, moreHooks) => {
+      return {
+        assertionPostProcessors: [
+          ...accHooks.assertionPostProcessors,
+          ...moreHooks.assertionPostProcessors,
+        ],
+        interactionProcessors: [
+          ...accHooks.interactionProcessors,
+          ...moreHooks.interactionProcessors,
+        ],
+      };
+    },
+    { assertionPostProcessors: [], interactionProcessors: [] },
   );
 
   return {

@@ -29,7 +29,8 @@
   },
   "dependencies": {
     "@spockjs/assertion-block": "^1.0.0-beta.1",
-    "@spockjs/config": "^1.0.0-beta.1"
+    "@spockjs/config": "^1.0.0-beta.1",
+    "@spockjs/interaction-block": "^1.0.0-beta.1"
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0-beta.54"

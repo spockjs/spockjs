@@ -5,3 +5,5 @@ import { AssertionPostProcessor } from '@spockjs/config';
 export const assertionPostProcessors: AssertionPostProcessor[] = [
   regularErrorsAssertionPostProcessor,
 ];
+
+export const interactionProcessors = [];
