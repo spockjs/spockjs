@@ -18,5 +18,3 @@ const processor: AssertionPostProcessor = (t, config, path) => {
 };
 
 export default processor;
-
-// TODO func test
