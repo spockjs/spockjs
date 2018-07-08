@@ -15,7 +15,7 @@
         "@spockjs/babel-plugin-spock",
         {
           "presets": [
-            "@spockjs/runner-jest"
+            "@spockjs/preset-runner-jest"
           ]
         }
       ]

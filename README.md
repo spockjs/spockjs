@@ -80,7 +80,7 @@ for a flawless experience.
 
 #### Jest
 
-**Package**: `@spockjs/runner-jest`
+**Package**: `@spockjs/preset-runner-jest`
 
 **Currently provides**
 
@@ -88,7 +88,7 @@ for a flawless experience.
 
 #### AVA
 
-**Package**: `@spockjs/runner-ava`
+**Package**: `@spockjs/preset-runner-ava`
 
 **Currently provides**
 
@@ -101,7 +101,7 @@ for a flawless experience.
 - AVA's `t` must be available in the test cases;
   using a different name for the test case parameter is not currently supported.
   If you do not follow this convention in all your test cases,
-  you will have to disable `@spockjs/runner-ava` and
+  you will have to disable `@spockjs/preset-runner-ava` and
   use the "vanilla" spockjs with its disadvantages.
 
 ## Usage

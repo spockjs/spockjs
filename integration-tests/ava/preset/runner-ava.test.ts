@@ -4,7 +4,7 @@ import { runAva } from '../ava';
 
 // mark implicit dependencies for jest
 () => require('./workdir/ava.js') && require('./workdir/package.json');
-() => require('@spockjs/runner-ava');
+() => require('@spockjs/preset-runner-ava');
 
 const cwd = resolve(__dirname, 'workdir');
 

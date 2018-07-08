@@ -17,8 +17,8 @@
     "test-once": "ts-node --transpileOnly --project tsconfig.json node_modules/jest-cli/bin/jest.js --coverage --no-cache",
     "test-only": "yarn run test-once --watch",
     "test": "yarn run test-only --projects jest.config.js jest-tslint.config.js",
-    "prebuild": "lerna exec --scope @spockjs/babel-plugin-spock --scope @spockjs/runner-* --include-filtered-dependencies -- tsc --project tsconfig.d.json",
-    "build": "lerna exec --scope @spockjs/babel-plugin-spock --scope @spockjs/runner-* --include-filtered-dependencies -- babel src -d dist --extensions .ts --ignore .*\\/__tests__\\/.* --ignore .*\\/__mocks__\\/.*",
+    "prebuild": "lerna exec --scope @spockjs/babel-plugin-spock --scope @spockjs/preset-* --include-filtered-dependencies -- tsc --project tsconfig.d.json",
+    "build": "lerna exec --scope @spockjs/babel-plugin-spock --scope @spockjs/preset-* --include-filtered-dependencies -- babel src -d dist --extensions .ts --ignore .*\\/__tests__\\/.* --ignore .*\\/__mocks__\\/.*",
     "all": "run-p lint typecheck test-once build"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "@babel/preset-env": "7.0.0-beta.44",
     "@babel/preset-typescript": "7.0.0-beta.44",
     "@spockjs/babel-plugin-spock": "^0.6.0",
-    "@spockjs/runner-jest": "^0.6.0",
+    "@spockjs/preset-runner-jest": "^0.6.0",
     "@types/babel-core": "^6.25.3",
     "@types/babel-template": "^6.25.0",
     "@types/babel-traverse": "^6.25.2",

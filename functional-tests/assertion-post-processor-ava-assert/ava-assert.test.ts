@@ -6,14 +6,14 @@ import { Config, minimalConfig } from '@spockjs/config';
 import plugin from '@spockjs/babel-plugin-spock';
 
 // mark implicit dependencies for jest
-() => require('@spockjs/runner-ava');
+() => require('@spockjs/preset-runner-ava');
 
 test('works with t.truthy instead of assert', () => {
   const { code } = transform(`expect: 1 === 2;`, {
     plugins: [
       [
         plugin,
-        { ...minimalConfig, presets: ['@spockjs/runner-ava'] } as Config,
+        { ...minimalConfig, presets: ['@spockjs/preset-runner-ava'] } as Config,
       ],
     ],
   });

@@ -20,7 +20,7 @@
     "@spockjs/assertion-post-processor-regular-errors": "^0.6.0",
     "@spockjs/babel-plugin-spock": "^0.6.0",
     "@spockjs/config": "^0.6.0",
-    "@spockjs/runner-ava": "^0.6.0",
-    "@spockjs/runner-jest": "^0.6.0"
+    "@spockjs/preset-runner-ava": "^0.6.0",
+    "@spockjs/preset-runner-jest": "^0.6.0"
   }
 }

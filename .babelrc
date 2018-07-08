@@ -14,7 +14,7 @@
   "env": {
     "test": {
       "plugins": [
-        ["@spockjs/babel-plugin-spock", { "presets": ["@spockjs/runner-jest"] }]
+        ["@spockjs/babel-plugin-spock", { "presets": ["@spockjs/preset-runner-jest"] }]
       ]
     }
   }
