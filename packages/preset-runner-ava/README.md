@@ -1,4 +1,4 @@
-# @spockjs/runner-jest
+# @spockjs/preset-runner-ava
 
 > Structured JS test cases, inspired by
 > [Spock Framework](http://spockframework.org)
@@ -7,7 +7,7 @@
 [![AppVeyor build status](https://img.shields.io/appveyor/ci/jeysal/spockjs/master.svg?style=flat-square&label=windows+build)](https://ci.appveyor.com/project/jeysal/spockjs)
 [![code coverage](https://img.shields.io/codecov/c/github/spockjs/spockjs/master.svg?style=flat-square)](https://codecov.io/gh/spockjs/spockjs)
 
-[![npm package](https://img.shields.io/npm/v/@spockjs/runner-jest.svg?style=flat-square)](https://www.npmjs.com/package/@spockjs/runner-jest)
+[![npm package](https://img.shields.io/npm/v/@spockjs/preset-runner-ava.svg?style=flat-square)](https://www.npmjs.com/package/@spockjs/preset-runner-ava)
 [![license](https://img.shields.io/github/license/spockjs/spockjs.svg?style=flat-square)](https://github.com/spockjs/spockjs/blob/master/LICENSE)
 
 **[Click here](https://github.com/spockjs/spockjs)

@@ -8,7 +8,7 @@ import autoImportDisabled from '@spockjs/assertion-post-processor-regular-errors
 import plugin from '@spockjs/babel-plugin-spock';
 
 // mark implicit dependencies for jest
-() => require('@spockjs/runner-jest');
+() => require('@spockjs/preset-runner-jest');
 
 const originalConsoleWarn = console.warn;
 let consoleWarn: jest.Mock;
@@ -20,7 +20,10 @@ test('throws plain Errors instead of AssertionErrors', () => {
     plugins: [
       [
         plugin,
-        { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
+        {
+          ...minimalConfig,
+          presets: ['@spockjs/preset-runner-jest'],
+        } as Config,
       ],
     ],
   });
@@ -46,7 +49,10 @@ test('leaves other errors untouched', () => {
     plugins: [
       [
         plugin,
-        { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
+        {
+          ...minimalConfig,
+          presets: ['@spockjs/preset-runner-jest'],
+        } as Config,
       ],
     ],
   });
@@ -68,7 +74,10 @@ describe('autoImport disabled warning', () => {
       plugins: [
         [
           plugin,
-          { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
+          {
+            ...minimalConfig,
+            presets: ['@spockjs/preset-runner-jest'],
+          } as Config,
         ],
       ],
     });
@@ -85,7 +94,10 @@ describe('autoImport disabled warning', () => {
           plugins: [
             [
               plugin,
-              { ...minimalConfig, presets: ['@spockjs/runner-jest'] } as Config,
+              {
+                ...minimalConfig,
+                presets: ['@spockjs/preset-runner-jest'],
+              } as Config,
             ],
           ],
         },
@@ -104,7 +116,7 @@ test('does not require AssertionError in scope with autoImport enabled', () => {
         plugin,
         {
           ...minimalConfig,
-          presets: ['@spockjs/runner-jest'],
+          presets: ['@spockjs/preset-runner-jest'],
           autoImport: true,
         } as Config,
       ],
@@ -128,7 +140,7 @@ test('keeps the pretty error message from powerAssert', () => {
         plugin,
         {
           ...minimalConfig,
-          presets: ['@spockjs/runner-jest'],
+          presets: ['@spockjs/preset-runner-jest'],
           powerAssert: true,
         } as Config,
       ],

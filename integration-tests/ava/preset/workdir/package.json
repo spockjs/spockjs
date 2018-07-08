@@ -10,7 +10,7 @@
             "../../../../packages/babel-plugin-spock/src/index.ts",
             {
               "presets": [
-                "@spockjs/runner-ava"
+                "@spockjs/preset-runner-ava"
               ]
             }
           ]

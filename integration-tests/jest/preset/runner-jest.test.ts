@@ -4,7 +4,7 @@ import { runJest } from '../jest';
 
 // mark implicit dependencies for jest
 () => require('./workdir/jest.js') && require('./workdir/package.json');
-() => require('@spockjs/runner-jest');
+() => require('@spockjs/preset-runner-jest');
 
 const cwd = resolve(__dirname, 'workdir');
 
