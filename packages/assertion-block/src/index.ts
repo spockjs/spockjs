@@ -10,7 +10,7 @@ export default (
   babel: { types: typeof BabelTypes },
   state: any,
   config: InternalConfig,
-) => (statementPath: NodePath<BabelTypes.Statement>) => {
+) => {
   const { types: t } = babel;
   const {
     assertFunctionName,
@@ -19,66 +19,66 @@ export default (
     staticTruthCheck,
     hooks: { assertionPostProcessors },
   } = config;
+  const postProcessors = assertionPostProcessors.map(processor =>
+    processor(t, config),
+  );
 
-  const { scope, node: statement } = statementPath;
+  return (statementPath: NodePath<BabelTypes.Statement>) => {
+    if (statementPath.isExpressionStatement()) {
+      const { scope, node: statement } = statementPath;
 
-  if (t.isExpressionStatement(statement)) {
-    const expressionStatementPath = statementPath as NodePath<
-      BabelTypes.ExpressionStatement
-    >;
-    const expressionPath = expressionStatementPath.get(
-      'expression',
-    ) as NodePath<BabelTypes.Expression>;
-    if (staticTruthCheck) {
-      checkStatically(expressionPath);
+      if (staticTruthCheck) {
+        checkStatically(statementPath.get('expression') as NodePath<
+          BabelTypes.Expression
+        >);
+      }
+
+      const origExpr = statement.expression;
+
+      const assertIdentifier = t.identifier(
+        autoImport
+          ? // reuse or add import from given source
+            findExistingImport(scope, t, autoImport) ||
+            addImport(scope, t, autoImport, assertFunctionName, 'assert')
+          : // assume assert identifier is already available
+            assertFunctionName || 'assert',
+      );
+      assertIdentifier.loc = {
+        start: origExpr.loc.start,
+        end: origExpr.loc.start,
+      };
+
+      const newExpr = t.callExpression(assertIdentifier, [origExpr]);
+      newExpr.loc = origExpr.loc;
+      statement.expression = newExpr;
+
+      // register added import with scope so it is found for the next assertion
+      // for some reason, this needs to happen after we have referenced the import
+      // with our call expression, otherwise the import will be removed
+      (scope.getProgramParent() as any).crawl();
+
+      const {
+        path: processedExpressionStatementPath,
+        patterns,
+      } = postProcessors.reduce(
+        ({ path, patterns }, postProcess) => postProcess(path, patterns),
+        {
+          path: statementPath,
+          patterns: [`${assertIdentifier.name}(value)`],
+        },
+      );
+
+      if (powerAssert) {
+        empowerAssert(babel, state, patterns, processedExpressionStatementPath);
+      }
+    } else {
+      throw statementPath.buildCodeFrameError(
+        `Expected an expression statement, but got a statement of type ${
+          statementPath.type
+        }`,
+      );
     }
-
-    const origExpr = statement.expression;
-
-    const assertIdentifier = t.identifier(
-      autoImport
-        ? // reuse or add import from given source
-          findExistingImport(scope, t, autoImport) ||
-          addImport(scope, t, autoImport, assertFunctionName, 'assert')
-        : // assume assert identifier is already available
-          assertFunctionName || 'assert',
-    );
-    assertIdentifier.loc = {
-      start: origExpr.loc.start,
-      end: origExpr.loc.start,
-    };
-
-    const newExpr = t.callExpression(assertIdentifier, [origExpr]);
-    newExpr.loc = origExpr.loc;
-    statement.expression = newExpr;
-
-    // register added import with scope so it is found for the next assertion
-    // for some reason, this needs to happen after we have referenced the import
-    // with our call expression, otherwise the import will be removed
-    (scope.getProgramParent() as any).crawl();
-
-    const {
-      path: processedExpressionStatementPath,
-      patterns,
-    } = assertionPostProcessors.reduce(
-      ({ path, patterns }, postProcessAssertion) =>
-        postProcessAssertion(t, config)(path, patterns),
-      {
-        path: expressionStatementPath,
-        patterns: [`${assertIdentifier.name}(value)`],
-      },
-    );
-
-    if (powerAssert) {
-      empowerAssert(babel, state, patterns, processedExpressionStatementPath);
-    }
-  } else {
-    throw statementPath.buildCodeFrameError(
-      `Expected an expression statement, but got a statement of type ${
-        statementPath.type
-      }`,
-    );
-  }
+  };
 };
 
 export const labels = ['expect', 'then'];
