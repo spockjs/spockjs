@@ -3,7 +3,7 @@ import template from '@babel/template';
 import { NodePath } from '@babel/traverse';
 import { ExpressionStatement, TryStatement } from '@babel/types';
 
-import { AssertionPostProcessor } from '@spockjs/config/src/hooks';
+import { AssertionPostProcessor } from '@spockjs/config';
 
 import autoImportDisabled from './auto-import-disabled-warning';
 
@@ -18,9 +18,7 @@ const createTryStatement = template(`
   }
 `);
 
-const processor: AssertionPostProcessor = (
-  t,
-  { autoImport },
+const processor: AssertionPostProcessor = (t, { autoImport }) => (
   originalPath,
   patterns,
 ) => {

@@ -62,7 +62,7 @@ export default (
       patterns,
     } = assertionPostProcessors.reduce(
       ({ path, patterns }, postProcessAssertion) =>
-        postProcessAssertion(t, config, path, patterns),
+        postProcessAssertion(t, config)(path, patterns),
       {
         path: expressionStatementPath,
         patterns: [`${assertIdentifier.name}(value)`],
