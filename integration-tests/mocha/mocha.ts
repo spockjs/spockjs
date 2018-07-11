@@ -10,13 +10,9 @@ import {
   typescriptJitEnv,
 } from '../utils';
 
-// mark implicit dependencies for jest
-() => require('./workdir/mocha.js') && require('./workdir/package.json');
-
 const mochaCli = resolve(modulePath('mocha'), 'bin', 'mocha');
-const cwd = resolve(__dirname, 'workdir');
 
-test('produces correct output', () => {
+export const runMocha = (cwd: string) => {
   const { status, stdout } = run(
     'node',
     [
@@ -37,20 +33,5 @@ test('produces correct output', () => {
     },
   );
 
-  expect: status === 1;
-
-  const {
-    stats: { passes, failures },
-    failures: [
-      {
-        err: { message },
-      },
-    ],
-  } = JSON.parse(stdout.toString());
-
-  expect: {
-    passes === 1;
-    failures === 1;
-  }
-  expect(message).toMatchSnapshot();
-});
+  return { status, result: JSON.parse(stdout.toString()) };
+};

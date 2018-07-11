@@ -1,6 +1,7 @@
 import { sync as run } from 'cross-spawn';
 import { readFileSync as read, unlinkSync as del } from 'fs';
 import { resolve } from 'path';
+import { env } from 'process';
 
 import {
   modulePath,
@@ -45,10 +46,29 @@ test('generates code that looks hand-written', () => {
 test('generates code that performs the assertion', () => {
   const { status, stderr } = run('node', [...requireBabelJitArgs, outFile], {
     cwd,
+    env: {
+      ...env,
+      suite: 'assertion',
+    },
   });
 
   expect: status === 1;
   expect(stderr.toString()).toMatch(
     /AssertionError \[ERR_ASSERTION\]: \(3 === 4\) is not truthy/,
+  );
+});
+
+test('generates code that verifies the interaction', () => {
+  const { status, stderr } = run('node', [...requireBabelJitArgs, outFile], {
+    cwd,
+    env: {
+      ...env,
+      suite: 'interaction',
+    },
+  });
+
+  expect: status === 1;
+  expect(stderr.toString()).toMatch(
+    /Expected method\(\[\.\.\.\]\) twice \(called once\)/,
   );
 });

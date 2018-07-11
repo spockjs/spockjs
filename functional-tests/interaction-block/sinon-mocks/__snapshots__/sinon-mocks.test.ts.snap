@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not accept a call with incorrect arguments 1`] = `
+"Unexpected call: method(1337)
+    Expected method(42[, ...]) once (never called)"
+`;
+
+exports[`does not accept a call with missing arguments 1`] = `
+"Unexpected call: method()
+    Expected method(42[, ...]) once (never called)"
+`;
+
+exports[`reports no calls at all 1`] = `"Expected method([...]) once (never called)"`;
+
+exports[`reports the occurrence of an unspecified call 1`] = `
+"Unexpected call: method(1337)
+    Expectation met: method(42[, ...]) once"
+`;
+
+exports[`reports too few calls 1`] = `"Expected method([...]) twice (called once)"`;
+
+exports[`reports too few calls on one of multiple identical interactions 1`] = `
+"Expected method([...]) twice (called once)
+Expectation met: method([...]) twice"
+`;
+
+exports[`reports too few calls on one of multiple methods 1`] = `
+"Expected other([...]) twice (called once)
+Expectation met: method([...]) twice"
+`;
+
+exports[`reports too few calls with one of multiple argument lists 1`] = `
+"Expected method(42[, ...]) twice (called once)
+Expectation met: method([...]) twice"
+`;
+
+exports[`reports too many calls 1`] = `
+"Unexpected call: method()
+    Expectation met: method([...]) 0 times"
+`;
+
+exports[`works with a computed method name 1`] = `"Expected method([...]) twice (called once)"`;
+
+exports[`works with a function expectation 1`] = `"Expected mock([...]) twice (called once)"`;
