@@ -6,6 +6,7 @@ import { InternalConfig } from '.';
 export type AssertionPostProcessor = (
   t: typeof BabelTypes,
   config: InternalConfig,
+) => (
   path: NodePath<BabelTypes.ExpressionStatement>,
   patterns: string[],
 ) => {

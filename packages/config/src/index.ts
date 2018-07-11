@@ -116,3 +116,5 @@ export const extractConfigFromState = ({
     hooks,
   };
 };
+
+export * from './hooks';

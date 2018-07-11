@@ -248,6 +248,9 @@ Presets are collections of additional features or behavior tweaks for the plugin
 The plugin will import modules with the exact names specified in this array and use them as presets.
 See [Test runners](#test-runners) for some presets provided by spockjs itself.
 
+To implement your own preset, take a look at one of the `@spockjs/preset-*` packages.
+The exports of a preset module must match the `Hooks` type defined by `@spockjs/config`.
+
 type: `string[]`  
 default: `[]`
 

@@ -1,8 +1,8 @@
 import { CallExpression } from '@babel/types';
 
-import { AssertionPostProcessor } from '@spockjs/config/src/hooks';
+import { AssertionPostProcessor } from '@spockjs/config';
 
-const processor: AssertionPostProcessor = (t, config, path) => {
+const processor: AssertionPostProcessor = (t, config) => path => {
   const assertionExpression = path.node.expression as CallExpression;
 
   const tTruthy = t.memberExpression(t.identifier('t'), t.identifier('truthy'));
