@@ -20,6 +20,7 @@
     "@spockjs/babel-plugin-spock": "^1.0.0-beta.1",
     "@spockjs/preset-runner-ava": "^1.0.0-beta.1",
     "@spockjs/preset-runner-jest": "^1.0.0-beta.1",
+    "@spockjs/preset-jest-mocks": "^1.0.0-beta.1",
     "@spockjs/preset-sinon-mocks": "^1.0.0-beta.1",
     "@types/cross-spawn": "^6.0.0",
     "ava": "^1.0.0-beta.5.1",
