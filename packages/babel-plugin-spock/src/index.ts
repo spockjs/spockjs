@@ -8,35 +8,47 @@ import assertifyStatement, {
   labels as assertionBlockLabels,
 } from '@spockjs/assertion-block';
 
-export default (babel: { types: typeof BabelTypes }): PluginObj => {
-  return {
-    visitor: {
-      LabeledStatement(path, state) {
-        if (assertionBlockLabels.includes(path.node.label.name)) {
-          const config = extractConfigFromState(state);
-          const assertify = assertifyStatement(babel, state, config);
+const transformLabeledBlockOrSingle = (
+  transform: (statementPath: NodePath<BabelTypes.Statement>) => void,
+  path: NodePath<BabelTypes.LabeledStatement>,
+): void => {
+  const labeledBodyPath = path.get('body') as NodePath<BabelTypes.Statement>;
 
-          const bodyPath = path.get('body') as NodePath<BabelTypes.Statement>;
-          switch (bodyPath.type) {
-            case 'BlockStatement':
-              // power-assert may add statements in betweeen,
-              // so never reuse body array
-              const statementPaths = () =>
-                (bodyPath.get('body') as any) as NodePath<
-                  BabelTypes.Statement
-                >[];
+  switch (labeledBodyPath.type) {
+    case 'BlockStatement':
+      // power-assert may add statements in betweeen,
+      // so never reuse body array
+      const statementPaths = () =>
+        (labeledBodyPath.get('body') as any) as NodePath<
+          BabelTypes.Statement
+        >[];
 
-              statementPaths().forEach(assertify);
-              path.replaceWithMultiple(
-                statementPaths().map(stmtPath => stmtPath.node),
-              );
-              break;
-            default:
-              assertify(bodyPath);
-              path.replaceWith(bodyPath);
-          }
-        }
-      },
-    },
-  };
+      statementPaths().forEach(transform);
+
+      // remove label
+      path.replaceWithMultiple(statementPaths().map(stmtPath => stmtPath.node));
+      break;
+    default:
+      transform(labeledBodyPath);
+
+      // remove label
+      path.replaceWith(labeledBodyPath);
+  }
 };
+
+export default (babel: { types: typeof BabelTypes }): PluginObj => ({
+  visitor: {
+    LabeledStatement(path, state) {
+      const config = extractConfigFromState(state);
+      const label = path.node.label.name;
+
+      // assertion block
+      if (assertionBlockLabels.includes(label)) {
+        transformLabeledBlockOrSingle(
+          assertifyStatement(babel, state, config),
+          path,
+        );
+      }
+    },
+  },
+});
