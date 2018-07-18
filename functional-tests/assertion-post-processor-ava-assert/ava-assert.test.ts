@@ -16,6 +16,7 @@ test('works with t.truthy instead of assert', () => {
         { ...minimalConfig, presets: ['@spockjs/preset-runner-ava'] } as Config,
       ],
     ],
+    filename: 'test.js',
   });
   expect(() => new Function('t', code as string)({ truthy: assert })).toThrow(
     AssertionError,

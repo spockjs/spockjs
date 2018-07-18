@@ -1,16 +1,18 @@
-import { transform } from '@babel/core';
+import { transform, TransformOptions } from '@babel/core';
 import { AssertionError } from 'power-assert';
 
 import plugin from '@spockjs/babel-plugin-spock';
 import { Config, minimalConfig } from '@spockjs/config';
 
+const config: Config = { ...minimalConfig, autoImport: true };
+const babelOpts = (config: Config) =>
+  ({
+    plugins: [[plugin, config], '@babel/plugin-transform-modules-commonjs'],
+    filename: 'test.js',
+  } as TransformOptions);
+
 test('makes a manual import superfluous', () => {
-  const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [
-      [plugin, { ...minimalConfig, autoImport: true } as Config],
-      '@babel/plugin-transform-modules-commonjs',
-    ],
-  });
+  const { code } = transform(`expect: 1 === 2;`, babelOpts(config));
   expect(() => new Function('require', code as string)(require)).toThrow(
     AssertionError,
   );
@@ -20,12 +22,7 @@ test('does not clash with an existing "_assert" import', () => {
   const { code } = transform(
     `import _assert from 'fs';
     expect: 1 === 2;`,
-    {
-      plugins: [
-        [plugin, { ...minimalConfig, autoImport: true } as Config],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
+    babelOpts(config),
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
     AssertionError,
@@ -39,12 +36,7 @@ test('does not clash with an existing "_assert" identifier in another scope afte
       let _assert;
       expect: 1 === 2;
     }`,
-    {
-      plugins: [
-        [plugin, { ...minimalConfig, autoImport: true } as Config],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
+    babelOpts(config),
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
     AssertionError,
@@ -52,12 +44,10 @@ test('does not clash with an existing "_assert" identifier in another scope afte
 });
 
 test('imports from a custom source', () => {
-  const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [
-      [plugin, { ...minimalConfig, autoImport: 'fancy-assert' } as Config],
-      '@babel/plugin-transform-modules-commonjs',
-    ],
-  });
+  const { code } = transform(
+    `expect: 1 === 2;`,
+    babelOpts({ ...config, autoImport: 'fancy-assert' }),
+  );
 
   const customRequire = (name: string) =>
     name === 'fancy-assert' ? require('power-assert') : undefined;
@@ -71,12 +61,7 @@ test('uses an existing default import', () => {
   const { code } = transform(
     `import fancyAssert from 'power-assert';
     expect: 1 === 2;`,
-    {
-      plugins: [
-        [plugin, { ...minimalConfig, autoImport: true } as Config],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
+    babelOpts(config),
   );
 
   const customRequire = jest.fn(require);
@@ -90,12 +75,7 @@ test('does not attempt to use an existing named import', () => {
   const { code } = transform(
     `import { fancyAssert } from 'power-assert';
     expect: 1 === 2;`,
-    {
-      plugins: [
-        [plugin, { ...minimalConfig, autoImport: true } as Config],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
+    babelOpts(config),
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
     AssertionError,
@@ -109,12 +89,7 @@ test('does not attempt to use a shadowed existing default import', () => {
       let fancyAssert;
       expect: 1 === 2;
     }`,
-    {
-      plugins: [
-        [plugin, { ...minimalConfig, autoImport: true } as Config],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
+    babelOpts(config),
   );
   expect(() => new Function('require', code as string)(require)).toThrow(
     AssertionError,
@@ -125,12 +100,7 @@ test('reuses the same import for multiple assertions', () => {
   const { code } = transform(
     `expect: 1 === 1;
     expect: 2 === 2;`,
-    {
-      plugins: [
-        [plugin, { ...minimalConfig, autoImport: true } as Config],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
+    babelOpts(config),
   );
 
   const customRequire = jest.fn(require);
@@ -144,12 +114,7 @@ test('reuses the same import for multiple assertions in nested scopes', () => {
       expect: 1 === 1;
       expect: 2 === 2;
     })()`,
-    {
-      plugins: [
-        [plugin, { ...minimalConfig, autoImport: true } as Config],
-        '@babel/plugin-transform-modules-commonjs',
-      ],
-    },
+    babelOpts(config),
   );
 
   const customRequire = jest.fn(require);
