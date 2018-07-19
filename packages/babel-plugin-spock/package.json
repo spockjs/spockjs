@@ -32,6 +32,6 @@
     "@spockjs/config": "^1.0.0-beta.1"
   },
   "peerDependencies": {
-    "@babel/core": "^7.0.0-beta"
+    "@babel/core": "^7.0.0-beta.54"
   }
 }
