@@ -1,6 +1,6 @@
 {
   "name": "@spockjs/babel-plugin-spock",
-  "version": "0.6.0",
+  "version": "1.0.0-beta.1",
   "description": "Structured JS test cases, inspired by Spock Framework",
   "keywords": [
     "spock",
@@ -28,8 +28,8 @@
     "url": "https://github.com/spockjs/spockjs/issues"
   },
   "dependencies": {
-    "@spockjs/assertion-block": "^0.6.0",
-    "@spockjs/config": "^0.6.0"
+    "@spockjs/assertion-block": "^1.0.0-beta.1",
+    "@spockjs/config": "^1.0.0-beta.1"
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0-beta"

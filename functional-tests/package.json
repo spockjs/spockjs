@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "@spockjs/functional-tests",
-  "version": "0.6.0",
+  "version": "1.0.0-beta.1",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
   "repository": {
@@ -17,10 +17,10 @@
   },
   "devDependencies": {
     "@babel/preset-react": "7.0.0-beta.44",
-    "@spockjs/assertion-post-processor-regular-errors": "^0.6.0",
-    "@spockjs/babel-plugin-spock": "^0.6.0",
-    "@spockjs/config": "^0.6.0",
-    "@spockjs/preset-runner-ava": "^0.6.0",
-    "@spockjs/preset-runner-jest": "^0.6.0"
+    "@spockjs/assertion-post-processor-regular-errors": "^1.0.0-beta.1",
+    "@spockjs/babel-plugin-spock": "^1.0.0-beta.1",
+    "@spockjs/config": "^1.0.0-beta.1",
+    "@spockjs/preset-runner-ava": "^1.0.0-beta.1",
+    "@spockjs/preset-runner-jest": "^1.0.0-beta.1"
   }
 }

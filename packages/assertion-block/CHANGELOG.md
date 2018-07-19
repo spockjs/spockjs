@@ -20,15 +20,3 @@ as a second parameter to the assert function.
 AssertionPostProcessors will need to take this into account
 both for returning a power-assert pattern
 and for their own AST transformations.
-
-
-
-
-
-<a name="1.0.0-beta.0"></a>
-# [1.0.0-beta.0](https://github.com/spockjs/spockjs/compare/v0.6.0...v1.0.0-beta.0) (2018-06-07)
-
-
-### Features
-
-* native AVA assertions ([6ecbe7a](https://github.com/spockjs/spockjs/commit/6ecbe7a)), closes [#70](https://github.com/spockjs/spockjs/issues/70)

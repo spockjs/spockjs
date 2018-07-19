@@ -1,6 +1,6 @@
 {
   "name": "@spockjs/preset-runner-ava",
-  "version": "0.6.0",
+  "version": "1.0.0-beta.1",
   "description": "spockjs tailored for AVA",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
@@ -20,6 +20,6 @@
     "url": "https://github.com/spockjs/spockjs/issues"
   },
   "dependencies": {
-    "@spockjs/assertion-post-processor-ava-assert": "^0.6.0"
+    "@spockjs/assertion-post-processor-ava-assert": "^1.0.0-beta.1"
   }
 }

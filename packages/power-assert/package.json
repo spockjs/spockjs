@@ -1,6 +1,6 @@
 {
   "name": "@spockjs/power-assert",
-  "version": "0.6.0",
+  "version": "1.0.0-beta.1",
   "description": "spockjs power-assert integration",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
