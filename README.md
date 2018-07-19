@@ -25,15 +25,12 @@ test('basic arithmetic', () => {
 ```
 
 ```
-Expected value to be (operator: ==):
-  true
-Received:
-  false
+(3 * 3 >= 4 * 4) is not truthy   # test.js:4
 
-  assert(3 * 3 >= 4 * 4)
-           |   |    |
-           |   |    16
-           9   false
+  _assert(3 * 3 >= 4 * 4, "(3 * 3 >= 4 * 4) is not truthy")
+            |   |    |
+            |   |    16
+            9   false
 ```
 
 ## Installation
