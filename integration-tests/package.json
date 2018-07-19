@@ -16,12 +16,12 @@
     "url": "https://github.com/spockjs/spockjs/issues"
   },
   "devDependencies": {
-    "@babel/register": "7.0.0-beta.54",
+    "@babel/register": "^7.0.0-beta.54",
     "@spockjs/babel-plugin-spock": "^1.0.0-beta.1",
     "@spockjs/preset-runner-ava": "^1.0.0-beta.1",
     "@spockjs/preset-runner-jest": "^1.0.0-beta.1",
     "@types/cross-spawn": "^6.0.0",
-    "ava": "1.0.0-beta.5.1",
+    "ava": "^1.0.0-beta.5.1",
     "cross-spawn": "^6.0.5",
     "get-installed-path": "^4.0.8",
     "jasmine": "^3.1.0",
