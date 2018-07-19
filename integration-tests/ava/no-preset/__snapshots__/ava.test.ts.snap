@@ -21,7 +21,7 @@ exports[`produces very verbose output by default 1`] = `
     actual: false,
     code: 'ERR_ASSERTION',
     expected: true,
-    generatedMessage: true,
+    generatedMessage: false,
     operator: '==',
     powerAssertContext: {
       args: [
@@ -29,19 +29,19 @@ exports[`produces very verbose output by default 1`] = `
       ],
       source: {
         ast: Object { … },
-        content: '_assert(x === double(2))',
+        content: '_assert(x === double(2), \\"(x === double(2)) is not truthy\\")',
         filepath: 'ava.js',
         line: 12,
         tokens: Array [ … ],
         visitorKeys: Object { … },
       },
     },
-    message: \`  # ava.js:12␊
+    message: \`(x === double(2)) is not truthy   # ava.js:12␊
       ␊
-      _assert(x === double(2))␊
-              | |   |         ␊
-              | |   4         ␊
-              3 false         ␊
+      _assert(x === double(2), \\"(x === double(2)) is not truthy\\")␊
+              | |   |                                            ␊
+              | |   4                                            ␊
+              3 false                                            ␊
       ␊
       [number] double(2)␊
       => 4␊

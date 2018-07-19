@@ -2,12 +2,12 @@
 
 exports[`leaves unrelated assert statements untouched 1`] = `"false == true"`;
 
-exports[`prints a nice error for an "expected"-labeled expression statement 1`] = `
-"  # test.js:1
+exports[`prints a nice error for an "expect"-labeled expression statement 1`] = `
+"(1 === 2) is not truthy   # test.js:1
   
-  assert(1 === 2)
-           |     
-           false 
+  assert(1 === 2, \\"(1 === 2) is not truthy\\")
+           |                                
+           false                            
   
   [number] 2
   => 2
@@ -17,11 +17,11 @@ exports[`prints a nice error for an "expected"-labeled expression statement 1`] 
 `;
 
 exports[`still works if babel-plugin-espower is used for other assertions in the file 1`] = `
-"  # test.js:2
+"(x > 0) is not truthy   # test.js:2
   
-  assert(x > 0)
-         | |   
-         0 false
+  assert(x > 0, \\"(x > 0) is not truthy\\")
+         | |                            
+         0 false                        
   "
 `;
 
@@ -36,12 +36,12 @@ exports[`still works if babel-plugin-espower is used for other assertions in the
 `;
 
 exports[`supports non-standard JSX syntax 1`] = `
-"  # test.js:1
+"(<div></div>.prop === 'expected') is not truthy   # test.js:1
   
-  assert(<div></div>.prop === 'expected')
-                     |    |              
-                     |    false          
-                     \\"div\\"               
+  assert(<div></div>.prop === 'expected', \\"(<div></div>.prop === 'expected') is not truthy\\")
+                     |    |                                                                 
+                     |    false                                                             
+                     \\"div\\"                                                                  
   
   --- [string] 'expected'
   +++ [string] <div></div>.prop
@@ -53,11 +53,11 @@ exports[`supports non-standard JSX syntax 1`] = `
 `;
 
 exports[`works when using autoImport 1`] = `
-"  # test.js:1
+"(1 === 2) is not truthy   # test.js:1
   
-  _assert(1 === 2)
-            |     
-            false 
+  _assert(1 === 2, \\"(1 === 2) is not truthy\\")
+            |                                
+            false                            
   
   [number] 2
   => 2

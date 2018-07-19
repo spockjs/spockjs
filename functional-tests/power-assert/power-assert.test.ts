@@ -1,10 +1,11 @@
 import { transform } from '@babel/core';
+import realAssert from 'assert';
 import assert from 'power-assert';
 
 import plugin from '@spockjs/babel-plugin-spock';
 import { Config, minimalConfig } from '@spockjs/config';
 
-test('prints a nice error for an "expected"-labeled expression statement', () => {
+test('prints a nice error for an "expect"-labeled expression statement', () => {
   const { code } = transform(`expect: 1 === 2;`, {
     plugins: [[plugin, { ...minimalConfig, powerAssert: true } as Config]],
     filename: 'test.js',
@@ -31,7 +32,7 @@ test('leaves unrelated assert statements untouched', () => {
   });
 
   expect(() =>
-    new Function('assert', code as string)(assert),
+    new Function('assert', code as string)(realAssert),
   ).toThrowErrorMatchingSnapshot();
 });
 

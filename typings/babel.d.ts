@@ -17,6 +17,13 @@ declare module '@babel/template' {
   export default template;
 }
 
+declare module '@babel/generator' {
+  export * from 'babel-generator';
+
+  import generator from 'babel-generator';
+  export default generator;
+}
+
 declare module '@babel/helper-module-imports' {
   import { NodePath } from '@babel/traverse';
   import { Node } from '@babel/types';

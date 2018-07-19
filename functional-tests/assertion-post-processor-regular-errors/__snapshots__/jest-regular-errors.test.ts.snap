@@ -8,14 +8,14 @@ Array [
 ]
 `;
 
-exports[`does not require AssertionError in scope with autoImport enabled 1`] = `[Error: false == true]`;
+exports[`does not require AssertionError in scope with autoImport enabled 1`] = `[Error: (1 === 2) is not truthy]`;
 
 exports[`keeps the pretty error message from powerAssert 1`] = `
-[Error:   # test.js:1
+[Error: (1 === 2) is not truthy   # test.js:1
   
-  assert(1 === 2)
-           |     
-           false 
+  assert(1 === 2, "(1 === 2) is not truthy")
+           |                                
+           false                            
   
   [number] 2
   => 2
@@ -24,4 +24,4 @@ exports[`keeps the pretty error message from powerAssert 1`] = `
   ]
 `;
 
-exports[`throws plain Errors instead of AssertionErrors 1`] = `[Error: false == true]`;
+exports[`throws plain Errors instead of AssertionErrors 1`] = `[Error: (1 === 2) is not truthy]`;

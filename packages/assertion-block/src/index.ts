@@ -1,3 +1,4 @@
+import print from '@babel/generator';
 import { NodePath } from '@babel/traverse';
 import * as BabelTypes from '@babel/types';
 
@@ -48,7 +49,10 @@ export default (
         end: origExpr.loc.start,
       };
 
-      const newExpr = t.callExpression(assertIdentifier, [origExpr]);
+      const newExpr = t.callExpression(assertIdentifier, [
+        origExpr,
+        t.stringLiteral(`(${print(origExpr).code}) is not truthy`),
+      ]);
       newExpr.loc = origExpr.loc;
       statement.expression = newExpr;
 
@@ -64,7 +68,7 @@ export default (
         ({ path, patterns }, postProcess) => postProcess(path, patterns),
         {
           path: statementPath,
-          patterns: [`${assertIdentifier.name}(value)`],
+          patterns: [`${assertIdentifier.name}(value, [message])`],
         },
       );
 

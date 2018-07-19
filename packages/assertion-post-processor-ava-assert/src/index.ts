@@ -14,7 +14,7 @@ const processor: AssertionPostProcessor = (t, config) => path => {
   delete (tTruthy as any).optional;
 
   assertionExpression.callee = tTruthy;
-  return { path, patterns: ['t.truthy(value)'] };
+  return { path, patterns: ['t.truthy(value, [message])'] };
 };
 
 export default processor;

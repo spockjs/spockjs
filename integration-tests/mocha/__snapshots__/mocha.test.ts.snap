@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`produces correct output 1`] = `
-"  # mocha.js:10
+"(x === double(2)) is not truthy   # mocha.js:10
   
-  _assert(x === double(2))
-          | |   |         
-          | |   4         
-          3 false         
+  _assert(x === double(2), \\"(x === double(2)) is not truthy\\")
+          | |   |                                            
+          | |   4                                            
+          3 false                                            
   
   [number] double(2)
   => 4

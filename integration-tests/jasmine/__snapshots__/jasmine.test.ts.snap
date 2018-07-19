@@ -7,12 +7,12 @@ exports[`produces correct output 1`] = `
 Failures:
 1) jasmine with spock failing test
   Message:
-    AssertionError [ERR_ASSERTION]:   # jasmine.js:11
+    AssertionError [ERR_ASSERTION]: (x === double(2)) is not truthy   # jasmine.js:11
       
-      _assert(x === double(2))
-              | |   |         
-              | |   4         
-              3 false         
+      _assert(x === double(2), \\"(x === double(2)) is not truthy\\")
+              | |   |                                            
+              | |   4                                            
+              3 false                                            
       
       [number] double(2)
       => 4
