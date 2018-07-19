@@ -3,7 +3,7 @@
 exports[`produces clean output with runner-ava preset 1`] = `
 "
     successful test
-    failing test 
+    failing test (x === double(2)) is not truthy
 
   1 test failed
 
@@ -14,6 +14,8 @@ exports[`produces clean output with runner-ava preset 1`] = `
    11:   when: x = 3;          
    12:   then: x === double(2);
    13: });                     
+
+  (x === double(2)) is not truthy
 
   Value is not truthy:
 

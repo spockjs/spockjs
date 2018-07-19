@@ -2,8 +2,8 @@
 
 exports[`generates code that looks hand-written 1`] = `
 "import assert from \\"assert\\";
-assert(1 === 1);
-assert(2 === 2);
-assert(3 === 4);
+assert(1 === 1, \\"(1 === 1) is not truthy\\");
+assert(2 === 2, \\"(2 === 2) is not truthy\\");
+assert(3 === 4, \\"(3 === 4) is not truthy\\");
 "
 `;

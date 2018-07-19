@@ -49,6 +49,6 @@ test('generates code that performs the assertion', () => {
 
   expect: status === 1;
   expect(stderr.toString()).toMatch(
-    /AssertionError \[ERR_ASSERTION\]: false == true/,
+    /AssertionError \[ERR_ASSERTION\]: \(3 === 4\) is not truthy/,
   );
 });
