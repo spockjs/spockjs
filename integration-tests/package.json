@@ -16,7 +16,7 @@
     "url": "https://github.com/spockjs/spockjs/issues"
   },
   "devDependencies": {
-    "@babel/register": "7.0.0-beta.44",
+    "@babel/register": "7.0.0-beta.54",
     "@spockjs/babel-plugin-spock": "^1.0.0-beta.1",
     "@spockjs/preset-runner-ava": "^1.0.0-beta.1",
     "@spockjs/preset-runner-jest": "^1.0.0-beta.1",

@@ -1,4 +1,4 @@
-import { transform } from '@babel/core';
+import { transform, TransformOptions } from '@babel/core';
 import assert, { AssertionError } from 'power-assert';
 
 import { Config, minimalConfig } from '@spockjs/config';
@@ -10,23 +10,23 @@ import plugin from '@spockjs/babel-plugin-spock';
 // mark implicit dependencies for jest
 () => require('@spockjs/preset-runner-jest');
 
+const config: Config = {
+  ...minimalConfig,
+  presets: ['@spockjs/preset-runner-jest'],
+};
+const babelOpts = (config: Config) =>
+  ({
+    plugins: [[plugin, config]],
+    filename: 'test.js',
+  } as TransformOptions);
+
 const originalConsoleWarn = console.warn;
 let consoleWarn: jest.Mock;
 beforeEach(() => (console.warn = consoleWarn = jest.fn()));
 afterEach(() => (console.warn = originalConsoleWarn));
 
 test('throws plain Errors instead of AssertionErrors', () => {
-  const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [
-      [
-        plugin,
-        {
-          ...minimalConfig,
-          presets: ['@spockjs/preset-runner-jest'],
-        } as Config,
-      ],
-    ],
-  });
+  const { code } = transform(`expect: 1 === 2;`, babelOpts(config));
 
   expect.assertions(1);
   try {
@@ -45,17 +45,7 @@ test('leaves other errors untouched', () => {
   const throws = () => {
     throw new CustomError();
   };
-  const { code } = transform(`expect: throws() === 1;`, {
-    plugins: [
-      [
-        plugin,
-        {
-          ...minimalConfig,
-          presets: ['@spockjs/preset-runner-jest'],
-        } as Config,
-      ],
-    ],
-  });
+  const { code } = transform(`expect: throws() === 1;`, babelOpts(config));
 
   expect(() => {
     new Function('assert', 'AssertionError', 'throws', code as string)(
@@ -70,17 +60,7 @@ describe('autoImport disabled warning', () => {
   beforeEach(() => (autoImportDisabled.warned = false));
 
   test('warns about the need to import AssertionError', () => {
-    transform(`expect: 1 === 2;`, {
-      plugins: [
-        [
-          plugin,
-          {
-            ...minimalConfig,
-            presets: ['@spockjs/preset-runner-jest'],
-          } as Config,
-        ],
-      ],
-    });
+    transform(`expect: 1 === 2;`, babelOpts(config));
 
     expect(consoleWarn.mock.calls).toMatchSnapshot();
   });
@@ -90,17 +70,7 @@ describe('autoImport disabled warning', () => {
       transform(
         `expect: 1 === 2;
         expect: 2 === 3;`,
-        {
-          plugins: [
-            [
-              plugin,
-              {
-                ...minimalConfig,
-                presets: ['@spockjs/preset-runner-jest'],
-              } as Config,
-            ],
-          ],
-        },
+        babelOpts(config),
       );
     doTransform();
     doTransform();
@@ -110,19 +80,10 @@ describe('autoImport disabled warning', () => {
 });
 
 test('does not require AssertionError in scope with autoImport enabled', () => {
-  const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [
-      [
-        plugin,
-        {
-          ...minimalConfig,
-          presets: ['@spockjs/preset-runner-jest'],
-          autoImport: true,
-        } as Config,
-      ],
-      '@babel/plugin-transform-modules-commonjs',
-    ],
-  });
+  const { code } = transform(
+    `expect: 1 === 2;`,
+    babelOpts({ ...config, autoImport: true }),
+  );
 
   expect.assertions(1);
   try {
@@ -134,19 +95,10 @@ test('does not require AssertionError in scope with autoImport enabled', () => {
 });
 
 test('keeps the pretty error message from powerAssert', () => {
-  const { code } = transform(`expect: 1 === 2;`, {
-    plugins: [
-      [
-        plugin,
-        {
-          ...minimalConfig,
-          presets: ['@spockjs/preset-runner-jest'],
-          powerAssert: true,
-        } as Config,
-      ],
-    ],
-    filename: 'test.js',
-  });
+  const { code } = transform(
+    `expect: 1 === 2;`,
+    babelOpts({ ...config, powerAssert: true }),
+  );
 
   expect.assertions(1);
   try {

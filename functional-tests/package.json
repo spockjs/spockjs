@@ -16,7 +16,7 @@
     "url": "https://github.com/spockjs/spockjs/issues"
   },
   "devDependencies": {
-    "@babel/preset-react": "7.0.0-beta.44",
+    "@babel/preset-react": "7.0.0-beta.54",
     "@spockjs/assertion-post-processor-regular-errors": "^1.0.0-beta.1",
     "@spockjs/babel-plugin-spock": "^1.0.0-beta.1",
     "@spockjs/config": "^1.0.0-beta.1",
