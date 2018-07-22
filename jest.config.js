@@ -5,6 +5,7 @@ module.exports = {
     '!**/__tests__/**',
     '!**/__mocks__/**',
   ],
+  testRunner: 'jest-circus/runner',
   testEnvironment: 'node',
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx', 'json'],
   testRegex: '.*\\.(test|spec)\\.ts$',
