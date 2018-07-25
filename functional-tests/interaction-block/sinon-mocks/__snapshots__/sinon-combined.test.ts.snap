@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reports too few calls 1`] = `
+"Expected method([...]) twice (called once)
+Expectation met: method(a[, ...]) once
+Expectation met: method([...]) twice"
+`;
+
+exports[`reports too few calls with a function expectation 1`] = `"Expected mock([...]) twice (called once)"`;

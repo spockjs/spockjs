@@ -1,9 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`generates code that looks hand-written 1`] = `
-"import assert from \\"assert\\";
-assert(1 === 1, \\"(1 === 1) is not truthy\\");
-assert(2 === 2, \\"(2 === 2) is not truthy\\");
-assert(3 === 4, \\"(3 === 4) is not truthy\\");
+exports[`generates code that looks reasonably hand-written 1`] = `
+"import { verify as _verify } from \\"@spockjs/interaction-runtime-adapter-sinon\\";
+import { declare as _declare } from \\"@spockjs/interaction-runtime-adapter-sinon\\";
+import assert from \\"assert\\";
+import * as sinon from 'sinon';
+import { env } from 'process';
+const {
+  suite
+} = env;
+
+if (suite === 'assertion') {
+  assert(1 === 1, \\"(1 === 1) is not truthy\\");
+  assert(2 === 2, \\"(2 === 2) is not truthy\\");
+  assert(3 === 4, \\"(3 === 4) is not truthy\\");
+}
+
+if (suite === 'interaction') {
+  const obj = {
+    method: () => {}
+  };
+  const m = sinon.mock(obj);
+
+  _declare({
+    kind: \\"mock\\",
+    args: [],
+    mockObject: m,
+    methodName: \\"method\\",
+    cardinality: 2
+  });
+
+  obj.method();
+
+  _verify(m)
+}
 "
 `;

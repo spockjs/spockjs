@@ -20,6 +20,7 @@
     "@spockjs/babel-plugin-spock": "^1.0.0-beta.1",
     "@spockjs/preset-runner-ava": "^1.0.0-beta.1",
     "@spockjs/preset-runner-jest": "^1.0.0-beta.1",
+    "@spockjs/preset-sinon-mocks": "^1.0.0-beta.1",
     "@types/cross-spawn": "^6.0.0",
     "ava": "^1.0.0-beta.5.1",
     "cross-spawn": "^6.0.5",
@@ -29,6 +30,7 @@
     "npm-which": "^3.0.1",
     "tap-parser": "^7.0.0",
     "tape": "^4.9.0",
-    "tape-catch": "^1.0.6"
+    "tape-catch": "^1.0.6",
+    "ts-jest": "^23.0.1"
   }
 }

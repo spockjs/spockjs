@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`interaction blocks work 1`] = `
+"
+    stubbing
+    mocking
+    failing verification Error thrown in test
+
+  1 test failed
+
+  failing verification
+
+
+  Error thrown in test:
+
+  ExpectationError (Error) {
+    message: 'Expected method([...]) twice (called once)',
+  }
+
+  t <FILEPATH HIDDEN>:22:35)
+
+"
+`;

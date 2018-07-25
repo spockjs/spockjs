@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`interaction blocks work 1`] = `
+"Started
+..F
+
+Failures:
+1) jasmine interaction blocks failing verification
+  Message:
+    ExpectationError: Expected method([...]) twice (called once)
+  "
+`;

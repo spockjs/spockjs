@@ -1,0 +1,24 @@
+{
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": 6
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "@spockjs/babel-plugin-spock",
+        {
+          "presets": [
+            "@spockjs/preset-sinon-mocks"
+          ]
+        }
+      ]
+    ]
+  }
+}

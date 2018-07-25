@@ -5,7 +5,8 @@
       {
         "powerAssert": false,
         "autoImport": "assert",
-        "assertFunctionName": "assert"
+        "assertFunctionName": "assert",
+        "presets": ["@spockjs/preset-sinon-mocks"]
       }
     ]
   ]

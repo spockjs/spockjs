@@ -1,7 +1,7 @@
 {
-  "private": true,
-  "name": "@spockjs/functional-tests",
+  "name": "@spockjs/preset-sinon-mocks",
   "version": "1.0.0-beta.1",
+  "description": "spockjs interaction testing backed by Sinon.JS",
   "author": "Tim Seckinger <seckinger.tim@gmail.com>",
   "homepage": "https://github.com/spockjs/spockjs",
   "repository": {
@@ -9,19 +9,18 @@
     "url": "git+https://github.com/spockjs/spockjs.git"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/index.ts",
   "engines": {
     "node": ">= 6"
   },
   "bugs": {
     "url": "https://github.com/spockjs/spockjs/issues"
   },
-  "devDependencies": {
-    "@babel/preset-react": "^7.0.0-beta.54",
-    "@spockjs/assertion-post-processor-regular-errors": "^1.0.0-beta.1",
-    "@spockjs/babel-plugin-spock": "^1.0.0-beta.1",
+  "dependencies": {
     "@spockjs/config": "^1.0.0-beta.1",
-    "@spockjs/preset-runner-ava": "^1.0.0-beta.1",
-    "@spockjs/preset-runner-jest": "^1.0.0-beta.1",
-    "@spockjs/preset-sinon-mocks": "^1.0.0-beta.1"
+    "@spockjs/interaction-runtime-adapter-sinon": "^1.0.0-beta.1"
   }
 }
