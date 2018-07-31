@@ -1,0 +1,26 @@
+{
+  "name": "@spockjs/preset-jest-mocks",
+  "version": "1.0.0-beta.1",
+  "description": "spockjs interaction testing backed by Jest",
+  "author": "Tim Seckinger <seckinger.tim@gmail.com>",
+  "homepage": "https://github.com/spockjs/spockjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spockjs/spockjs.git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/index.ts",
+  "engines": {
+    "node": ">= 6"
+  },
+  "bugs": {
+    "url": "https://github.com/spockjs/spockjs/issues"
+  },
+  "dependencies": {
+    "@spockjs/config": "^1.0.0-beta.1",
+    "@spockjs/interaction-runtime-adapter-jest": "^1.0.0-beta.1"
+  }
+}

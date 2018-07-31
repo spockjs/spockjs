@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`does not accept a call with incorrect arguments 1`] = `
+"Expected 1 call(s) to mock jest.fn() with arguments Array [
+  42,
+], but received 0 such call(s)."
+`;
+
+exports[`does not accept a call with missing arguments 1`] = `
+"Expected 1 call(s) to mock jest.fn() with arguments Array [
+  42,
+], but received 0 such call(s)."
+`;
+
+exports[`reports no calls at all 1`] = `"Expected 1 call(s) to mock jest.fn() with arguments Array [], but received 0 such call(s)."`;
+
+exports[`reports too few calls 1`] = `"Expected 2 call(s) to mock jest.fn() with arguments Array [], but received 1 such call(s)."`;
+
+exports[`reports too few calls with one of multiple argument lists 1`] = `
+"Expected 2 call(s) to mock jest.fn() with arguments Array [
+  42,
+], but received 1 such call(s)."
+`;
+
+exports[`reports too many calls 1`] = `"Expected 0 call(s) to mock jest.fn() with arguments Array [], but received 1 such call(s)."`;
+
+exports[`throws if the callee in an interaction declaration is not a Jest mock function 1`] = `"Expected the callee in an interaction declaration to be a Jest mock function, but received [Function fn]."`;
+
+exports[`throws if the value in an interaction verification is not a Jest mock function 1`] = `"Expected the value in an interaction verification to be a Jest mock function, but received [Function fn]."`;
+
+exports[`works with a computed mock object 1`] = `"Expected 2 call(s) to mock jest.fn() with arguments Array [], but received 1 such call(s)."`;
+
+exports[`works with a member expression mock 1`] = `"Expected 2 call(s) to mock jest.fn() with arguments Array [], but received 1 such call(s)."`;

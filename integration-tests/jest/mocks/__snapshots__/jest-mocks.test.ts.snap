@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`interaction blocks work 1`] = `
+"  ● failing verification
+
+    Expected 2 call(s) to mock jest.fn() with arguments Array [], but received 1 such call(s).
+"
+`;

@@ -1,0 +1,30 @@
+{
+  "name": "@spockjs/interaction-runtime-adapter-jest",
+  "version": "1.0.0-beta.1",
+  "description": "Interaction block runtime adapter for Jest mocks",
+  "author": "Tim Seckinger <seckinger.tim@gmail.com>",
+  "homepage": "https://github.com/spockjs/spockjs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spockjs/spockjs.git"
+  },
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "src/index.ts",
+  "engines": {
+    "node": ">= 6"
+  },
+  "bugs": {
+    "url": "https://github.com/spockjs/spockjs/issues"
+  },
+  "dependencies": {
+    "@spockjs/config": "^1.0.0-beta.1",
+    "deep-strict-equal": "^0.2.0",
+    "pretty-format": "^23.0.0"
+  },
+  "peerDependencies": {
+    "jest": "^23.0.0"
+  }
+}
