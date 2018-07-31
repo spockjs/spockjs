@@ -1397,7 +1397,7 @@
     "@types/babel-types" "*"
     "@types/babylon" "*"
 
-"@types/babel-generator@*":
+"@types/babel-generator@*", "@types/babel-generator@^6.25.2":
   version "6.25.2"
   resolved "https://registry.yarnpkg.com/@types/babel-generator/-/babel-generator-6.25.2.tgz#fa13653ec2d34a4037be9c34dec32ae75bea04cc"
   dependencies:
